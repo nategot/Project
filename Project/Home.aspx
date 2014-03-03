@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1>
-        Events:jjj
+        Events:
     </h1>
     <div id="searchDiv">
         <table>
