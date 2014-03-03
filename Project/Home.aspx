@@ -9,7 +9,7 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <h1>
-        Events:11111111111111111111111111111
+        Events:
     </h1>
     <div id="searchDiv">
         <table>
