@@ -1,3 +1,13 @@
-﻿table td
+﻿ td
 {width:11111111111111111111px;
+}
+
+#EventNameLbl
+{color:Lime;
+ background-color:Green;
+}
+
+.EventNameLbl
+{color:Lime;
+ background-color:Green;
 }
