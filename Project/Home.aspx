@@ -19,6 +19,7 @@
                 </td>
                 <td>
                     <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Soccer</asp:ListItem>
                         <asp:ListItem>Basketball</asp:ListItem>
                         <asp:ListItem>Tennis</asp:ListItem>
@@ -30,13 +31,14 @@
                     Radius:
                 </td>
                 <td>
-                    <asp:SliderExtender ID="SliderExtender1" runat="server" BoundControlID="kmTXT_b"
-                        TargetControlID="kmTXT">
-                    </asp:SliderExtender>
-                    <asp:TextBox ID="kmTXT" Text="20" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:TextBox ID="kmTXT_b" CssClass="kmTXT" runat="server"></asp:TextBox>
+                    <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="kmTXT"
+                        Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
+                    </asp:NumericUpDownExtender>
+                    <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40"></asp:TextBox>
+                    <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px;
+                        width: 15px;">
+                    <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px;
+                        width: 15px;">
                 </td>
                 <td>
                     Name:
@@ -47,38 +49,33 @@
             </tr>
         </table>
     </div>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-    DataKeyNames="EventNumber" DataSourceID="SqlDataSource1">
+    <br />
+    <br />
+    <br />
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="EventNumber"
+        DataSourceID="SqlDataSource1">
         <Columns>
-            <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" 
-                ReadOnly="True" SortExpression="EventNumber" />
-            <asp:BoundField DataField="CourtId" HeaderText="CourtId" 
-                SortExpression="CourtId" />
-            <asp:BoundField DataField="UserId" HeaderText="UserId" InsertVisible="False" 
-                ReadOnly="True" SortExpression="UserId" />
-            <asp:BoundField DataField="Adminname" HeaderText="Adminname" 
-                SortExpression="Adminname" />
-            <asp:BoundField DataField="NumOfParticipants" HeaderText="NumOfParticipants" 
-                SortExpression="NumOfParticipants" />
-            <asp:BoundField DataField="Category" HeaderText="Category" 
-                SortExpression="Category" />
-            <asp:BoundField DataField="CategoryId" HeaderText="CategoryId" 
-                SortExpression="CategoryId" />
-            <asp:BoundField DataField="Frequency" HeaderText="Frequency" 
-                SortExpression="Frequency" />
-            <asp:CheckBoxField DataField="Public/private" HeaderText="Public/private" 
-                SortExpression="Public/private" />
+            <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" ReadOnly="True"
+                SortExpression="EventNumber" />
+            <asp:BoundField DataField="CourtId" HeaderText="CourtId" SortExpression="CourtId" />
+            <asp:BoundField DataField="UserId" HeaderText="UserId" InsertVisible="False" ReadOnly="True"
+                SortExpression="UserId" />
+            <asp:BoundField DataField="Adminname" HeaderText="Adminname" SortExpression="Adminname" />
+            <asp:BoundField DataField="NumOfParticipants" HeaderText="NumOfParticipants" SortExpression="NumOfParticipants" />
+            <asp:BoundField DataField="Category" HeaderText="Category" SortExpression="Category" />
+            <asp:BoundField DataField="CategoryId" HeaderText="CategoryId" SortExpression="CategoryId" />
+            <asp:BoundField DataField="Frequency" HeaderText="Frequency" SortExpression="Frequency" />
+            <asp:CheckBoxField DataField="Public/private" HeaderText="Public/private" SortExpression="Public/private" />
+             <asp:TemplateField >
+                <ItemTemplate>
+                      <asp:Button  ID="joinBTN" runat="server" Text="Join" />
+                </ItemTemplate>
+               
+           <%--     <ControlStyle Width="25px" />
+                <ItemStyle Width="150px" />--%>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>" 
-    SelectCommand="SELECT * FROM [EventS]"></asp:SqlDataSource>
-    <p>
-        To learn more about ASP.NET visit <a href="http://www.asp.net" title="ASP.NET Website">
-            www.asp.net</a>.
-    </p>
-    <p>
-        You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
-            title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.
-    </p>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
+        SelectCommand="SELECT * FROM [EventS]"></asp:SqlDataSource>
 </asp:Content>
