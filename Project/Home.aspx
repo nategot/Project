@@ -36,9 +36,9 @@
                     </asp:NumericUpDownExtender>
                     <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40"></asp:TextBox>
                     <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px;
-                        width: 15px;">
+                        width: 15px;"/>
                     <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px;
-                        width: 15px;">
+                        width: 15px;"/>
                 </td>
                 <td>
                     Name:
