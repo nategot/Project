@@ -2,9 +2,12 @@
     CodeFile="Home.aspx.cs" Inherits="_Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="Styles/Home.css" rel="stylesheet" type="text/css" />
 </asp:Content>
+
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
@@ -36,15 +39,18 @@
                     </asp:NumericUpDownExtender>
                     <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40"></asp:TextBox>
                     <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px;
-                        width: 15px;">
+                        width: 15px;"/>
                     <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px;
-                        width: 15px;">
+                        width: 15px;"/>
                 </td>
                 <td>
                     Name:
                 </td>
                 <td>
                     <asp:TextBox ID="freeSearch" runat="server"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:HyperLink ID="HyperLink1" runat="server">Map View</asp:HyperLink>
                 </td>
             </tr>
         </table>
@@ -70,9 +76,7 @@
                 <ItemTemplate>
                       <asp:Button  ID="joinBTN" runat="server" Text="Join" />
                 </ItemTemplate>
-               
-           <%--     <ControlStyle Width="25px" />
-                <ItemStyle Width="150px" />--%>
+            
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
