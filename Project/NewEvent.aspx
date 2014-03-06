@@ -99,18 +99,16 @@
                 Comment:
             </td>
             <td>
-                <asp:TextBox ID="commentsTB" runat="server" TextMode="MultiLine" Text="Add your comment here"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Button ID="confirmBTN" runat="server" Text="Confirm & Publish" />
-            </td>
-            <td>
-                <asp:Button ID="inviteBTN" runat="server" Text="Invite from list" />
+                <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="commentsTB"
+                    WatermarkText="Add your comment here">
+                </asp:TextBoxWatermarkExtender>
+                <asp:TextBox ID="commentsTB" runat="server" TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
     </table>
     <div id="map-canvas" style="height: 200px; width: 300px; float: right;">
     </div>
+    <div style="margin: 300px 0px 0px 0px; text-align: center">
+        <asp:Button ID="confirmBTN" runat="server" Text="Confirm & Publish" />
+        <asp:Button ID="inviteBTN" runat="server" Text="Invite from list" /></div>
 </asp:Content>

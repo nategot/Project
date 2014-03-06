@@ -75,8 +75,15 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="saveBTN" runat="server" Text="Save my Profile" />
             </td>
         </tr>
     </table>
+    <div style="float: right;">
+        <asp:Image ID="Image1" runat="server" ImageUrl="Images/EmptyProfile.jpg" />
+        <br />
+        <asp:FileUpload ID="FileUpload1" runat="server" />
+    </div>
+    <div style="margin: 300px 0px 0px 0px; text-align: center">
+        <asp:Button ID="saveBTN" runat="server" Text="Save Profile" />
+    </div>
 </asp:Content>
