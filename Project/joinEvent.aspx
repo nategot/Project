@@ -10,7 +10,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
         SelectCommand="SELECT [Nickname] FROM [UserInEvent]"></asp:SqlDataSource>
     <div>
-        <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Text="Socer Game"
+        <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Text="Soccer Game"
             Font-Size="XX-Large" Font-Italic="True" Font-Bold="True"></asp:Label>
     </div>
     <div id="leftdiv" style="float: left">
