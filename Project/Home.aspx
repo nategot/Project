@@ -14,6 +14,7 @@
     <h1>
         Events:
     </h1>
+    <br /><br />
     <div id="searchDiv">
         <table>
             <tr>
@@ -55,17 +56,18 @@
             </tr>
         </table>
     </div>
-    <asp:Button ID="AddNewEventBTN" runat="server" Text="Add New Event" 
-    onclick="AddNewEventBTN_Click" />
+    
     <br />
     <br />
     <br />
     <%--<asp:GridView ID="eventGrv" runat="server" AutoGenerateColumns="False" > 
        
-    </asp:GridView>--%>
-    <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
-        SelectCommand="SELECT * FROM [EventS]"></asp:SqlDataSource>--%>
-    <asp:GridView ID="eventGrv" runat="server" 
-       >
     </asp:GridView>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
+        SelectCommand="SELECT * FROM [EventS]"></asp:SqlDataSource>--%>
+    <asp:GridView ID="eventGrv" runat="server">
+       
+    </asp:GridView>
+    <%--<asp:Button ID="AddNewEventBTN" runat="server" Text="Add New Event" 
+    onclick="AddNewEventBTN_Click" />--%>
 </asp:Content>

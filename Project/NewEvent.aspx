@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-    <h1 style="text-align: center">
+    <h1>
         Create New Event</h1>
     <br />
     <br />
