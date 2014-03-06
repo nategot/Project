@@ -11,4 +11,8 @@ public partial class NewProfile : System.Web.UI.Page
     {
 
     }
+    protected void saveBTN_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Home.aspx");
+    }
 }

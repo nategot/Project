@@ -84,6 +84,7 @@
         <asp:FileUpload ID="FileUpload1" runat="server" />
     </div>
     <div style="margin: 300px 0px 0px 0px; text-align: center">
-        <asp:Button ID="saveBTN" runat="server" Text="Save Profile" />
+        <asp:Button ID="saveBTN" runat="server" Text="Save Profile" 
+            onclick="saveBTN_Click" />
     </div>
 </asp:Content>

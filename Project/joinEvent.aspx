@@ -111,6 +111,7 @@
         </asp:GridView>
     </div>
     <div style="margin: 400px 0px 0px 0px; text-align: center">
-        <asp:Button ID="joinBTN" runat="server" Text="Join Now!" />
+        <asp:Button ID="joinBTN" runat="server" Text="Join Now!" 
+            onclick="joinBTN_Click" />
     </div>
 </asp:Content>

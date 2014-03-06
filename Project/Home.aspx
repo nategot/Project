@@ -55,31 +55,17 @@
             </tr>
         </table>
     </div>
+    <asp:Button ID="AddNewEventBTN" runat="server" Text="Add New Event" 
+    onclick="AddNewEventBTN_Click" />
     <br />
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="EventNumber"
-        DataSourceID="SqlDataSource1">
-        <Columns>
-            <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" ReadOnly="True"
-                SortExpression="EventNumber" />
-            <asp:BoundField DataField="CourtId" HeaderText="CourtId" SortExpression="CourtId" />
-            <asp:BoundField DataField="UserId" HeaderText="UserId" InsertVisible="False" ReadOnly="True"
-                SortExpression="UserId" />
-            <asp:BoundField DataField="Adminname" HeaderText="Adminname" SortExpression="Adminname" />
-            <asp:BoundField DataField="NumOfParticipants" HeaderText="NumOfParticipants" SortExpression="NumOfParticipants" />
-            <asp:BoundField DataField="Category" HeaderText="Category" SortExpression="Category" />
-            <asp:BoundField DataField="CategoryId" HeaderText="CategoryId" SortExpression="CategoryId" />
-            <asp:BoundField DataField="Frequency" HeaderText="Frequency" SortExpression="Frequency" />
-            <asp:CheckBoxField DataField="Public/private" HeaderText="Public/private" SortExpression="Public/private" />
-             <asp:TemplateField >
-                <ItemTemplate>
-                      <asp:Button  ID="joinBTN" runat="server" Text="Join" />
-                </ItemTemplate>
-            
-            </asp:TemplateField>
-        </Columns>
+    <%--<asp:GridView ID="eventGrv" runat="server" AutoGenerateColumns="False" > 
+       
+    </asp:GridView>--%>
+    <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
+        SelectCommand="SELECT * FROM [EventS]"></asp:SqlDataSource>--%>
+    <asp:GridView ID="eventGrv" runat="server" 
+       >
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
-        SelectCommand="SELECT * FROM [EventS]"></asp:SqlDataSource>
 </asp:Content>

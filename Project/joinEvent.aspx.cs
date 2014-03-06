@@ -22,4 +22,8 @@ public partial class joinEvent : System.Web.UI.Page
        
     }
 
+    protected void joinBTN_Click(object sender, EventArgs e)
+    { // מוסיף את השחקן לאירוע ושולח אותו חזרה לדף האירועים שלי 
+        Response.Redirect("Home.aspx");
+    }
 }

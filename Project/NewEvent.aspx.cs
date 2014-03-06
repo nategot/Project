@@ -11,4 +11,8 @@ public partial class NewEvent : System.Web.UI.Page
     {
 
     }
+    protected void confirmBTN_Click(object sender, EventArgs e)
+    {// פותח אירוע חדש ומעביר לדף ניהול אירוע
+       // Response.Redirect("Home.aspx");
+    }
 }
