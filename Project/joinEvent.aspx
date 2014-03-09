@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
-        SelectCommand="SELECT [Nickname] FROM [UserInEvent]"></asp:SqlDataSource>
+        SelectCommand="SELECT [UserId] FROM [UserInEvent]"></asp:SqlDataSource>
     <div>
         <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Text="Soccer Game"
             Font-Size="XX-Large" Font-Italic="True" Font-Bold="True"></asp:Label>
@@ -93,6 +93,7 @@
             BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical">
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
+                
                 <asp:BoundField HeaderText="Number" SortExpression="Frequency" 
                     ItemStyle-Width="15px" >
 <ItemStyle Width="15px"></ItemStyle>
