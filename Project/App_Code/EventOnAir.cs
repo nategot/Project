@@ -86,7 +86,7 @@ public class EventOnAir
     {
         DBservices dbs = new DBservices();
         dbs = dbs.ReadFromDataBase("bgroup14_test1ConnectionString", "EventOnAir");
-      //  HttpContext.Current.Session["productDataSet"] = dbs;
+   
         return dbs.dt;
 
     }

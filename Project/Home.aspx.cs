@@ -18,8 +18,15 @@ public partial class _Default : System.Web.UI.Page
        EventOnAir Ev = new EventOnAir();
        DataTable dt= Ev.readTable();
        eventGrv.DataSource = dt;
+       for (int i = 0; i < dt.Rows.Count; i++)
+       {
+           if (bool.Parse(dt.Rows[i].ItemArray[5].ToString()))
+           {
+               dt.Rows.Remove(dt.Rows[i--]);
+           }
+       }
        dt.Columns.Remove("private");
-        eventGrv.DataBind();
+       eventGrv.DataBind();
 
         BoundField field = new BoundField();
         field.HeaderText = "JoinNow";
