@@ -32,7 +32,7 @@ public partial class _Default : System.Web.UI.Page
         field.HeaderText = "JoinNow";
         DataControlField col;
         col = field;
-        eventGrv.Columns.Insert(eventGrv.Columns.Count, col);
+        eventGrv.Columns.Insert(5, col);
         eventGrv.DataBind();
         AddButton(eventGrv);
 
