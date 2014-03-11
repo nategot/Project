@@ -56,7 +56,7 @@
             <td>
                 <asp:TextBox ID="timeTB" runat="server" Width="40" Text="18:00"></asp:TextBox>
                 <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="dateTB"
-                    PopupButtonID="calanderBTN">
+                    PopupButtonID="calanderBTN" Format="dd/MM/yyyy">
                 </asp:CalendarExtender>
                 <asp:TextBox ID="dateTB" runat="server"></asp:TextBox>
                 <asp:ImageButton ID="calanderBTN" runat="server" ImageUrl="Images/Calendar.png" />
@@ -78,7 +78,7 @@
                 <asp:RadioButtonList ID="EventTypeRBL" runat="server" 
                     RepeatDirection="Horizontal" 
                    >
-                    <asp:ListItem Value="false">Public</asp:ListItem>
+                    <asp:ListItem Value="false" Selected>Public</asp:ListItem>
                     <asp:ListItem Value="true">Private</asp:ListItem>
                 </asp:RadioButtonList>
             </td>
@@ -89,7 +89,7 @@
             </td>
             <td>
                 <asp:RadioButtonList ID="FrequRBL" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Value="1">Once</asp:ListItem>
+                    <asp:ListItem Value="1" Selected>Once</asp:ListItem>
                     <asp:ListItem Value="2">Every Week</asp:ListItem>
                     <asp:ListItem Value="3">Every Month</asp:ListItem>
                 </asp:RadioButtonList>

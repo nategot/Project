@@ -57,31 +57,32 @@
     </div>
     
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource1">
+        DataSourceID="SqlDataSource1" DataKeyNames="EventNumber">
         <Columns>
             <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" 
                 InsertVisible="False" ReadOnly="True" SortExpression="EventNumber" />
-            <asp:BoundField DataField="city" HeaderText="city" SortExpression="city" />
-            <asp:BoundField DataField="CategoryId" HeaderText="CategoryId" 
-                SortExpression="CategoryId" />
-            <asp:BoundField DataField="imageUrl" HeaderText="imageUrl" 
-                SortExpression="imageUrl" />
             <asp:BoundField DataField="NumOfParticipants" HeaderText="NumOfParticipants" 
                 SortExpression="NumOfParticipants" />
-            <asp:BoundField DataField="Open_Date" HeaderText="Open_Date" 
-                SortExpression="Open_Date" />
-            <asp:BoundField DataField="imageUrl" HeaderText="FrequencyId" 
-                SortExpression="FrequencyId" />
-            <asp:BoundField DataField="MaxAge" HeaderText="MaxAge" 
-                SortExpression="MaxAge" />
+            <asp:BoundField DataField="Time" HeaderText="Time" 
+                SortExpression="Time" />
             <asp:BoundField DataField="MinAge" HeaderText="MinAge" 
                 SortExpression="MinAge" />
-            <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
+            <asp:BoundField DataField="MaxAge" HeaderText="MaxAge" 
+                SortExpression="MaxAge" />
+            <asp:BoundField DataField="Comments" HeaderText="Comments" 
+                SortExpression="Comments" />
+            <asp:BoundField DataField="Description" HeaderText="Description" 
+                SortExpression="Description" />
+            <asp:BoundField DataField="city" HeaderText="city" 
+                SortExpression="city" />
+            <asp:BoundField DataField="Expr1" HeaderText="Expr1" 
+                SortExpression="Expr1" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>" 
-        SelectCommand="SELECT EventOnAir.Momments AS Expr7, EventOnAir.Momments AS Expr17, EventOnAir.EventNumber, Court.city, CategoryS.CategoryId, CategoryS.imageUrl, EventOnAir.NumOfParticipants, EventOnAir.FrequencyId, EventOnAir.Open_Date, EventOnAir.MaxAge, EventOnAir.MinAge, EventOnAir.Time FROM EventOnAir INNER JOIN Court ON EventOnAir.CourtId = Court.CourtId INNER JOIN CategoryS ON EventOnAir.CategoryId = CategoryS.CategoryId">
+        
+        SelectCommand="SELECT EventOnAir.EventNumber, EventOnAir.NumOfParticipants, EventOnAir.Time, EventOnAir.MinAge, EventOnAir.MaxAge, EventOnAir.Comments, Frequncy.Description, Court.city, CategoryS.Description AS Expr1 FROM EventOnAir INNER JOIN Frequncy ON EventOnAir.FrequencyId = Frequncy.FrequencyId INNER JOIN Court ON EventOnAir.CourtId = Court.CourtId INNER JOIN CategoryS ON EventOnAir.CategoryId = CategoryS.CategoryId">
     </asp:SqlDataSource>
     
     <br />

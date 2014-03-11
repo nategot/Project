@@ -20,6 +20,7 @@ public class EventOnAir
     private int numOfParti;
     private string location;
     private DateTime dateTime;
+
     private double minAge;
     private double maxAge;
     private int frequency;

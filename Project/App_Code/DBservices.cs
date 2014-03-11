@@ -72,14 +72,17 @@ public class DBservices
     {
         String command;
         int isprivate=0;
+        string dateStr=" ";
         StringBuilder sb = new StringBuilder();
         if (p.IsPrivate1)
             isprivate = 1;
+      
+       dateStr+= p.DateTime.Day.ToString() + "/"+p.DateTime.Month.ToString() + "/"+p.DateTime.Year.ToString() + " "+p.DateTime.Hour.ToString() + ":"+p.DateTime.Minute.ToString()+"0:00";
 
 
 
-        sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},{5},{6},{7},'{8}')", p.Location, p.NumOfParti, p.Catedory, isprivate, p.DateTime,p.MinAge,p.MaxAge,p.Comments);
-        String prefix = "INSERT INTO EventOnAir " + "(CourtId, NumOfParticipants, CategoryId, Private,Time,MinAge,MaxAge,Comments)";
+       sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},'{5}',{6},{7},'{8}')", p.Location, p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments);
+        String prefix = "INSERT INTO EventOnAir " + "(CourtId, NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments)";
         command = prefix + sb.ToString();
 
         return command;

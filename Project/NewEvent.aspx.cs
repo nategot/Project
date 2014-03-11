@@ -13,6 +13,7 @@ public partial class NewEvent : System.Web.UI.Page
     }
     protected void confirmBTN_Click(object sender, EventArgs e)
     {
+    
         string[] AgeStr = new string[2];
         string timedate;
         EventOnAir ev = new EventOnAir();
@@ -22,6 +23,7 @@ public partial class NewEvent : System.Web.UI.Page
         ev.Location = locationTB.Text;
         timedate = dateTB.Text + " " + timeTB.Text;
         ev.DateTime = DateTime.Parse(timedate);
+       
         AgeStr=  AgeTxt.Text.Split('-');
         ev.MinAge = double.Parse(AgeStr[0]);
         ev.MaxAge = double.Parse(AgeStr[1]);
@@ -29,7 +31,14 @@ public partial class NewEvent : System.Web.UI.Page
         ev.IsPrivate1 = bool.Parse(EventTypeRBL.SelectedValue);
         ev.Comments = commentsTB.Text;
 
-        ev.insert();
+        int numEfect =ev.insert();
+       
+        if (numEfect==0)
+        {
+            Response.Write("no");
+        }
+        else
+            Response.Write("yes");
        
        
 
