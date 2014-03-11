@@ -26,7 +26,7 @@ public class DBservices
         return con;
     }
 
-    //insert product to DB
+    //insert event to DB
     public int insert(EventOnAir p)
     {
         SqlConnection con;
@@ -34,7 +34,7 @@ public class DBservices
 
         try
         {
-            con = connect("ProductsDBConnectionString");
+            con = connect("bgroup14_test1ConnectionString");
         }
         catch (Exception ex)
         {
@@ -71,16 +71,15 @@ public class DBservices
     private String BuildInsertCommand(EventOnAir p)//build insert command
     {
         String command;
-        int dis;
+        int isprivate=0;
         StringBuilder sb = new StringBuilder();
-        if (p.Discount)
-            dis = 1;
-        else
-            dis = 0;
+        if (p.IsPrivate1)
+            isprivate = 1;
 
 
-        sb.AppendFormat("Values('{0}', '{1}' ,{2}, '{3}',{4})", p.Name, p.Price, p.Amount, p.ImageUrl, dis);
-        String prefix = "INSERT INTO ProductsInShop " + "(name, price, amount, imageUrl,discount)";
+
+        sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},{5},{6},{7},'{8}')", p.Location, p.NumOfParti, p.Catedory, isprivate, p.DateTime,p.MinAge,p.MaxAge,p.Comments);
+        String prefix = "INSERT INTO EventOnAir " + "(CourtId, NumOfParticipants, CategoryId, Private,Time,MinAge,MaxAge,Comments)";
         command = prefix + sb.ToString();
 
         return command;

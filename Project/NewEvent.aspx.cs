@@ -12,7 +12,26 @@ public partial class NewEvent : System.Web.UI.Page
 
     }
     protected void confirmBTN_Click(object sender, EventArgs e)
-    {// פותח אירוע חדש ומעביר לדף ניהול אירוע
-       // Response.Redirect("Home.aspx");
+    {
+        string[] AgeStr = new string[2];
+        string timedate;
+        EventOnAir ev = new EventOnAir();
+     
+        ev.Catedory=int.Parse(categoryDDL.SelectedValue);
+        ev.NumOfParti = int.Parse( NOP.Text);
+        ev.Location = locationTB.Text;
+        timedate = dateTB.Text + " " + timeTB.Text;
+        ev.DateTime = DateTime.Parse(timedate);
+        AgeStr=  AgeTxt.Text.Split('-');
+        ev.MinAge = double.Parse(AgeStr[0]);
+        ev.MaxAge = double.Parse(AgeStr[1]);
+        ev.Frequency=int.Parse(FrequRBL.SelectedValue);
+        ev.IsPrivate1 = bool.Parse(EventTypeRBL.SelectedValue);
+        ev.Comments = commentsTB.Text;
+
+        ev.insert();
+       
+       
+
     }
 }
