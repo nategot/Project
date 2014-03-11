@@ -11,56 +11,77 @@ using System.Text;
 /// </summary>
 public class EventOnAir
 {
-	public EventOnAir()
-	{
-		
-	}
-    private string name;
-    private double price;
-    private string imageUrl;
-    private int amount;
-    private bool discount = false;
+    public EventOnAir()
+    {
 
-    public bool Discount
-    {
-        get { return discount; }
-        set { discount = value; }
-    }
-    public int Amount
-    {
-        get { return amount; }
-        set { amount = value; }
     }
 
+    private int catedory;
+    private int numOfParti;
+    private string location;
+    private DateTime dateTime;
+    private double minAge;
+    private double maxAge;
+    private int frequency;
+    private bool IsPrivate;
+    private int adminID;
+    private string comments;
 
-    public string ImageUrl
+    //prop
+    public int Catedory
     {
-        get { return imageUrl; }
-        set { imageUrl = value; }
+        get { return catedory; }
+        set { catedory = value; }
+    }
+    public int NumOfParti
+    {
+        get { return numOfParti; }
+        set { numOfParti = value; }
+    }
+    public string Location
+    {
+        get { return location; }
+        set { location = value; }
+    }
+    public DateTime DateTime
+    {
+        get { return dateTime; }
+        set { dateTime = value; }
+    }
+    public double MinAge
+    {
+        get { return minAge; }
+        set { minAge = value; }
+    }
+    public double MaxAge
+    {
+        get { return maxAge; }
+        set { maxAge = value; }
+    }
+    public bool IsPrivate1
+    {
+        get { return IsPrivate; }
+        set { IsPrivate = value; }
+    }
+    public int Frequency
+    {
+        get { return frequency; }
+        set { frequency = value; }
+    }
+    public string Comments
+    {
+        get { return comments; }
+        set { comments = value; }
+    }
+    public int AdminID
+    {
+        get { return adminID; }
+        set { adminID = value; }
     }
 
-    public double Price
-    {
-        get { return price; }
-        set { price = value; }
-    }
 
-    public string Name
-    {
-        get { return name; }
-        set { name = value; }
-    }
 
- 
-    public EventOnAir(string _name, double _price, string _imageUrl, int _amount, bool _discount)
-    {
-        name = _name;
-        price = _price;
-        imageUrl = _imageUrl;
-        amount = _amount;
-        discount = _discount;
 
-    }
     public int insert()
     {
         DBservices dbs = new DBservices();
@@ -86,44 +107,44 @@ public class EventOnAir
     {
         DBservices dbs = new DBservices();
         dbs = dbs.ReadFromDataBase("bgroup14_test1ConnectionString", "EventOnAir");
-   
+
         return dbs.dt;
 
     }
 
-    public void showdiscount(string amount, string discount)
-    {
-        DBservices dbs = (DBservices)HttpContext.Current.Session["productDataSet"];
-        DataTable dt = dbs.dt;
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
+    //public void showdiscount(string amount, string discount)
+    //{
+    //    DBservices dbs = (DBservices)HttpContext.Current.Session["productDataSet"];
+    //    DataTable dt = dbs.dt;
+    //    for (int i = 0; i < dt.Rows.Count; i++)
+    //    {
 
-            if (double.Parse((dt.Rows[i].ItemArray[3]).ToString()) > double.Parse((amount)))
-            {
-                price = int.Parse((dt.Rows[i].ItemArray[2]).ToString());
-                price = price * (((100 - double.Parse((discount))) / 100));
-                dt.Rows[i]["price"] = price;
-            }
-        }
+    //        if (double.Parse((dt.Rows[i].ItemArray[3]).ToString()) > double.Parse((amount)))
+    //        {
+    //            price = int.Parse((dt.Rows[i].ItemArray[2]).ToString());
+    //            price = price * (((100 - double.Parse((discount))) / 100));
+    //            dt.Rows[i]["price"] = price;
+    //        }
+    //    }
 
-        HttpContext.Current.Session["productDataBase"] = dbs;
-
-
-    }
-
-    public void updateDatabase()
-    {
-
-        if (HttpContext.Current.Session["productDataBase"] == null) return;
-        DBservices dbs = (DBservices)HttpContext.Current.Session["productDataBase"];
-        dbs.Update(dbs);
-    }
+    //    HttpContext.Current.Session["productDataBase"] = dbs;
 
 
-    public int UpdatDBCount(string names, int count)
-    {
-        DBservices dbs = new DBservices();
-        int numAffected = dbs.Updatecount(names, count);
-        return numAffected;
-    }
+    //}
+
+    //public void updateDatabase()
+    //{
+
+    //    if (HttpContext.Current.Session["productDataBase"] == null) return;
+    //    DBservices dbs = (DBservices)HttpContext.Current.Session["productDataBase"];
+    //    dbs.Update(dbs);
+    //}
+
+
+    //public int UpdatDBCount(string names, int count)
+    //{
+    //    DBservices dbs = new DBservices();
+    //    int numAffected = dbs.Updatecount(names, count);
+    //    return numAffected;
+    //}
 }

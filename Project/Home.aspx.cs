@@ -26,6 +26,7 @@ public partial class _Default : System.Web.UI.Page
            }
        }
        dt.Columns.Remove("private");
+       eventGrv.DataSource = dt;
        eventGrv.DataBind();
 
         BoundField field = new BoundField();

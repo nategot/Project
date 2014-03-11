@@ -19,13 +19,12 @@
                 Category:
             </td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server">
-                    <asp:ListItem>All</asp:ListItem>
-                    <asp:ListItem>Soccer</asp:ListItem>
-                    <asp:ListItem>Basketball</asp:ListItem>
-                    <asp:ListItem>Tennis</asp:ListItem>
-                    <asp:ListItem>Running</asp:ListItem>
-                    <asp:ListItem>Cycling</asp:ListItem>
+                <asp:DropDownList ID="categoryDDL" runat="server">
+                    <asp:ListItem Value="1">Soccer</asp:ListItem>
+                    <asp:ListItem Value="2">Basketball</asp:ListItem>
+                    <asp:ListItem Value="3">Tennis</asp:ListItem>
+                    <asp:ListItem Value="4">Running</asp:ListItem>
+                    <asp:ListItem Value="5">Cycling</asp:ListItem>
                 </asp:DropDownList>
             </td>
         </tr>
@@ -68,7 +67,7 @@
                 Age Range:
             </td>
             <td>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AgeTxt" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -76,9 +75,11 @@
                 Event Type:
             </td>
             <td>
-                <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem>Public</asp:ListItem>
-                    <asp:ListItem>Private</asp:ListItem>
+                <asp:RadioButtonList ID="EventTypeRBL" runat="server" 
+                    RepeatDirection="Horizontal" 
+                   >
+                    <asp:ListItem Value="false">Public</asp:ListItem>
+                    <asp:ListItem Value="true">Private</asp:ListItem>
                 </asp:RadioButtonList>
             </td>
         </tr>
@@ -87,10 +88,10 @@
                 Frequency:
             </td>
             <td>
-                <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem>Once</asp:ListItem>
-                    <asp:ListItem>Every Week</asp:ListItem>
-                    <asp:ListItem>Every Month</asp:ListItem>
+                <asp:RadioButtonList ID="FrequRBL" runat="server" RepeatDirection="Horizontal">
+                    <asp:ListItem Value="1">Once</asp:ListItem>
+                    <asp:ListItem Value="2">Every Week</asp:ListItem>
+                    <asp:ListItem Value="3">Every Month</asp:ListItem>
                 </asp:RadioButtonList>
             </td>
         </tr>
