@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 public partial class NewEvent : System.Web.UI.Page
 {
@@ -32,15 +33,15 @@ public partial class NewEvent : System.Web.UI.Page
         ev.Comments = commentsTB.Text;
 
         int numEfect =ev.insert();
-       
-        if (numEfect==0)
+        if (numEfect == 0)
         {
-            Response.Write("no");
+            MessageBox.Show("the Event wasnt added ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
         else
-            Response.Write("yes");
-       
-       
+        {
+            MessageBox.Show("the Event was added Successfully", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Response.Redirect("http://localhost:62142/Project/MyEvents.aspx");
+        }
 
     }
 }

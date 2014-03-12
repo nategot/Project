@@ -66,19 +66,6 @@ public class Events
     //    return numAffected;
     //}
 
-    public bool CheckName(string name)
-    {
-        DBservices dbs = new DBservices();
-        List<string> names = dbs.getNamesProducts();
-        foreach (string n in names)
-        {
-            if (n == name)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
 
     public DataTable readTable()
     {

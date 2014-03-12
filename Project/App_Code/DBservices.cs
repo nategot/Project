@@ -71,18 +71,18 @@ public class DBservices
     private String BuildInsertCommand(EventOnAir p)//build insert command
     {
         String command;
-        int isprivate=0;
-        string dateStr=" ";
+        int isprivate = 0;
+        string dateStr = " ";
         StringBuilder sb = new StringBuilder();
         if (p.IsPrivate1)
             isprivate = 1;
-      
-       dateStr+= p.DateTime.Day.ToString() + "/"+p.DateTime.Month.ToString() + "/"+p.DateTime.Year.ToString() + " "+p.DateTime.Hour.ToString() + ":"+p.DateTime.Minute.ToString()+"0:00";
+
+        dateStr += p.DateTime.Month.ToString() + "/" + p.DateTime.Day.ToString() + "/" + p.DateTime.Year.ToString() + " " + p.DateTime.Hour.ToString() + ":" + p.DateTime.Minute.ToString() + "0:00";
 
 
 
-       sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},'{5}',{6},{7},'{8}')", p.Location, p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments);
-        String prefix = "INSERT INTO EventOnAir " + "(CourtId, NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments)";
+        sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},'{5}',{6},{7},'{8}')", p.Location, p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments);
+        String prefix = "INSERT INTO EventsOnAir " + "(CourtId, NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments)";
         command = prefix + sb.ToString();
 
         return command;
@@ -99,47 +99,7 @@ public class DBservices
         return cmd;
     }
 
-    public List<string> getNamesProducts()
-    {
-        SqlConnection con;
-        List<string> names = new List<string>();
-
-        try
-        {
-
-            con = connect("ProductsDBConnectionString");
-        }
-
-        catch (Exception ex)
-        {
-            // write to log
-            throw (ex);
-
-        }
-
-        try
-        {
-            String selectSTR = "SELECT name FROM ProductsInShop";
-
-            SqlCommand cmd = new SqlCommand(selectSTR, con);
-
-            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-
-            while (dr.Read())
-            {
-                names.Add((dr["name"]).ToString());
-            }
-
-        }
-        catch (Exception ex)
-        {
-
-            throw (ex);
-
-        }
-        return names;
-    }
-
+   
     //--------------------------------------------------------------------
     // Read from the DB into a table
     //--------------------------------------------------------------------

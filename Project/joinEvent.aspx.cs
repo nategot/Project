@@ -8,7 +8,8 @@ using System.Web.UI.WebControls;
 public partial class joinEvent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    { int  numofplayer= int.Parse(ANS_MaxPlayerLbl.Text);
+    { 
+        int  numofplayer= int.Parse(ANS_MaxPlayerLbl.Text);
 
     for (int i = 0; i < playerTableGrv.Rows.Count; i++)
         {   

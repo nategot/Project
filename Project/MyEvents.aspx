@@ -57,11 +57,19 @@
     </div>
     
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource1" DataKeyNames="EventNumber">
+        DataSourceID="SqlDataSource1" DataKeyNames="EventNumber" 
+        OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" AllowSorting="True" 
+        CellPadding="4" ForeColor="#333333" GridLines="None">
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" 
-                InsertVisible="False" ReadOnly="True" SortExpression="EventNumber" />
-            <asp:BoundField DataField="NumOfParticipants" HeaderText="NumOfParticipants" 
+            <asp:ImageField DataImageUrlField="imageUrl">
+            </asp:ImageField>
+            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
+            <asp:BoundField DataField="Description" HeaderText="Description" 
+                SortExpression="Description" />
+            <asp:BoundField DataField="Frequncy" HeaderText="Frequncy" 
+                SortExpression="Frequncy" />
+            <asp:BoundField DataField="NumOfParticipants" HeaderText="Participants" 
                 SortExpression="NumOfParticipants" />
             <asp:BoundField DataField="Time" HeaderText="Time" 
                 SortExpression="Time" />
@@ -69,25 +77,22 @@
                 SortExpression="MinAge" />
             <asp:BoundField DataField="MaxAge" HeaderText="MaxAge" 
                 SortExpression="MaxAge" />
-            <asp:BoundField DataField="Comments" HeaderText="Comments" 
-                SortExpression="Comments" />
-            <asp:BoundField DataField="Description" HeaderText="Description" 
-                SortExpression="Description" />
-            <asp:BoundField DataField="city" HeaderText="city" 
-                SortExpression="city" />
-            <asp:BoundField DataField="Expr1" HeaderText="Expr1" 
-                SortExpression="Expr1" />
+            <asp:ButtonField CommandName="Cancel" Text="Join Now" />
         </Columns>
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>" 
-        
-        SelectCommand="SELECT EventOnAir.EventNumber, EventOnAir.NumOfParticipants, EventOnAir.Time, EventOnAir.MinAge, EventOnAir.MaxAge, EventOnAir.Comments, Frequncy.Description, Court.city, CategoryS.Description AS Expr1 FROM EventOnAir INNER JOIN Frequncy ON EventOnAir.FrequencyId = Frequncy.FrequencyId INNER JOIN Court ON EventOnAir.CourtId = Court.CourtId INNER JOIN CategoryS ON EventOnAir.CategoryId = CategoryS.CategoryId">
+        SelectCommand="SELECT * FROM [View_EventsOnAir]">
     </asp:SqlDataSource>
-    
-    <br />
-    <br />
-    <br />
-   
    
 </asp:Content>

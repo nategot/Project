@@ -11,4 +11,11 @@ public partial class MyEvents : System.Web.UI.Page
     {
 
     }
+
+
+    // לא מגיע לפה?
+    public void GridView1_RowDataBound(Object sender, GridViewRowEventArgs e)
+    {
+       
+    }
 }
