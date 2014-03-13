@@ -11,7 +11,7 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <h1>
-        Events:
+        My Events:
     </h1>
     <br /><br />
     <div id="searchDiv">
@@ -55,11 +55,13 @@
             </tr>
         </table>
     </div>
+    <br /><br />
     
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSource1" DataKeyNames="EventNumber" 
-        OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" AllowSorting="True" 
-        CellPadding="4" ForeColor="#333333" GridLines="None">
+         AllowPaging="True" AllowSorting="True" 
+        CellPadding="4" ForeColor="#333333" GridLines="None"  
+        >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:ImageField DataImageUrlField="imageUrl">
@@ -77,11 +79,13 @@
                 SortExpression="MinAge" />
             <asp:BoundField DataField="MaxAge" HeaderText="MaxAge" 
                 SortExpression="MaxAge" />
-            <asp:ButtonField CommandName="Cancel" Text="Join Now" />
+            <asp:ButtonField CommandName="Cancel" Text="Join Now" ButtonType="Button" />
+            <asp:HyperLinkField NavigateUrl="joinEvent.aspx" Text="Join now!" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" 
+            HorizontalAlign="Left" />
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#EFF3FB" />
         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
