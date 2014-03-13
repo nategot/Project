@@ -13,7 +13,7 @@
     <h1>
         My Events:
     </h1>
-    <br /><br />
+    <br />
     <div id="searchDiv">
         <table>
             <tr>

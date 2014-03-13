@@ -4,7 +4,6 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-    <link href="Styles/Home.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -13,7 +12,7 @@
     <h1>
         Events:
     </h1>
-    <br /><br />
+    <br />
     <div id="searchDiv">
         <table>
             <tr>
