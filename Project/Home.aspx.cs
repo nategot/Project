@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text;
 using System.Collections.Specialized;
+using System.Windows.Forms;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -19,21 +20,13 @@ public partial class _Default : System.Web.UI.Page
 
     }
 
-   
 
 
-
-
-
-
-    protected void JoinBtn_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("joinEvent.aspx");
-    }
-    protected void AddNewEventBTN_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("NewEvent.aspx");
-    }
 
    
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int num= GridView1.SelectedIndex;
+       string num2 =GridView1.Rows[num].Cells[0].Text.ToString();
+    }
 }
