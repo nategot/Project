@@ -28,5 +28,7 @@ public partial class _Default : System.Web.UI.Page
     {
         int num= GridView1.SelectedIndex;
        string num2 =GridView1.Rows[num].Cells[0].Text.ToString();
+       Session["EventNUmber"] = num2;
+       Response.Redirect("joinEvent.aspx");
     }
 }

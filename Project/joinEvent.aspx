@@ -48,7 +48,7 @@
                     <asp:Label ID="EventTypelbl" runat="server" Text="Event Type:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_" runat="server" Text="Private"></asp:Label>
+                    <asp:Label ID="ANS_EventTypelbl" runat="server" Text="Private"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -64,9 +64,18 @@
                     <asp:Label ID="locationLbl" runat="server" Text="Location:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_locationLbl" runat="server" Text="Bet-Izhak Main Road 35"></asp:Label>
+                    <asp:Label ID="ANS_locationLbl" runat="server" Text="?"></asp:Label>
                 </td>
             </tr>
+               <tr>
+                <td>
+                    <asp:Label ID="Frequencylbl" runat="server" Text="Frequency:"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="ANS_Frequency" runat="server" Text="?"></asp:Label>
+                </td>
+            </tr>
+
             <tr>
                 <td>
                     <asp:Label ID="commentLbl" runat="server" Text="Admin Comments:"></asp:Label>
@@ -83,6 +92,8 @@
         <%--div id="map-canvas" style="width: 100px">
     </div>--%>
     </div>
+    <asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
         <br />
@@ -97,9 +108,8 @@
                 
                 <asp:BoundField HeaderText="UserId" SortExpression="UserId" 
                     ItemStyle-Width="15px" DataField="UserId" ReadOnly="True" >
+<ItemStyle Width="15px"></ItemStyle>
                 </asp:BoundField>
-                <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" 
-                    SortExpression="EventNumber" ReadOnly="True" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -116,4 +126,7 @@
         <asp:Button ID="joinBTN" runat="server" Text="Join Now!" 
             onclick="joinBTN_Click" />
     </div>
+    
+
+
 </asp:Content>
