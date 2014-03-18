@@ -2,13 +2,18 @@
     CodeFile="joinEvent.aspx.cs" Inherits="joinEvent" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-    <link href="Styles/joinEvent.css" rel="stylesheet" type="text/css" />
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
-        SelectCommand="SELECT [UserId], [EventNumber] FROM [UsersInEvent]"></asp:SqlDataSource>
+        
+        SelectCommand="SELECT [UserName] FROM [UsersInEvent] WHERE ([EventNumber] = @EventNumber)">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="0" Name="EventNumber" 
+                SessionField="EventNumber" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <div>
         <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Text="Soccer Game"
             Font-Size="XX-Large" Font-Italic="True" Font-Bold="True"></asp:Label>
@@ -85,15 +90,12 @@
                 </td>
             </tr>
             <tr>
-                <td id="map-canvas" style="height: 150px; width: 200px;">
+                <td id="map-canvas" style="border: 2px ridge #999999; height: 150px; width: 200px;">
                 </td>
             </tr>
         </table>
-        <%--div id="map-canvas" style="width: 100px">
-    </div>--%>
+      
     </div>
-    <asp:GridView ID="GridView1" runat="server">
-    </asp:GridView>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
         <br />
@@ -101,15 +103,15 @@
         <br />
         <asp:GridView ID="playerTableGrv" runat="server" AutoGenerateColumns="False" 
             DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#999999" 
-            BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" 
-            DataKeyNames="UserId,EventNumber">
+            BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" onrowdatabound="playerTableGrv_RowDataBound1" 
+            >
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
                 
-                <asp:BoundField HeaderText="UserId" SortExpression="UserId" 
-                    ItemStyle-Width="15px" DataField="UserId" ReadOnly="True" >
-<ItemStyle Width="15px"></ItemStyle>
-                </asp:BoundField>
+                <asp:TemplateField></asp:TemplateField>
+                
+                <asp:BoundField DataField="UserName" HeaderText="UserName" 
+                    SortExpression="UserName" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />

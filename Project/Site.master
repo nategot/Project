@@ -4,60 +4,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <link href="Styles/joinEvent.css" rel="stylesheet" type="text/css" />
     <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .style1
-        {
-            width: 64px;
-            height: 83px;
-        }
-    </style>
 </head>
-<body>
+<body style="background-image: url('pic/MainBackground.jpg');">
     <form runat="server">
-    <div class="page">
+    <div class="page" style="border-style: ridge; border-width: medium; background-image: url('pic/6.png')">
         <div class="header">
+            
             <div class="title">
-                <h1>
-                    Let's Play!                 
-                </h1>
-                <h3  style="color:White; padding-left:17px;margin-top: 0px;">     Find & Arrange Sports Activities
-                </h3> 
+           <img alt="icon"  src="pic/logo.png" style="width: 330px; height: 130px">
             </div>
-            <div class="loginDisplay">
-                <img alt="icon"  class="logoPic" src="pic/skates_icon.png" />
+            <br />
+            <div class="loginDisplay" style="float: right">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                        [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                        ]
                     </AnonymousTemplate>
                     <LoggedInTemplate>
-                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        Welcome <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>! [
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/" />
+                        ]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Home" />
                         <asp:MenuItem NavigateUrl="~/MyEvents.aspx" Text="My Events"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/NewEvent.aspx" Text="Create New Event"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
                     </Items>
                 </asp:Menu>
             </div>
         </div>
         <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
         <div class="clear">
         </div>
     </div>
     <div class="footer">
-        
     </div>
     </form>
 </body>

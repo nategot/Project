@@ -16,8 +16,9 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+            MapPlaceHolder.Visible = false;
+        
        
-
     }
 
 
@@ -30,5 +31,28 @@ public partial class _Default : System.Web.UI.Page
        string num2 =GridView1.Rows[num].Cells[0].Text.ToString();
        Session["EventNUmber"] = num2;
        Response.Redirect("joinEvent.aspx");
+    }
+    protected void MapviewBTN_Click(object sender, EventArgs e)
+    {
+        if (GridView1.Visible)
+        {
+         GridView1.Visible = false;
+        MapPlaceHolder.Visible = true;
+        MapviewBTN.Text = "Table View";
+       
+        }
+        else
+        {
+        GridView1.Visible = true;
+        MapPlaceHolder.Visible = false;
+        MapviewBTN.Text = "Map View";
+       
+        }
+        
+       
+
+
+
+
     }
 }

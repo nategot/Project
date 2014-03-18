@@ -23,13 +23,7 @@ public partial class joinEvent : System.Web.UI.Page
 
 
 
-        int  numofplayer= int.Parse(ANS_MaxPlayerLbl.Text);
-
-    for (int i = 0; i < playerTableGrv.Rows.Count; i++)
-        {   
-            playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
-            
-        }
+ 
 
     }
     public void ReadDeteail(DataTable dt)
@@ -56,6 +50,21 @@ public partial class joinEvent : System.Web.UI.Page
 
     protected void joinBTN_Click(object sender, EventArgs e)
     { // מוסיף את השחקן לאירוע ושולח אותו חזרה לדף האירועים שלי 
-        Response.Redirect("Home.aspx");
+        Response.Redirect("MyEvents.aspx");
+    }
+    protected void playerTableGrv_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void playerTableGrv_RowDataBound1(object sender, GridViewRowEventArgs e)
+    {
+        int numofplayer = int.Parse(ANS_MaxPlayerLbl.Text);
+
+        for (int i = 0; i < playerTableGrv.Rows.Count; i++)
+        {
+            playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
+
+        }
+     // להוסיף שורות כמספר השחקנים המ'סימלי
     }
 }
