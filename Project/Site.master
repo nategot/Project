@@ -4,10 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    
+    <link href="Styles/joinEvent.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 64px;
+            height: 83px;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -15,10 +22,13 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    Let's Play!
+                    Let's Play!                 
                 </h1>
+                <h3  style="color:White; padding-left:17px;margin-top: 0px;">     Find & Arrange Sports Activities
+                </h3> 
             </div>
             <div class="loginDisplay">
+                <img alt="icon"  class="logoPic" src="pic/skates_icon.png" />
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]

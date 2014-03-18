@@ -79,7 +79,6 @@
                 SortExpression="MinAge" />
             <asp:BoundField DataField="MaxAge" HeaderText="MaxAge" 
                 SortExpression="MaxAge" />
-            <asp:ButtonField CommandName="Cancel" Text="Join Now" ButtonType="Button" />
             <asp:HyperLinkField NavigateUrl="joinEvent.aspx" Text="Join now!" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
