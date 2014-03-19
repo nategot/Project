@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="New Event" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="NewEvent.aspx.cs" Inherits="NewEvent" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+    <link href="Styles/NewEvent.css" rel="stylesheet" type="text/css" />
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
 </asp:Content>
@@ -76,9 +77,7 @@
                 Event Type:
             </td>
             <td>
-                <asp:RadioButtonList ID="EventTypeRBL" runat="server" 
-                    RepeatDirection="Horizontal" 
-                   >
+                <asp:RadioButtonList ID="EventTypeRBL" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Value="false" Selected>Public</asp:ListItem>
                     <asp:ListItem Value="true">Private</asp:ListItem>
                 </asp:RadioButtonList>
@@ -108,10 +107,9 @@
             </td>
         </tr>
     </table>
-    <div id="map-canvas" style="height: 200px; width: 300px; float: right;">
+    <div id="map-canvas" style="border: 2px ridge #999999;height: 260px; width: 420px; float: right;">
     </div>
     <div style="margin: 300px 0px 0px 0px; text-align: center">
-        <asp:Button ID="confirmBTN" runat="server" Text="Confirm & Publish" 
-            onclick="confirmBTN_Click" />
+        <asp:Button ID="confirmBTN" runat="server" Text="Confirm & Publish" OnClick="confirmBTN_Click" />
         <asp:Button ID="inviteBTN" runat="server" Text="Invite from list" /></div>
 </asp:Content>

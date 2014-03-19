@@ -1,22 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="joinEvent.aspx.cs" Inherits="joinEvent" %>
+﻿<%@ Page Title="Join Event" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+    CodeFile="JoinEvent.aspx.cs" Inherits="joinEvent" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-    <link href="Styles/joinEvent.css" rel="stylesheet" type="text/css" />
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
-        SelectCommand="SELECT [UserId], [EventNumber] FROM [UsersInEvent]"></asp:SqlDataSource>
+        SelectCommand="SELECT [UserName] FROM [UsersInEvent] WHERE ([EventNumber] = @EventNumber)">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="0" Name="EventNumber" SessionField="EventNumber"
+                Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <div>
         <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Text="Soccer Game"
             Font-Size="XX-Large" Font-Italic="True" Font-Bold="True"></asp:Label>
     </div>
     <div id="leftdiv" style="float: left">
-        <br />
-        <br />
-        <br />
         <br />
         <table id="eventDetailTable">
             <tr>
@@ -29,7 +30,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="MaxPlayerLbl" runat="server" Text="Maximum Participants:"></asp:Label>
+                    <asp:Label ID="MaxPlayerLbl" runat="server" Text="Max Participants:"></asp:Label>
                 </td>
                 <td>
                     <asp:Label ID="ANS_MaxPlayerLbl" runat="server" Text="15"></asp:Label>
@@ -67,7 +68,7 @@
                     <asp:Label ID="ANS_locationLbl" runat="server" Text="?"></asp:Label>
                 </td>
             </tr>
-               <tr>
+            <tr>
                 <td>
                     <asp:Label ID="Frequencylbl" runat="server" Text="Frequency:"></asp:Label>
                 </td>
@@ -75,7 +76,6 @@
                     <asp:Label ID="ANS_Frequency" runat="server" Text="?"></asp:Label>
                 </td>
             </tr>
-
             <tr>
                 <td>
                     <asp:Label ID="commentLbl" runat="server" Text="Admin Comments:"></asp:Label>
@@ -85,31 +85,25 @@
                 </td>
             </tr>
             <tr>
-                <td id="map-canvas" style="height: 150px; width: 200px;">
+                <td>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td id="map-canvas" style="border: 2px ridge #999999; height: 180px; width: 300px;" colspan="2">
                 </td>
             </tr>
         </table>
-        <%--div id="map-canvas" style="width: 100px">
-    </div>--%>
     </div>
-    <asp:GridView ID="GridView1" runat="server">
-    </asp:GridView>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
-        <br />
-        <br />
-        <br />
-        <asp:GridView ID="playerTableGrv" runat="server" AutoGenerateColumns="False" 
-            DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#999999" 
-            BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" 
-            DataKeyNames="UserId,EventNumber">
+        <asp:GridView ID="playerTableGrv" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
+            BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
+            CellPadding="3" GridLines="Vertical" OnRowDataBound="playerTableGrv_RowDataBound1">
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
-                
-                <asp:BoundField HeaderText="UserId" SortExpression="UserId" 
-                    ItemStyle-Width="15px" DataField="UserId" ReadOnly="True" >
-<ItemStyle Width="15px"></ItemStyle>
-                </asp:BoundField>
+                <asp:TemplateField></asp:TemplateField>
+                <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
             <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
@@ -123,10 +117,6 @@
         </asp:GridView>
     </div>
     <div style="margin: 400px 0px 0px 0px; text-align: center">
-        <asp:Button ID="joinBTN" runat="server" Text="Join Now!" 
-            onclick="joinBTN_Click" />
+        <asp:Button ID="joinBTN" runat="server" Text="Join Now!" OnClick="joinBTN_Click" />
     </div>
-    
-
-
 </asp:Content>
