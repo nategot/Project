@@ -61,17 +61,26 @@
         BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="EventNumber" HeaderText="EventNumber" SortExpression="EventNumber"
+            <asp:BoundField DataField="EventNumber" HeaderText="Event Number" SortExpression="EventNumber"
                 ReadOnly="True" />
             <asp:ImageField DataImageUrlField="imageUrl">
             </asp:ImageField>
             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
             <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
-            <asp:BoundField DataField="NumOfParticipants" HeaderText="NumOfParticipants" SortExpression="NumOfParticipants" />
+            <asp:BoundField DataField="NumOfParticipants" HeaderText="Num Of Participants" 
+                SortExpression="NumOfParticipants" >
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
             <asp:BoundField DataField="Frequncy" HeaderText="Frequncy" SortExpression="Frequncy" />
             <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-            <asp:BoundField DataField="MinAge" HeaderText="MinAge" SortExpression="MinAge" />
-            <asp:BoundField DataField="MaxAge" HeaderText="MaxAge" SortExpression="MaxAge" />
+            <asp:BoundField DataField="MinAge" HeaderText="Min Age" 
+                SortExpression="MinAge" >
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
+            <asp:BoundField DataField="MaxAge" HeaderText="Max Age" 
+                SortExpression="MaxAge" >
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
             <asp:TemplateField ShowHeader="False">
                 <ItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select"

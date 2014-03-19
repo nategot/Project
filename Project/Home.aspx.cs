@@ -12,19 +12,11 @@ using System.Windows.Forms;
 
 public partial class _Default : System.Web.UI.Page
 {
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
             MapPlaceHolder.Visible = false;
-        
-       
     }
 
-
-
-
-   
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         int num= GridView1.SelectedIndex;
@@ -48,11 +40,5 @@ public partial class _Default : System.Web.UI.Page
         MapviewBTN.Text = "Map View";
        
         }
-        
-       
-
-
-
-
     }
 }
