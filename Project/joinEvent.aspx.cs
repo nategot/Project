@@ -29,18 +29,17 @@ public partial class joinEvent : System.Web.UI.Page
                 ANS_Frequency.Text = dt.Rows[i]["Frequncy"].ToString();
                 ANS_AgeLbl.Text = dt.Rows[i]["Age Range"].ToString() + "-" + dt.Rows[i]["MaxAge"].ToString();
                 EventNameLbl.Text = dt.Rows[i]["Description"].ToString();
+               
                 bool ansTemp = (bool)dt.Rows[0]["Private"];
                 string temp = "Public";
                 if (ansTemp)
                     temp = "Private";
-                ANS_EventTypelbl.Text = dt.Rows[0]["Private"].ToString();
+                ANS_EventTypelbl.Text = temp;
 
             }
         }
 
     }
-
-
 
     protected void joinBTN_Click(object sender, EventArgs e)
     { // מוסיף את השחקן לאירוע ושולח אותו חזרה לדף האירועים שלי 

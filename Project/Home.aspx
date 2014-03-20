@@ -11,8 +11,7 @@
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <h1>
-        My Events:
-    </h1>
+        &nbsp;</h1>
     <br />
     <div id="searchDiv">
         <table>
@@ -21,7 +20,9 @@
                     Category:
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="DropDownList1" runat="server" >
+                       
+                        
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Soccer</asp:ListItem>
                         <asp:ListItem>Basketball</asp:ListItem>

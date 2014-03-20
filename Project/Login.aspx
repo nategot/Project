@@ -1,10 +1,9 @@
-﻿<%--<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="Login.aspx.cs" Inherits="Account_Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+ <h2>
         Log In
     </h2>
     <p>
@@ -48,4 +47,5 @@
         </LayoutTemplate>
     </asp:Login>
 </asp:Content>
---%>
+
+
