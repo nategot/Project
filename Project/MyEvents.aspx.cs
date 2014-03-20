@@ -14,7 +14,7 @@ public partial class MyEvents : System.Web.UI.Page
 {
     DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
-    { 
+    {
         MapPlaceHolder.Visible = false;
         string ageRange;
         EventOnAir Ev = new EventOnAir();
@@ -51,7 +51,7 @@ public partial class MyEvents : System.Web.UI.Page
             GridView1.Rows[i].Cells[8].Visible = false;
             GridView1.Rows[i].Cells[9].Visible = false;
             GridView1.Rows[i].Cells[10].Visible = false;
-        
+
 
         }
 
@@ -118,7 +118,7 @@ public partial class MyEvents : System.Web.UI.Page
             if (catgory != dt.Rows[i][0].ToString())
             { GridView1.Rows[i].Visible = false; num++; }
         }
-  
+
 
     }
 

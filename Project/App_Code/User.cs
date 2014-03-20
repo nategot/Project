@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
 
 /// <summary>
 /// Summary description for User
@@ -14,7 +16,7 @@ public class User
     private string imageUrl;
     private string city;
     private int age;
-    private int rating;
+    private int rating=100;
     private string userName;
     private string fname;
     private string userPassword;
@@ -83,14 +85,20 @@ public class User
         get { return imageUrl; }
         set { imageUrl = value; }
     }
-   
 
-	public User()
-	{
-		
-	}
 
-    public void InsertNewUser()
+
+    public int InsertNewUser()
     {
+        DBservices dbs = new DBservices();
+        int numAffected = dbs.insert(this);
+        return numAffected;
     }
+
+    public DataTable  CheckPass()
+    {
+        DBservices dbs = new DBservices();
+        return dbs.CheckPassword(this);
+    }
+    
 }

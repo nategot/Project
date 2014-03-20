@@ -3,29 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
- <h2>
+    <h2>
         Log In
     </h2>
     <p>
         Please enter your username and password.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Register</asp:HyperLink>
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false" NavigateUrl="~/RegisterNewUser.aspx">Register</asp:HyperLink>
         if you don't have an account.
     </p>
-    <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false">
-        <LayoutTemplate>
-            <span class="failureNotification">
-                <asp:Literal ID="FailureText" runat="server"></asp:Literal>
-            </span>
-            <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification"
-                ValidationGroup="LoginUserValidationGroup" />
+    
             <div class="accountInfo">
                 <fieldset class="login">
                     <legend>Account Information</legend>
                     <p>
-                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
-                        <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
-                            CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required."
+                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="Email">Email:</asp:Label>
+                        <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="Email"
+                            CssClass="failureNotification" ErrorMessage="Email is required." ToolTip="Email is required."
                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
                     </p>
                     <p>
@@ -41,11 +35,12 @@
                     </p>
                 </fieldset>
                 <p class="submitButton">
-                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup" />
+                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
+                        ValidationGroup="LoginUserValidationGroup" onclick="LoginBTN_Load" />
                 </p>
             </div>
-        </LayoutTemplate>
-    </asp:Login>
+       
+    
 </asp:Content>
 
 

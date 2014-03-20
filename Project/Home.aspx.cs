@@ -10,7 +10,7 @@ using System.Text;
 using System.Collections.Specialized;
 
 
-public partial class MyEvents : System.Web.UI.Page
+public partial class Home : System.Web.UI.Page
 {
     DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
@@ -21,11 +21,10 @@ public partial class MyEvents : System.Web.UI.Page
         dt = Ev.readTable();
         GridView1.DataSource = dt;
         //GridView1 desing
-        GridView1.AllowPaging = true;
+       // GridView1.AllowPaging = true;
         dt.Columns[6].ColumnName = "Age Range";
         GridView1.DataBind();
-        //dt.Columns.Remove("Comments");
-        //dt.Columns.Remove("EventNumber");
+
 
 
 
@@ -53,6 +52,7 @@ public partial class MyEvents : System.Web.UI.Page
             GridView1.Rows[i].Cells[9].Visible = false;
             GridView1.Rows[i].Cells[10].Visible = false;
 
+
         }
 
         GridView1.HeaderRow.Cells[7].Text = "";
@@ -68,6 +68,7 @@ public partial class MyEvents : System.Web.UI.Page
             GridView1.Rows[i].Cells[1].Controls.Add(imsel);
         }
     }
+
     protected void JoinBtn_Click(object sender, EventArgs e)
     {
         Button btn = (Button)sender;
@@ -78,10 +79,6 @@ public partial class MyEvents : System.Web.UI.Page
         Response.Redirect("joinEvent.aspx");
 
     }
-
-
-
-
 
 
 
@@ -104,5 +101,25 @@ public partial class MyEvents : System.Web.UI.Page
         }
     }
 
+
+
+
+
+
+    protected void catgoryDdl_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DropDownList CatagoryDdl = (DropDownList)sender;
+        string catgory = CatagoryDdl.SelectedItem.ToString();
+        int num = 0;
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (catgory == "All")
+            { return; }
+            if (catgory != dt.Rows[i][0].ToString())
+            { GridView1.Rows[i].Visible = false; num++; }
+        }
+
+
+    }
 
 }

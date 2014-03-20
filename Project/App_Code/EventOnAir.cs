@@ -90,14 +90,8 @@ public class EventOnAir
     }
 
 
-    public DataTable PullEvent(string eventNum)
-    {
-        DBservices dbs = new DBservices();
-        dbs = dbs.ReadFromDataBase("bgroup14_test1ConnectionString", "EventsOnAir", eventNum);
+ 
 
-        return dbs.dt;
-
-    }
     public DataTable readTable()
     {
         DBservices dbs = new DBservices();
@@ -106,6 +100,17 @@ public class EventOnAir
         return dbs.dt;
 
     }
+
+
+
+    //public DataTable PullEvent(string eventNum)
+    //{
+    //    DBservices dbs = new DBservices();
+    //    dbs = dbs.ReadFromDataBase("bgroup14_test1ConnectionString", "EventsOnAir", eventNum);
+
+    //    return dbs.dt;
+    //}
+
 
     //public void showdiscount(string amount, string discount)
     //{

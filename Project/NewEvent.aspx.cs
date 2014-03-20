@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
 using System.Windows.Forms;
 
 public partial class NewEvent : System.Web.UI.Page
@@ -18,7 +20,8 @@ public partial class NewEvent : System.Web.UI.Page
         string[] AgeStr = new string[2];
         string timedate;
         EventOnAir ev = new EventOnAir();
-     
+        DataTable dt = (DataTable)HttpContext.Current.Session["UserDeatail"];
+        ev.AdminID=int.Parse( dt.Rows[0]["UserId"].ToString());
         ev.Catedory=int.Parse(categoryDDL.SelectedValue);
         ev.NumOfParti = int.Parse( NOP.Text);
         ev.Location = locationTB.Text;

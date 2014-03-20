@@ -10,6 +10,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
+ 
     <h1>
         My Events:
     </h1>
@@ -49,8 +50,8 @@
                     <asp:TextBox ID="freeSearch" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"
-                        AutoPostBack="true" />
+                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
+                         
                 </td>
             </tr>
         </table>

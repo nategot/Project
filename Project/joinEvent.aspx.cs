@@ -22,6 +22,7 @@ public partial class joinEvent : System.Web.UI.Page
         {
             if (dt.Rows[i]["EventNumber"].ToString() == eventNum)
             {
+               // ANS_AdminLbl.Text = dt.Rows[i]["AdminName"].ToString();//צריך לסדר שהאדמין ניים יגיע עם הVIEW
                 ANS_MaxPlayerLbl.Text = dt.Rows[i]["NumOfParticipants"].ToString();
                 iconImg.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
                 ANS_datatimelbl.Text = dt.Rows[i]["Time"].ToString();

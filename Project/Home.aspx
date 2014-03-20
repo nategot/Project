@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="My Events" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="MyEvents.aspx.cs" Inherits="MyEvents" %>
+    CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -13,16 +13,15 @@
     <h1>
         &nbsp;</h1>
     <br />
-    <div id="searchDiv">
+   <div id="searchDiv">
         <table>
             <tr>
                 <td>
                     Category:
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server" >
-                       
-                        
+                    <asp:DropDownList ID="catgoryDdl" runat="server" OnSelectedIndexChanged="catgoryDdl_SelectedIndexChanged"
+                        Style="height: 22px" Font-Bold="False" AutoPostBack="True">
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Soccer</asp:ListItem>
                         <asp:ListItem>Basketball</asp:ListItem>
@@ -49,16 +48,23 @@
                     <asp:TextBox ID="freeSearch" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"
-                        AutoPostBack="false" />
+                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
+                         
                 </td>
             </tr>
         </table>
     </div>
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server">
-    </asp:GridView>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="catgoryDdl" />
+        </Triggers>
+        <ContentTemplate>
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <asp:PlaceHolder ID="MapPlaceHolder" runat="server">
         <div id="map-canvas" style="border: 2px ridge #999999; height: 600px; width: 800px">
         </div>
