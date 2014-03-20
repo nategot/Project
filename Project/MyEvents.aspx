@@ -6,7 +6,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
-    <link href="Styles/MyEvents.css" rel="stylesheet" type="text/css" />
+  <%--  <link href="Styles/MyEvents.css" rel="stylesheet" type="text/css" />--%>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -57,7 +57,11 @@
     </div>
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
+    <asp:GridView ID="GridView1" runat="server" > 
+     
+       
+    </asp:GridView>
+  <%--  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
         DataKeyNames="EventNumber" AllowPaging="True" AllowSorting="True" CellPadding="4"
         ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
         BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
@@ -100,12 +104,12 @@
         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
-    </asp:GridView>
+    </asp:GridView>--%>
     <asp:PlaceHolder ID="MapPlaceHolder" runat="server">
         <div id="map-canvas" style="border: 2px ridge #999999; height: 600px; width: 800px">
         </div>
     </asp:PlaceHolder>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
+   <%-- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
         SelectCommand="SELECT [EventNumber], [NumOfParticipants], [Time], [MinAge], [MaxAge], [Comments], [Frequncy], [City], [Description], [imageUrl] FROM [View_EventsOnAir]">
-    </asp:SqlDataSource>
+    </asp:SqlDataSource>--%>
 </asp:Content>
