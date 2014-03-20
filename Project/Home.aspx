@@ -1,16 +1,17 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="Home.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="My Events" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+    CodeFile="MyEvents.aspx.cs" Inherits="MyEvents" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
+    <%--  <link href="Styles/MyEvents.css" rel="stylesheet" type="text/css" />--%>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <h1>
-        Events:
+        My Events:
     </h1>
     <br />
     <div id="searchDiv">
@@ -55,55 +56,10 @@
     </div>
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
-        DataKeyNames="EventNumber" AllowPaging="True" AllowSorting="True" CellPadding="4"
-        ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
-        BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
-        <AlternatingRowStyle BackColor="White" />
-        <Columns>
-            <asp:BoundField DataField="EventNumber" HeaderText="Event Number" SortExpression="EventNumber"
-                ReadOnly="True" />
-            <asp:ImageField DataImageUrlField="imageUrl">
-            </asp:ImageField>
-            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-            <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
-            <asp:BoundField DataField="NumOfParticipants" HeaderText="Num Of Participants" 
-                SortExpression="NumOfParticipants" >
-            <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Frequncy" HeaderText="Frequncy" SortExpression="Frequncy" />
-            <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
-            <asp:BoundField DataField="MinAge" HeaderText="Min Age" 
-                SortExpression="MinAge" >
-            <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:BoundField DataField="MaxAge" HeaderText="Max Age" 
-                SortExpression="MaxAge" >
-            <ItemStyle HorizontalAlign="Center" />
-            </asp:BoundField>
-            <asp:TemplateField ShowHeader="False">
-                <ItemTemplate>
-                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select"
-                        Text="Join Now!"></asp:LinkButton>
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-        <EditRowStyle BackColor="#2461BF" />
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+    <asp:GridView ID="GridView1" runat="server">
     </asp:GridView>
     <asp:PlaceHolder ID="MapPlaceHolder" runat="server">
         <div id="map-canvas" style="border: 2px ridge #999999; height: 600px; width: 800px">
         </div>
     </asp:PlaceHolder>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
-        SelectCommand="SELECT [EventNumber], [NumOfParticipants], [Time], [MinAge], [MaxAge], [Comments], [Frequncy], [City], [Description], [imageUrl] FROM [View_EventsOnAir]">
-    </asp:SqlDataSource>
 </asp:Content>

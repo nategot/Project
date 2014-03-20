@@ -14,8 +14,9 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <div>
-        <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Text="Soccer Game"
-            Font-Size="XX-Large" Font-Italic="True" Font-Bold="True"></asp:Label>
+        <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Font-Size="XX-Large"
+            Font-Italic="True" Font-Bold="True"></asp:Label>
+        <asp:Image ID="iconImg" runat="server" />
     </div>
     <div id="leftdiv" style="float: left">
         <br />
@@ -25,7 +26,7 @@
                     <asp:Label ID="AdminLbl" runat="server" Text="Admin:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_AdminLbl" runat="server" Text="Omer"></asp:Label>
+                    <asp:Label ID="ANS_AdminLbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -33,7 +34,7 @@
                     <asp:Label ID="MaxPlayerLbl" runat="server" Text="Max Participants:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_MaxPlayerLbl" runat="server" Text="15"></asp:Label>
+                    <asp:Label ID="ANS_MaxPlayerLbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -41,7 +42,7 @@
                     <asp:Label ID="datatimelbl" runat="server" Text="Date & Time:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_datatimelbl" runat="server" Text="18:00 11/12/2014"></asp:Label>
+                    <asp:Label ID="ANS_datatimelbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -49,7 +50,7 @@
                     <asp:Label ID="EventTypelbl" runat="server" Text="Event Type:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_EventTypelbl" runat="server" Text="Private"></asp:Label>
+                    <asp:Label ID="ANS_EventTypelbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -57,7 +58,7 @@
                     <asp:Label ID="AgeLbl" runat="server" Text="Age Range:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_AgeLbl" runat="server" Text="24-30"></asp:Label>
+                    <asp:Label ID="ANS_AgeLbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -65,7 +66,7 @@
                     <asp:Label ID="locationLbl" runat="server" Text="Location:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_locationLbl" runat="server" Text="?"></asp:Label>
+                    <asp:Label ID="ANS_locationLbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -73,7 +74,7 @@
                     <asp:Label ID="Frequencylbl" runat="server" Text="Frequency:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_Frequency" runat="server" Text="?"></asp:Label>
+                    <asp:Label ID="ANS_Frequency" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -81,7 +82,7 @@
                     <asp:Label ID="commentLbl" runat="server" Text="Admin Comments:"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="ANS_commentLbl" runat="server" Text="Be on time!!!"></asp:Label>
+                    <asp:Label ID="ANS_commentLbl" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -90,7 +91,8 @@
                 </td>
             </tr>
             <tr>
-                <td id="map-canvas" style="border: 2px ridge #999999; height: 180px; width: 300px;" colspan="2">
+                <td id="map-canvas" style="border: 2px ridge #999999; height: 180px; width: 300px;"
+                    colspan="2">
                 </td>
             </tr>
         </table>

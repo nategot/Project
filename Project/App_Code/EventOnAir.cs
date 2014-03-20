@@ -20,12 +20,11 @@ public class EventOnAir
     private int numOfParti;
     private string location;
     private DateTime dateTime;
-
     private double minAge;
     private double maxAge;
     private int frequency;
     private bool IsPrivate;
-    private int adminID;
+    private int adminId;
     private string comments;
 
     //prop
@@ -76,8 +75,8 @@ public class EventOnAir
     }
     public int AdminID
     {
-        get { return adminID; }
-        set { adminID = value; }
+        get { return adminId; }
+        set { adminId = value; }
     }
 
 

@@ -81,8 +81,8 @@ public class DBservices
 
 
 
-        sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},'{5}',{6},{7},'{8}')", p.Location, p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments);
-        String prefix = "INSERT INTO EventsOnAir " + "(CourtId, NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments)";
+        sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},'{5}',{6},{7},'{8}',{9})", p.Location, p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments,p.AdminID);
+        String prefix = "INSERT INTO EventsOnAir " + "(CourtId, NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments,AdminId)";
         command = prefix + sb.ToString();
 
         return command;
@@ -113,7 +113,7 @@ public class DBservices
         {
             con = dbS.connect(conString); // open the connection to the database/
 
-            String selectStr = "SELECT  [Description], [imageUrl], [NumOfParticipants], [Time], [Frequncy], [City],[MinAge], [MaxAge],[EventNumber], [Comments] FROM [View_EventsOnAir]"; // create the select that will be used by the adapter to select data from the DB
+            String selectStr = "SELECT  [Description], [imageUrl], [NumOfParticipants], [Time], [Frequncy], [City],[MinAge], [MaxAge],[EventNumber], [Comments],[Private] FROM [View_EventsOnAir]"; // create the select that will be used by the adapter to select data from the DB
 
             SqlDataAdapter da = new SqlDataAdapter(selectStr, con); // create the data adapter
 

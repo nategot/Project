@@ -12,50 +12,42 @@ public partial class joinEvent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["EventNUmber"] == null) return;
-        string  eventNum = (Session["EventNUmber"]).ToString();
-        EventOnAir ev = new EventOnAir();
-         DataTable dt=   ev.PullEvent(eventNum);
-         ReadDeteail(dt);
+        if (Session["EventNumber"] == null) return;
+        string eventNum = (Session["EventNUmber"]).ToString();
 
+        if (Session["gridTable"] == null) return;
+        DataTable dt = (DataTable)HttpContext.Current.Session["gridTable"];
 
-       
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (dt.Rows[i]["EventNumber"].ToString() == eventNum)
+            {
+                ANS_MaxPlayerLbl.Text = dt.Rows[i]["NumOfParticipants"].ToString();
+                iconImg.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
+                ANS_datatimelbl.Text = dt.Rows[i]["Time"].ToString();
+                ANS_commentLbl.Text = dt.Rows[i]["Comments"].ToString();
+                ANS_Frequency.Text = dt.Rows[i]["Frequncy"].ToString();
+                ANS_AgeLbl.Text = dt.Rows[i]["Age Range"].ToString() + "-" + dt.Rows[i]["MaxAge"].ToString();
+                EventNameLbl.Text = dt.Rows[i]["Description"].ToString();
+                bool ansTemp = (bool)dt.Rows[0]["Private"];
+                string temp = "Public";
+                if (ansTemp)
+                    temp = "Private";
+                ANS_EventTypelbl.Text = dt.Rows[0]["Private"].ToString();
 
-
-
- 
+            }
+        }
 
     }
-    public void ReadDeteail(DataTable dt)
-    {
-        ANS_MaxPlayerLbl.Text = dt.Rows[0]["NumOfParticipants"].ToString();
-        ANS_datatimelbl.Text = dt.Rows[0]["Time"].ToString();
-        ANS_EventTypelbl.Text = dt.Rows[0]["Private"].ToString();
-        ANS_commentLbl.Text = dt.Rows[0]["Comments"].ToString();
-        
-        bool ansTemp = (bool)dt.Rows[0]["Private"];
-        string temp="Public";
-        if(ansTemp)
-        temp="Private";
-        
-        ANS_EventTypelbl.Text = temp;
-        ANS_AgeLbl.Text = dt.Rows[0]["MinAge"].ToString() +"-"+ dt.Rows[0]["MaxAge"].ToString();
-       
-        //קטגוריה תדירות ומגרש -איך עושים?
-    }
-    public void playerTableGrv_RowDataBound(Object sender, GridViewRowEventArgs e)
-    {
-       
-    }
+
+
 
     protected void joinBTN_Click(object sender, EventArgs e)
     { // מוסיף את השחקן לאירוע ושולח אותו חזרה לדף האירועים שלי 
+       
         Response.Redirect("MyEvents.aspx");
     }
-    protected void playerTableGrv_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
+   
     protected void playerTableGrv_RowDataBound1(object sender, GridViewRowEventArgs e)
     {
         int numofplayer = int.Parse(ANS_MaxPlayerLbl.Text);
@@ -65,6 +57,6 @@ public partial class joinEvent : System.Web.UI.Page
             playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
 
         }
-     // להוסיף שורות כמספר השחקנים המ'סימלי
+        // להוסיף שורות כמספר השחקנים המ'סימלי
     }
 }
