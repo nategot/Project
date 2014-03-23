@@ -21,6 +21,7 @@ public partial class Home : System.Web.UI.Page
         dt = Ev.readTable();
         GridView1.DataSource = dt;
         //GridView1 desing
+
        // GridView1.AllowPaging = true;
       //  GridView1.Attributes.Add("HorizontalAlign","center");
         dt.Columns[6].ColumnName = "Age Range";

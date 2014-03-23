@@ -15,7 +15,8 @@ public class DBservices
 {
     public SqlDataAdapter da;
     public DataTable dt;
-
+    public string conectionStr = "bgroup14_test1ConnectionString";
+   
     public DBservices()
     {
     }
@@ -35,7 +36,7 @@ public class DBservices
 
         try
         {
-            con = connect("bgroup14_test1ConnectionString");
+            con = connect(conectionStr);
         }
         catch (Exception ex)
         {
@@ -98,7 +99,7 @@ public class DBservices
 
         try
         {
-            con = connect("bgroup14_test1ConnectionString");
+            con = connect(conectionStr);
         }
         catch (Exception ex)
         {
@@ -131,6 +132,7 @@ public class DBservices
         }
 
     }
+    //bulid insert coma for user to Users
     private String BuildInsertCommand(User u)//build insert command for User
     {
         String command;
@@ -142,6 +144,62 @@ public class DBservices
 
         return command;
     }
+
+
+    //insert user to eVENT
+    public int insert(User u,string eventNum)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+
+        try
+        {
+            con = connect(conectionStr);
+        }
+        catch (Exception ex)
+        {
+            throw (ex);
+        }
+
+        String cStr = BuildInsertCommand(u,eventNum);      // helper method to build the insert string
+
+        cmd = CreateCommand(cStr, con);             // create the command
+
+        try
+        {
+            int numEffected = cmd.ExecuteNonQuery(); // execute the command
+            return numEffected;
+        }
+        catch (Exception ex)
+        {
+            return 0;
+            // write to log
+            throw (ex);
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+
+    }
+    //bulid insert coma for user to event
+    private String BuildInsertCommand(User u,string eventNum)//build insert command for User
+    {
+        String command;
+        StringBuilder sb = new StringBuilder();
+        sb.AppendFormat("Values({0}, '{1}')", u.Email, eventNum);
+        String prefix = "INSERT INTO UsersInEvent " + "(EventNumber,Email )";
+
+        command = prefix + sb.ToString();
+
+        return command;
+    }
+
     private SqlCommand CreateCommand(String CommandSTR, SqlConnection con)
     {
 
@@ -180,7 +238,7 @@ public class DBservices
     public DataTable CheckUserName(User u)
     {
         SqlConnection con;
-        con = connect("bgroup14_test1ConnectionString");
+        con = connect(conectionStr);
         DataSet tblGetAdminName = new DataSet();
         SqlDataAdapter adpt1;
 
@@ -199,7 +257,8 @@ public class DBservices
         return tblGetAdminName.Tables["T2"];
 
     }
-    // Read from the DB into a table
+  
+    // Read from the DB into a table (event)
     public DBservices ReadFromDataBase(string conString, string tableName)
     {
 

@@ -10,10 +10,11 @@ using System.Web.Configuration;
 using System.Text;
 public partial class joinEvent : System.Web.UI.Page
 {
+    string eventNum;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["EventNumber"] == null) return;
-        string eventNum = (Session["EventNUmber"]).ToString();
+         eventNum = (Session["EventNUmber"]).ToString();
         
         if (Session["gridTable"] == null) return;
         DataTable dt = (DataTable)HttpContext.Current.Session["gridTable"];
@@ -21,8 +22,7 @@ public partial class joinEvent : System.Web.UI.Page
         for (int i = 0; i < dt.Rows.Count; i++)
         {
             if (dt.Rows[i]["EventNumber"].ToString() == eventNum)
-            {
-                // ANS_AdminLbl.Text = dt.Rows[i]["AdminName"].ToString();//צריך לסדר שהאדמין ניים יגיע עם הVIEW
+            {   
                 ANS_MaxPlayerLbl.Text = dt.Rows[i]["NumOfParticipants"].ToString();
                 iconImg.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
                 ANS_datatimelbl.Text = dt.Rows[i]["Time"].ToString();
@@ -47,19 +47,12 @@ public partial class joinEvent : System.Web.UI.Page
 
     protected void joinBTN_Click(object sender, EventArgs e)
     { // מוסיף את השחקן לאירוע ושולח אותו חזרה לדף האירועים שלי 
-        User Newuser = new User();
-        User U1 = new User();
-        //U1.UserName = 
-        //U1.UserPassword = 
-        //U1.Fname = 
-        //U1.Lname = 
-        //U1.Age = ;
-        //U1.City =
-        //U1.Email = 
-
         if (Session["UserDeatail"] == null) return;
         DataTable dt = (DataTable)HttpContext.Current.Session["UserDeatail"];
-        
+        User Newuser = new User();
+        User U1 = new User();
+        U1.UserName = dt.Rows[0]["Email"].ToString();
+        U1.InsertToEvent(eventNum);
         Response.Redirect("MyEvents.aspx");
     }
 

@@ -106,5 +106,11 @@ public class User
         DBservices dbs = new DBservices();
         return dbs.CheckUserName(this);
     }
+
+    public DataTable InsertToEvent()
+    {
+        DBservices dbs = new DBservices();
+        return dbs.InsertToEvent(this);
+    }
     
 }

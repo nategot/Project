@@ -81,7 +81,7 @@ public class EventOnAir
 
 
 
-
+    //insert envent
     public int insert()
     {
         DBservices dbs = new DBservices();
@@ -91,7 +91,7 @@ public class EventOnAir
 
 
  
-
+    //read the event Table
     public DataTable readTable()
     {
         DBservices dbs = new DBservices();
