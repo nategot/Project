@@ -100,5 +100,11 @@ public class User
         DBservices dbs = new DBservices();
         return dbs.CheckPassword(this);
     }
+
+    public DataTable CheckUserName()
+    {
+        DBservices dbs = new DBservices();
+        return dbs.CheckUserName(this);
+    }
     
 }

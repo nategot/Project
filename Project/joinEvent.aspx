@@ -99,7 +99,7 @@
     </div>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
-        <asp:GridView ID="playerTableGrv" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
+     <%--   <asp:GridView ID="playerTableGrv" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
             BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
             CellPadding="3" GridLines="Vertical" OnRowDataBound="playerTableGrv_RowDataBound1">
             <AlternatingRowStyle BackColor="#DCDCDC" />
@@ -116,7 +116,7 @@
             <SortedAscendingHeaderStyle BackColor="#0000A9" />
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#000065" />
-        </asp:GridView>
+        </asp:GridView>--%>
     </div>
     <div style="margin: 400px 0px 0px 0px; text-align: center">
         <asp:Button ID="joinBTN" runat="server" Text="Join Now!" OnClick="joinBTN_Click" />

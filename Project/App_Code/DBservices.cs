@@ -154,8 +154,6 @@ public class DBservices
     }
 
     //check password
-
-
     public DataTable CheckPassword(User u)
     {
         SqlConnection con;
@@ -177,10 +175,30 @@ public class DBservices
         con.Close();
         return tblpassword.Tables["T1"];
 
+    }
+    //check admin name
+    public DataTable CheckUserName(User u)
+    {
+        SqlConnection con;
+        con = connect("bgroup14_test1ConnectionString");
+        DataSet tblGetAdminName = new DataSet();
+        SqlDataAdapter adpt1;
 
+        SqlCommand MySPCommand = new SqlCommand("GetAdminName", con);
+        MySPCommand.CommandType = CommandType.StoredProcedure;
+
+        SqlParameter parEmail = new SqlParameter("@AdminId", SqlDbType.Int);
+        parEmail.Value = (u.UserId);
+        parEmail.Direction = ParameterDirection.Input;
+        MySPCommand.Parameters.Add(parEmail);
+
+        adpt1 = new SqlDataAdapter(MySPCommand);
+
+        adpt1.Fill(tblGetAdminName, "T2");
+        con.Close();
+        return tblGetAdminName.Tables["T2"];
 
     }
-    
     // Read from the DB into a table
     public DBservices ReadFromDataBase(string conString, string tableName)
     {
@@ -192,7 +210,7 @@ public class DBservices
         {
             con = dbS.connect(conString); // open the connection to the database/
 
-            String selectStr = "SELECT  [Description], [imageUrl], [NumOfParticipants], [Time], [Frequncy], [City],[MinAge], [MaxAge],[EventNumber], [Comments],[Private] FROM [View_EventsOnAir]"; // create the select that will be used by the adapter to select data from the DB
+            String selectStr = "SELECT  [imageUrl], [Description], [NumOfParticipants], [Time], [Frequncy], [City],[MinAge], [MaxAge],[EventNumber], [Comments],[Private],[AdminId] FROM [View_EventsOnAir]"; // create the select that will be used by the adapter to select data from the DB
 
             SqlDataAdapter da = new SqlDataAdapter(selectStr, con); // create the data adapter
 

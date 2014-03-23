@@ -24,15 +24,16 @@ public partial class RegisterNewUser : System.Web.UI.Page
         U1.City = City.Text;
         U1.Email = Email.Text;
         //שמירת תמונה?
-        //string path2 = Server.MapPath("." + "/Images/");
-        //string fname2 = path2 + imageFileUp.FileName;
-        //imageFileUp.SaveAs(fname2);
+        string path2 = Server.MapPath("." + "/Images/");
+        string fname2 = path2 + imageFileUp.FileName;
+        imageFileUp.SaveAs(fname2);
         U1.ImageUrl = @"..\Images\" + imageFileUp.FileName;
+      
 
         int numEfect = U1.InsertNewUser();
         if (numEfect == 0)
         {
-            MessageBox.Show("the User wasnt added ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            MessageBox.Show("The Email is already taken ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
         else
         {
