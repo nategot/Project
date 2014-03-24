@@ -99,24 +99,9 @@
     </div>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
-     <%--   <asp:GridView ID="playerTableGrv" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1"
-            BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px"
-            CellPadding="3" GridLines="Vertical" OnRowDataBound="playerTableGrv_RowDataBound1">
-            <AlternatingRowStyle BackColor="#DCDCDC" />
-            <Columns>
-                <asp:TemplateField></asp:TemplateField>
-                <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
-            </Columns>
-            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-            <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#0000A9" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#000065" />
-        </asp:GridView>--%>
+        <asp:GridView ID="playerTableGrv" runat="server" >
+          
+        </asp:GridView>
     </div>
     <div style="margin: 400px 0px 0px 0px; text-align: center">
         <asp:Button ID="joinBTN" runat="server" Text="Join Now!" OnClick="joinBTN_Click" />

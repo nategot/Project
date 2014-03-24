@@ -51,8 +51,9 @@ public partial class joinEvent : System.Web.UI.Page
         DataTable dt = (DataTable)HttpContext.Current.Session["UserDeatail"];
         User Newuser = new User();
         User U1 = new User();
-        U1.UserName = dt.Rows[0]["Email"].ToString();
-        U1.InsertToEvent(eventNum);
+        U1.Email  = dt.Rows[0]["Email"].ToString();
+      
+       int num= U1.InsertToEvent(eventNum);
         Response.Redirect("MyEvents.aspx");
     }
 

@@ -107,10 +107,10 @@ public class User
         return dbs.CheckUserName(this);
     }
 
-    public DataTable InsertToEvent()
+    public int InsertToEvent(string eventnum)
     {
         DBservices dbs = new DBservices();
-        return dbs.InsertToEvent(this);
+        return dbs.InsertToEvent(this,eventnum);
     }
     
 }

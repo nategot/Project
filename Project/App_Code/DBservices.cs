@@ -132,7 +132,8 @@ public class DBservices
         }
 
     }
-    //bulid insert coma for user to Users
+
+    //bulid insert comand for user to Users
     private String BuildInsertCommand(User u)//build insert command for User
     {
         String command;
@@ -147,7 +148,7 @@ public class DBservices
 
 
     //insert user to eVENT
-    public int insert(User u,string eventNum)
+    public int InsertToEvent(User u, string eventNum)
     {
         SqlConnection con;
         SqlCommand cmd;
@@ -187,12 +188,13 @@ public class DBservices
         }
 
     }
+
     //bulid insert coma for user to event
     private String BuildInsertCommand(User u,string eventNum)//build insert command for User
     {
         String command;
         StringBuilder sb = new StringBuilder();
-        sb.AppendFormat("Values({0}, '{1}')", u.Email, eventNum);
+        sb.AppendFormat("Values({0},'{1}')", eventNum, u.Email);
         String prefix = "INSERT INTO UsersInEvent " + "(EventNumber,Email )";
 
         command = prefix + sb.ToString();
