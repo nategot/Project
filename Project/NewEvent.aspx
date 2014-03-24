@@ -3,9 +3,14 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
-    <link href="Styles/NewEvent.css" rel="stylesheet" type="text/css" />
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
-    <script src="Scripts/MapScript.js" type="text/javascript"></script>
+    <%--<link href="Styles/NewEvent.css" rel="stylesheet" type="text/css" />--%>
+    <%--<script src="Scripts/MapScript.js" type="text/javascript"></script>--%>
+    <%--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>--%>
+    
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxSPW5CJgpdgO_s4yyMovOaVh_KvvhSfpvagV18eOyDWu7VytS6Bi1CWxw"
+      type="text/javascript"></script>
+    <script src="Scripts/MapScriptNewEvent.js" type="text/javascript"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -14,7 +19,7 @@
         Create New Event</h1>
     <br />
     <br />
-    <table style="float: left">
+    <table>
         <tr>
             <td>
                 Category:
@@ -107,9 +112,34 @@
             </td>
         </tr>
     </table>
-    <div id="map-canvas" style="border: 2px ridge #999999;height: 260px; width: 420px; float: right;">
+<%--
+    <div id="panel">
+        <input id="Textbox1" type="textbox" value="Sydney, NSW"/>
+        <input type="button" value="Geocode" onclick="codeAddress()"/>
     </div>
-    <div style="margin: 300px 0px 0px 0px; text-align: center">
+    <div id="map-canvas">
+    </div>--%>
+
+    <form>
+    <p>
+        Enter an address, and then drag the marker to tweak the location.
+        <br />
+        The latitude/longitude will appear in the infowindow after each geocode/drag.
+    </p>
+    <p>
+        <%--<asp:TextBox ID="address" runat="server" style="width: 350px" value="1600 Amphitheatre Pky, Mountain View, CA"></asp:TextBox>--%>
+        <%--<asp:Button ID="submit" runat="server" Text="Go!">--%>
+        <input type="text" style="width: 350px" id="address" value="1600 Amphitheatre Pky, Mountain View, CA" />
+        <input type="submit" value="Go!" onclick="(this.address.value); return false"/>
+        <%--<input type="submit" value="Go!" onclick="showTown()" />--%>
+    </p>
+    <div id="map_canvas" style="width: 600px; height: 400px">
+    </div>
+    </form>
+
+    <%--<div id="map_canvas" style="border: 2px ridge #999999;height: 260px; width: 420px; float: right;">
+    </div>--%>
+    <%--<div style="margin: 300px 0px 0px 0px; text-align: center">
         <asp:Button ID="confirmBTN" runat="server" Text="Confirm & Publish" OnClick="confirmBTN_Click" />
-        <asp:Button ID="inviteBTN" runat="server" Text="Invite from list" /></div>
+        <asp:Button ID="inviteBTN" runa         t="server" Text="Invite from list" /></div>--%>
 </asp:Content>

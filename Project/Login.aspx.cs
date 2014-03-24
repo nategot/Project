@@ -27,6 +27,7 @@ public partial class Login : System.Web.UI.Page
         {   string username= dt.Rows[0]["Username"].ToString();
             HttpContext.Current.Session["UserDeatail"]=dt;
             MessageBox.Show("Log In Successfully hello "+ username, "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
         }
         else
         {
