@@ -7,11 +7,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
-<div id="panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
-      <input type="button" value="Geocode" onclick="codeAddress()">
-    </div>
-    <div id="map-canvas"></div>
-
+<GMap ID="GMap1" runat="server" />
+<
 </asp:Content>
 

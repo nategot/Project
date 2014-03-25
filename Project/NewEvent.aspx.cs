@@ -43,7 +43,7 @@ public partial class NewEvent : System.Web.UI.Page
         else
         {
             MessageBox.Show("the Event was added Successfully", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Response.Redirect("http://localhost:62142/Project/MyEvents.aspx");
+            Response.Redirect("Project/MyEvents.aspx");
         }
 
     }
