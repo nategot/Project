@@ -104,7 +104,7 @@ public class EventOnAir
     public DataTable ReadUserInEvent(string eventNum)
     {
         DBservices dbs = new DBservices();
-        dbs = dbs.ReadUserInEvent("bgroup14_test1ConnectionString", "EventsOnAir", eventNum);
+        dbs = dbs.ReadUserInEvent("bgroup14_test1ConnectionString", eventNum);
 
         return dbs.dt;
     }

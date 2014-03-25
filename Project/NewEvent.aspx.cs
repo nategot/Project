@@ -11,7 +11,7 @@ using System.Windows.Forms;
 public partial class NewEvent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    {
+    { 
 
     }
     protected void confirmBTN_Click(object sender, EventArgs e)

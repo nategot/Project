@@ -25,7 +25,7 @@ public partial class Login : System.Web.UI.Page
 
         if (dt.Rows[0]["UserPassword"].ToString() == u.UserPassword)
         {
-            string username = dt.Rows[0]["Username"].ToString();
+            HttpContext.Current.Session["Fname"] = dt.Rows[0]["Fname"].ToString();
             HttpContext.Current.Session["UserDeatail"] = dt;
             Response.Redirect("Home.aspx");
 
