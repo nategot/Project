@@ -47,17 +47,16 @@ public partial class Home : System.Web.UI.Page
             { GridView1.Rows[i].Visible = false; }
 
             //hide EventNumber & Comments & private
-            GridView1.Rows[i].Cells[8].Visible = false;
-            GridView1.Rows[i].Cells[9].Visible = false;
-            GridView1.Rows[i].Cells[10].Visible = false;
-            GridView1.Rows[i].Cells[11].Visible = false;
+            for (int r = 8; r < 12; r++)
+            {
+                GridView1.Rows[i].Cells[r].Visible = false;
+                GridView1.HeaderRow.Cells[r].Visible = false;
+            }
         }
 
+        GridView1.HeaderRow.Cells[0].Text = "";
         GridView1.HeaderRow.Cells[7].Text = "";
-        GridView1.HeaderRow.Cells[8].Visible = false;
-        GridView1.HeaderRow.Cells[9].Visible = false;
-        GridView1.HeaderRow.Cells[10].Visible = false;
-        GridView1.HeaderRow.Cells[11].Visible = false;
+
 
         //adding the image
         for (int i = 0; i < dt.Rows.Count; i++)
@@ -78,7 +77,6 @@ public partial class Home : System.Web.UI.Page
         Response.Redirect("joinEvent.aspx");
 
     }
-
 
 
     //changing from map view to table view
@@ -114,7 +112,7 @@ public partial class Home : System.Web.UI.Page
         {
             if (catgory == "All")
             { return; }
-            if (catgory != dt.Rows[i][0].ToString())
+            if (catgory != dt.Rows[i][1].ToString())
             { GridView1.Rows[i].Visible = false; num++; }
         }
 

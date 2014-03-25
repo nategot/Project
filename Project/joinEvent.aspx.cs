@@ -15,15 +15,15 @@ public partial class joinEvent : System.Web.UI.Page
     {   //loag the event detail 
 
         if (Session["EventNumber"] == null) return;
-         eventNum = (Session["EventNUmber"]).ToString();
-        
+        eventNum = (Session["EventNUmber"]).ToString();
+
         if (Session["gridTable"] == null) return;
         DataTable dt = (DataTable)HttpContext.Current.Session["gridTable"];
 
         for (int i = 0; i < dt.Rows.Count; i++)
         {
             if (dt.Rows[i]["EventNumber"].ToString() == eventNum)
-            {   
+            {
                 ANS_MaxPlayerLbl.Text = dt.Rows[i]["NumOfParticipants"].ToString();
                 iconImg.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
                 ANS_datatimelbl.Text = dt.Rows[i]["Time"].ToString();
@@ -42,26 +42,30 @@ public partial class joinEvent : System.Web.UI.Page
                 ANS_EventTypelbl.Text = temp;
             }
         }
-        
+
         //loag the user that register to this event
-         EventOnAir EV = new EventOnAir();
-         DataTable dtUser =EV.ReadUserInEvent(eventNum);
-         dt.Columns.Add("num");
-        
-            for (int i = 0; i < 2; i++)
-            {
-                DataRow dr;
-                dr = dtUser.NewRow();
-                dr[0] = 2;
-                
-            }
+        EventOnAir EV = new EventOnAir();
+        DataTable dtUser = EV.ReadUserInEvent(eventNum);
 
-        
-         playerTableGrv.DataSource = dtUser;
-         playerTableGrv.DataBind();
-        
+        DataColumn dc = new DataColumn("num");
+        dc.DataType = typeof(int);
+        dtUser.Columns.Add(dc);
+        dc.SetOrdinal(0);
 
+        for (int i = 0; i < int.Parse(ANS_MaxPlayerLbl.Text); i++)
+         {
+             DataRow NewRow = dtUser.NewRow();
+             dtUser.Rows.Add(NewRow); 
 
+        }
+
+        playerTableGrv.DataSource = dtUser;
+        playerTableGrv.DataBind();
+        for (int i = 0; i < playerTableGrv.Rows.Count; i++)
+        {
+            playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
+        }
+  
     }
 
     protected void joinBTN_Click(object sender, EventArgs e)
@@ -75,15 +79,5 @@ public partial class joinEvent : System.Web.UI.Page
         Response.Redirect("MyEvents.aspx");
     }
 
-    protected void playerTableGrv_RowDataBound1(object sender, GridViewRowEventArgs e)
-    {
-        int numofplayer = int.Parse(ANS_MaxPlayerLbl.Text);
 
-        for (int i = 0; i < playerTableGrv.Rows.Count; i++)
-        {
-            playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
-
-        }
-        // להוסיף שורות כמספר השחקנים המ'סימלי
-    }
 }

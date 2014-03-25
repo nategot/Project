@@ -8,7 +8,7 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-image: url('http://localhost:58115/Project/pic/BasketballBackground.jpg')">
+<body style="background-image: url('pic/MainBackground.jpg')">
     <form runat="server">
     <div class="page" style="border-style: ridge; border-width: medium; background-image: url('pic/6.png')">
         <div class="header">
