@@ -11,7 +11,7 @@ using System.Collections.Specialized;
 
 
 public partial class Home : System.Web.UI.Page
-{
+{ 
     DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,11 +21,11 @@ public partial class Home : System.Web.UI.Page
         dt = Ev.readTable();
         GridView1.DataSource = dt;
         //GridView1 desing
+
        // GridView1.AllowPaging = true;
+      //  GridView1.Attributes.Add("HorizontalAlign","center");
         dt.Columns[6].ColumnName = "Age Range";
         GridView1.DataBind();
-
-
 
 
         for (int i = 0; i < dt.Rows.Count; i++)
@@ -51,21 +51,21 @@ public partial class Home : System.Web.UI.Page
             GridView1.Rows[i].Cells[8].Visible = false;
             GridView1.Rows[i].Cells[9].Visible = false;
             GridView1.Rows[i].Cells[10].Visible = false;
-
-
+            GridView1.Rows[i].Cells[11].Visible = false;
         }
 
         GridView1.HeaderRow.Cells[7].Text = "";
         GridView1.HeaderRow.Cells[8].Visible = false;
         GridView1.HeaderRow.Cells[9].Visible = false;
         GridView1.HeaderRow.Cells[10].Visible = false;
-
+        GridView1.HeaderRow.Cells[11].Visible = false;
+       
         //adding the image
         for (int i = 0; i < dt.Rows.Count; i++)
         {
             Image imsel = new Image();
             imsel.ImageUrl = dt.Rows[i]["imageUrl"].ToString();
-            GridView1.Rows[i].Cells[1].Controls.Add(imsel);
+            GridView1.Rows[i].Cells[0].Controls.Add(imsel);
         }
     }
 

@@ -5,9 +5,9 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
-    <%--  <link href="Styles/MyEvents.css" rel="stylesheet" type="text/css" />--%>
+   
 </asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent" ClientIDMode="Inherit">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <h1>
@@ -61,7 +61,7 @@
             <asp:AsyncPostBackTrigger ControlID="catgoryDdl" />
         </Triggers>
         <ContentTemplate>
-            <asp:GridView ID="GridView1" runat="server">
+            <asp:GridView ID="GridView1" runat="server" HeaderStyle-BorderStyle="Solid" RowStyle-VerticalAlign="Middle" Font-Bold="True" Font-Size="Medium">
             </asp:GridView>
         </ContentTemplate>
     </asp:UpdatePanel>
