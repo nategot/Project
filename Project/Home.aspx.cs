@@ -20,9 +20,7 @@ public partial class Home : System.Web.UI.Page
         EventOnAir Ev = new EventOnAir();
         dt = Ev.readTable();
         GridView1.DataSource = dt;
-        //GridView1 desing
-        // GridView1.AllowPaging = true;
-        //  GridView1.Attributes.Add("HorizontalAlign","center");
+
         dt.Columns[6].ColumnName = "Age Range";
         GridView1.DataBind();
 
@@ -32,7 +30,7 @@ public partial class Home : System.Web.UI.Page
             ageRange = dt.Rows[i]["Age Range"].ToString();
             ageRange += "-" + dt.Rows[i]["MaxAge"].ToString();
             GridView1.Rows[i].Cells[6].Text = ageRange;
-
+            
 
             // adding the join btn
             Button JoinBtn = new Button();
@@ -75,9 +73,7 @@ public partial class Home : System.Web.UI.Page
         HttpContext.Current.Session["gridTable"] = GridView1.DataSource;
         HttpContext.Current.Session["EventNumber"] = Eventnum;
         Response.Redirect("joinEvent.aspx");
-
     }
-
 
     //changing from map view to table view
     protected void MapviewBTN_Click(object sender, EventArgs e)
@@ -97,10 +93,6 @@ public partial class Home : System.Web.UI.Page
 
         }
     }
-
-
-
-
 
 
     protected void catgoryDdl_SelectedIndexChanged(object sender, EventArgs e)

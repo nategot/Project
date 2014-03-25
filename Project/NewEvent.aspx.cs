@@ -24,7 +24,7 @@ public partial class NewEvent : System.Web.UI.Page
         ev.AdminID=int.Parse( dt.Rows[0]["UserId"].ToString());
         ev.Catedory=int.Parse(categoryDDL.SelectedValue);
         ev.NumOfParti = int.Parse( NOP.Text);
-        ev.Location = locationTB.Text;
+      //  ev.Location = locationTB.Text;
         timedate = dateTB.Text + " " + timeTB.Text;
         ev.DateTime = DateTime.Parse(timedate);
        
