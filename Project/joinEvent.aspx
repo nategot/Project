@@ -99,8 +99,7 @@
     </div>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
-        <asp:GridView ID="playerTableGrv" runat="server" >
-          
+        <asp:GridView ID="playerTableGrv" runat="server">
         </asp:GridView>
     </div>
     <div style="margin: 400px 0px 0px 0px; text-align: center">

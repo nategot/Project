@@ -19,19 +19,21 @@ public partial class Login : System.Web.UI.Page
     {
 
         User u = new User();
-        u.UserPassword=Password.Text;
-        u.Email=Email.Text;
-        DataTable dt =u.CheckPass();
+        u.UserPassword = Password.Text;
+        u.Email = Email.Text;
+        DataTable dt = u.CheckPass();
 
-        if (dt.Rows[0]["UserPassword"].ToString()==u.UserPassword)
-        {   string username= dt.Rows[0]["Username"].ToString();
-            HttpContext.Current.Session["UserDeatail"]=dt;
-            MessageBox.Show("Log In Successfully hello "+ username, "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        if (dt.Rows[0]["UserPassword"].ToString() == u.UserPassword)
+        {
+            string username = dt.Rows[0]["Username"].ToString();
+            HttpContext.Current.Session["UserDeatail"] = dt;
+            Response.Redirect("Home.aspx");
+
         }
         else
         {
             MessageBox.Show("Worng Password or Email  ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
-       
+
     }
 }

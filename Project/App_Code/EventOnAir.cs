@@ -89,8 +89,6 @@ public class EventOnAir
         return numAffected;
     }
 
-
- 
     //read the event Table
     public DataTable readTable()
     {
@@ -102,49 +100,18 @@ public class EventOnAir
     }
 
 
+    //read the UserInEventTable
+    public DataTable ReadUserInEvent(string eventNum)
+    {
+        DBservices dbs = new DBservices();
+        dbs = dbs.ReadUserInEvent("bgroup14_test1ConnectionString", "EventsOnAir", eventNum);
 
-    //public DataTable PullEvent(string eventNum)
-    //{
-    //    DBservices dbs = new DBservices();
-    //    dbs = dbs.ReadFromDataBase("bgroup14_test1ConnectionString", "EventsOnAir", eventNum);
-
-    //    return dbs.dt;
-    //}
-
-
-    //public void showdiscount(string amount, string discount)
-    //{
-    //    DBservices dbs = (DBservices)HttpContext.Current.Session["productDataSet"];
-    //    DataTable dt = dbs.dt;
-    //    for (int i = 0; i < dt.Rows.Count; i++)
-    //    {
-
-    //        if (double.Parse((dt.Rows[i].ItemArray[3]).ToString()) > double.Parse((amount)))
-    //        {
-    //            price = int.Parse((dt.Rows[i].ItemArray[2]).ToString());
-    //            price = price * (((100 - double.Parse((discount))) / 100));
-    //            dt.Rows[i]["price"] = price;
-    //        }
-    //    }
-
-    //    HttpContext.Current.Session["productDataBase"] = dbs;
+        return dbs.dt;
+    }
 
 
-    //}
+   
 
-    //public void updateDatabase()
-    //{
+  
 
-    //    if (HttpContext.Current.Session["productDataBase"] == null) return;
-    //    DBservices dbs = (DBservices)HttpContext.Current.Session["productDataBase"];
-    //    dbs.Update(dbs);
-    //}
-
-
-    //public int UpdatDBCount(string names, int count)
-    //{
-    //    DBservices dbs = new DBservices();
-    //    int numAffected = dbs.Updatecount(names, count);
-    //    return numAffected;
-    //}
 }

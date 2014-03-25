@@ -12,7 +12,8 @@ public partial class joinEvent : System.Web.UI.Page
 {
     string eventNum;
     protected void Page_Load(object sender, EventArgs e)
-    {
+    {   //loag the event detail 
+
         if (Session["EventNumber"] == null) return;
          eventNum = (Session["EventNUmber"]).ToString();
         
@@ -39,9 +40,27 @@ public partial class joinEvent : System.Web.UI.Page
                 if (ansTemp)
                     temp = "Private";
                 ANS_EventTypelbl.Text = temp;
-
             }
         }
+        
+        //loag the user that register to this event
+         EventOnAir EV = new EventOnAir();
+         DataTable dtUser =EV.ReadUserInEvent(eventNum);
+         dt.Columns.Add("num");
+        
+            for (int i = 0; i < 2; i++)
+            {
+                DataRow dr;
+                dr = dtUser.NewRow();
+                dr[0] = 2;
+                
+            }
+
+        
+         playerTableGrv.DataSource = dtUser;
+         playerTableGrv.DataBind();
+        
+
 
     }
 
@@ -51,21 +70,20 @@ public partial class joinEvent : System.Web.UI.Page
         DataTable dt = (DataTable)HttpContext.Current.Session["UserDeatail"];
         User Newuser = new User();
         User U1 = new User();
-        U1.Email  = dt.Rows[0]["Email"].ToString();
-      
-       int num= U1.InsertToEvent(eventNum);
+        U1.Email = dt.Rows[0]["Email"].ToString();
+        int num = U1.InsertToEvent(eventNum);
         Response.Redirect("MyEvents.aspx");
     }
 
-    //protected void playerTableGrv_RowDataBound1(object sender, GridViewRowEventArgs e)
-    //{
-    //    int numofplayer = int.Parse(ANS_MaxPlayerLbl.Text);
+    protected void playerTableGrv_RowDataBound1(object sender, GridViewRowEventArgs e)
+    {
+        int numofplayer = int.Parse(ANS_MaxPlayerLbl.Text);
 
-    //    for (int i = 0; i < playerTableGrv.Rows.Count; i++)
-    //    {
-    //        playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
+        for (int i = 0; i < playerTableGrv.Rows.Count; i++)
+        {
+            playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
 
-    //    }
-    //    // להוסיף שורות כמספר השחקנים המ'סימלי
-    //}
+        }
+        // להוסיף שורות כמספר השחקנים המ'סימלי
+    }
 }

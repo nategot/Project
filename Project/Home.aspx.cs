@@ -11,7 +11,7 @@ using System.Collections.Specialized;
 
 
 public partial class Home : System.Web.UI.Page
-{ 
+{
     DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,9 +21,8 @@ public partial class Home : System.Web.UI.Page
         dt = Ev.readTable();
         GridView1.DataSource = dt;
         //GridView1 desing
-
-       // GridView1.AllowPaging = true;
-      //  GridView1.Attributes.Add("HorizontalAlign","center");
+        // GridView1.AllowPaging = true;
+        //  GridView1.Attributes.Add("HorizontalAlign","center");
         dt.Columns[6].ColumnName = "Age Range";
         GridView1.DataBind();
 
@@ -59,7 +58,7 @@ public partial class Home : System.Web.UI.Page
         GridView1.HeaderRow.Cells[9].Visible = false;
         GridView1.HeaderRow.Cells[10].Visible = false;
         GridView1.HeaderRow.Cells[11].Visible = false;
-       
+
         //adding the image
         for (int i = 0; i < dt.Rows.Count; i++)
         {

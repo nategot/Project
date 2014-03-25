@@ -16,7 +16,7 @@ public class DBservices
     public SqlDataAdapter da;
     public DataTable dt;
     public string conectionStr = "bgroup14_test1ConnectionString";
-   
+
     public DBservices()
     {
     }
@@ -70,8 +70,8 @@ public class DBservices
 
     }
 
-
-    private String BuildInsertCommand(EventOnAir p)//build insert command for event
+    //build insert command for event
+    private String BuildInsertCommand(EventOnAir p)
     {
         String command;
         int isprivate = 0;
@@ -91,7 +91,7 @@ public class DBservices
     }
 
 
-    //insert user to DB
+    //insert user to useres Table
     public int insert(User u)
     {
         SqlConnection con;
@@ -133,7 +133,7 @@ public class DBservices
 
     }
 
-    //bulid insert comand for user to Users
+    //bulid insert comand for NewUser to Users table
     private String BuildInsertCommand(User u)//build insert command for User
     {
         String command;
@@ -147,7 +147,7 @@ public class DBservices
     }
 
 
-    //insert user to eVENT
+    //insert user to Event
     public int InsertToEvent(User u, string eventNum)
     {
         SqlConnection con;
@@ -162,7 +162,7 @@ public class DBservices
             throw (ex);
         }
 
-        String cStr = BuildInsertCommand(u,eventNum);      // helper method to build the insert string
+        String cStr = BuildInsertCommand(u, eventNum);      // helper method to build the insert string
 
         cmd = CreateCommand(cStr, con);             // create the command
 
@@ -189,8 +189,8 @@ public class DBservices
 
     }
 
-    //bulid insert coma for user to event
-    private String BuildInsertCommand(User u,string eventNum)//build insert command for User
+    //bulid insert commad for user to event
+    private String BuildInsertCommand(User u, string eventNum)//build insert command for User
     {
         String command;
         StringBuilder sb = new StringBuilder();
@@ -259,7 +259,7 @@ public class DBservices
         return tblGetAdminName.Tables["T2"];
 
     }
-  
+
     // Read from the DB into a table (event)
     public DBservices ReadFromDataBase(string conString, string tableName)
     {
@@ -300,6 +300,45 @@ public class DBservices
         }
     }
 
+    // Read from the DB into a table UserInEVent
+    public DBservices ReadUserInEvent(string conString, string tableName, string eventNm)
+    {
+
+        DBservices dbS = new DBservices(); // create a helper class
+        SqlConnection con = null;
+
+        try
+        {
+            con = dbS.connect(conString); // open the connection to the database/
+
+            String selectStr = "SELECT  [UserName] FROM [View_UserInEvent]"; // create the select that will be used by the adapter to select data from the DB
+
+            SqlDataAdapter da = new SqlDataAdapter(selectStr, con); // create the data adapter
+
+            DataSet ds = new DataSet(); // create a DataSet and give it a name (not mandatory) as defualt it will be the same name as the DB
+            da.Fill(ds);                        // Fill the datatable (in the dataset), using the Select command
+            DataTable dt = ds.Tables[0];
+
+            // add the datatable and the dataa adapter to the dbS helper class in order to be able to save it to a Session Object
+            dbS.dt = dt;
+            dbS.da = da;
+
+
+            return dbS;
+        }
+        catch (Exception ex)
+        {
+            // write to log
+            throw ex;
+        }
+        finally
+        {
+            if (con != null)
+            {
+                con.Close();
+            }
+        }
+    }
 
 
     // public DataTable CheckPassword(User u)
