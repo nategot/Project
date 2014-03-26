@@ -121,4 +121,18 @@ public partial class Home : System.Web.UI.Page
 
     }
 
+
+    protected void kmTXT_TextChanged(object sender, EventArgs e)
+    {
+        int age = int.Parse(kmTXT.Text);
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (age > int.Parse(dt.Rows[i][7].ToString()))
+            { GridView1.Rows[i].Visible = false; }
+        }
+
+    }
+  
+
 }

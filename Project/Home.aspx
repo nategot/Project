@@ -37,7 +37,8 @@
                     <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="kmTXT"
                         Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                     </asp:NumericUpDownExtender>
-                    <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40"></asp:TextBox>
+                    <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40" 
+                        ontextchanged="kmTXT_TextChanged"  ></asp:TextBox>
                     <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px; width: 15px;" />
                     <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px; width: 15px;" />
                 </td>
@@ -48,7 +49,7 @@
                     <asp:TextBox ID="freeSearch" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="MapviewBTN" CssClass="myButton" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
+                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
                          
                 </td>
             </tr>
