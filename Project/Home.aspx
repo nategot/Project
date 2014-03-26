@@ -48,7 +48,7 @@
                     <asp:TextBox ID="freeSearch" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
+                    <asp:Button ID="MapviewBTN" CssClass="myButton" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
                          
                 </td>
             </tr>

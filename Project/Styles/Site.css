@@ -1,6 +1,8 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
-
+.getPosition
+{ 
+}
 body   
 {
     background: #b6b7bc;
@@ -313,10 +315,8 @@ div.accountInfo
     cursor: pointer;
     color: #ffffff;
     font-family: Trebuchet MS;
-    font-size: 25px;
     font-weight: bold;
     font-style: italic;
-    padding: 10px 30px;
     text-decoration: none;
     text-shadow: 3px 3px 0px #3d768a;
 }
@@ -329,3 +329,7 @@ div.accountInfo
 	position:relative;
 	top:1px;
 }
+
+.ErroerLBL{
+  color:Red;
+  font-size:x-large}

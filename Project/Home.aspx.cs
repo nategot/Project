@@ -36,6 +36,7 @@ public partial class Home : System.Web.UI.Page
             // adding the join btn
             Button JoinBtn = new Button();
             JoinBtn.Text = " Join Now";
+            JoinBtn.CssClass = "myButton";
             JoinBtn.Click += new EventHandler(JoinBtn_Click);
             JoinBtn.ID = dt.Rows[i]["EventNumber"].ToString();
             GridView1.Rows[i].Cells[7].Controls.Add(JoinBtn);
@@ -45,8 +46,8 @@ public partial class Home : System.Web.UI.Page
             if (cb.Checked)
             { GridView1.Rows[i].Visible = false; }
 
-            //hide EventNumber & Comments & private
-            for (int r = 8; r < 12; r++)
+            //hide EventNumber & Comments & private& lat lng
+            for (int r = 8; r < 14; r++)
             {
                 GridView1.Rows[i].Cells[r].Visible = false;
                 GridView1.HeaderRow.Cells[r].Visible = false;

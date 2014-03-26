@@ -83,8 +83,8 @@ public class DBservices
         dateStr += p.DateTime.Month.ToString() + "/" + p.DateTime.Day.ToString() + "/" + p.DateTime.Year.ToString() + " " + p.DateTime.Hour.ToString() + ":" + p.DateTime.Minute.ToString() + "0:00";
 
 
-        sb.AppendFormat("Values({0}, {1} ,{2}, {3},{4},'{5}',{6},{7},'{8}',{9})", p.Location, p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments, p.AdminID);
-        String prefix = "INSERT INTO EventsOnAir " + "(CourtId, NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments,AdminId)";
+        sb.AppendFormat("Values({0}, {1} ,{2}, {3},'{4}',{5},{6},'{7}',{8},'{9}','{10}','{11}')", p.NumOfParti, p.Catedory, p.Frequency, isprivate, dateStr, p.MinAge, p.MaxAge, p.Comments, p.AdminID, p.Address, p.Lat, p.Lng);
+        String prefix = "INSERT INTO EventsOnAir " + "( NumOfParticipants, CategoryId, FrequencyId, [Private],[Time],MinAge,MaxAge,Comments,AdminId,Address,Lat,Lng)";
         command = prefix + sb.ToString();
 
         return command;
@@ -271,7 +271,7 @@ public class DBservices
         {
             con = dbS.connect(conString); // open the connection to the database/
 
-            String selectStr = "SELECT  [imageUrl], [Description], [NumOfParticipants], [Time], [Frequncy], [City],[MinAge], [MaxAge],[EventNumber], [Comments],[Private],[AdminId] FROM [View_EventsOnAir]"; // create the select that will be used by the adapter to select data from the DB
+            String selectStr = "SELECT  [imageUrl], [Description], [NumOfParticipants], [Time], [Frequncy],[Address],[MinAge], [MaxAge],[EventNumber], [Comments],[Private],[AdminId] ,[Lat] , [Lng]FROM [View_EventsOnAir]"; // create the select that will be used by the adapter to select data from the DB
 
             SqlDataAdapter da = new SqlDataAdapter(selectStr, con); // create the data adapter
 
@@ -341,132 +341,5 @@ public class DBservices
     }
 
 
-    // public DataTable CheckPassword(User u)
-    //{
-    //SqlCommand MySPCommand = new SqlCommand("GetUserPassword", con);
-    //MySPCommand.CommandType = CommandType.StoredProcedure;
-
-    //SqlParameter parEmail = new SqlParameter("@Email", SqlDbType.VarChar,50);
-    //parEmail.Value = (u.Email);
-    //parEmail.Direction = ParameterDirection.Input;
-
-    //SqlParameter Pas = new SqlParameter("@Password", SqlDbType.VarChar, 50);
-    //Pas.Direction = ParameterDirection.Output;
-
-    //SqlParameter returnValue = new SqlParameter();
-    //returnValue.Direction = ParameterDirection.ReturnValue;
-
-    //MySPCommand.Parameters.Add(parEmail);
-    //MySPCommand.Parameters.Add(Pas);
-    //MySPCommand.Parameters.Add(returnValue);
-    //MySPCommand.ExecuteNonQuery();
-    //con.Close();
-
-    //if ((int)returnValue.Value == 0)
-    //    MessageBox.Show("Succeeded! \nthe family name is :  " + Pas.Value);
-    //else
-    //    MessageBox.Show("Failed! ERROR- " + returnValue.Value);
-    //}
-
-
-    ////read one event
-    //public DBservices ReadFromDataBase(string conString, string tableName,string eventnum)
-    //{
-
-    //    DBservices dbS = new DBservices(); // create a helper class
-    //    SqlConnection con = null;
-
-    //    try
-    //    {
-    //        con = dbS.connect(conString); // open the connection to the database/
-
-    //        String selectStr = "SELECT * FROM " + tableName +" Where [EventNumber]  = " + eventnum; // create the select that will be used by the adapter to select data from the DB
-
-    //        SqlDataAdapter da = new SqlDataAdapter(selectStr, con); // create the data adapter
-
-    //        DataSet ds = new DataSet(); // create a DataSet and give it a name (not mandatory) as defualt it will be the same name as the DB
-    //        da.Fill(ds);                        // Fill the datatable (in the dataset), using the Select command
-    //        DataTable dt = ds.Tables[0];
-
-    //        // add the datatable and the dataa adapter to the dbS helper class in order to be able to save it to a Session Object
-    //        dbS.dt = dt;
-    //        dbS.da = da;
-
-
-    //        return dbS;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // write to log
-    //        throw ex;
-    //    }
-    //    finally
-    //    {
-    //        if (con != null)
-    //        {
-    //            con.Close();
-    //        }
-    //    }
-    //} לא פעיל כרגע
-
-
-
-
-    //public void Update(DBservices dbs)
-    //{
-    //    SqlCommandBuilder builder = new SqlCommandBuilder(dbs.da);
-    //    da.Update(dbs.dt);
-    //}
-
-    /////update 
-    //public int Updatecount(string names, int count)
-    //{
-    //    SqlConnection con;
-    //    SqlCommand cmd;
-
-    //    try
-    //    {
-    //        con = connect("ProductsDBConnectionString");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw (ex);
-    //    }
-
-    //    String cStr = BuildUpdatCommand(names, count);      // helper method to build the insert string
-
-    //    cmd = CreateCommand(cStr, con);             // create the command
-
-    //    try
-    //    {
-    //        int numEffected = cmd.ExecuteNonQuery(); // execute the command
-    //        return numEffected;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        return 0;
-    //        // write to log
-    //        throw (ex);
-    //    }
-
-    //    finally
-    //    {
-    //        if (con != null)
-    //        {
-    //            // close the db connection
-    //            con.Close();
-    //        }
-    //    }
-
-    //}
-
-    //private String BuildUpdatCommand(string nameT, int count)//build update command
-    //{
-    //    String command;
-    //    StringBuilder sb = new StringBuilder();
-    //    String com = " UPDATE ProductsInShop SET amount=amount-" + count + " WHERE name='" + nameT + "'";
-    //    command = com;
-
-    //    return command;
-    //}
+  
 }

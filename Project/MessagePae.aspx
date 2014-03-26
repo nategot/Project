@@ -5,7 +5,7 @@
     <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
-    <asp:Label ID="massageLBL" runat="server" ForeColor="Red" Font-Size="Large" Font-Bold="True"></asp:Label>
+    <asp:Label ID="massageLBL" runat="server" CssClass="ErroerLBL" ></asp:Label>
     <br />
     <br />
     <br />

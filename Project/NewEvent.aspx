@@ -12,7 +12,7 @@
         Create New Event</h1>
     <br />
     <br />
-    <table>
+    <table style="float: left">
         <tr>
             <td>
                 Category:
@@ -36,7 +36,7 @@
                 <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="NOP"
                     Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                 </asp:NumericUpDownExtender>
-                <asp:TextBox ID="NOP" Text="20" runat="server" Width="40"></asp:TextBox>
+                <asp:TextBox ID="NOP" Text="8" runat="server" Width="40"></asp:TextBox>
                 <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px; width: 15px;" />
                 <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px; width: 15px;" />
             </td>
@@ -46,9 +46,8 @@
                 Location:
             </td>
             <td>
-                <%--   <asp:TextBox ID="locationTB" runat="server" Text="גן חיים"></asp:TextBox>--%>
-                <input type="text" value="גן חיים" id="locationTB" />
-                <input type="button" id="getPosition" value="Find" />
+                <input type="text" value="" id="locationTB" />
+                <input type="button" id="getPosition" class="myButton" value="Find" />
             </td>
         </tr>
         <tr>
@@ -100,61 +99,32 @@
                 Comment:
             </td>
             <td>
-                <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender1" runat="server" TargetControlID="commentsTB"
+                <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server" TargetControlID="commentsTB"
                     WatermarkText="Add your comment here">
                 </asp:TextBoxWatermarkExtender>
                 <asp:TextBox ID="commentsTB" runat="server" TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
+        <tr>
+            <td>
+                <br />
+                <br />
+                <asp:Button ID="confirmBTN" CssClass="myButton" runat="server" Text="Confirm & Publish"
+                    OnClick="confirmBTN_Click" />
+            </td>
+            <td>
+                <br />
+                <asp:HiddenField ID="CityHIde" runat="server" />
+                <asp:HiddenField ID="LatLOngHIde" runat="server" />
+                <asp:Button ID="inviteBTN" CssClass="myButton" runat="server" Text="Invite from list" />
+            </td>
+        </tr>
     </table>
     <%-- <body onload="start();">--%>
     <body>
-        <section id="inputs">
-           <%-- <fieldset>
-                <legend>Selecting elements</legend>
-                <div>
-                    <p>
-                        <label>
-                            lat:</label>
-                        &nbsp&nbsp&nbsp&nbsp<input id="latRange" type="range" value="32.11" min="31.8" max="32.2"
-                            step="0.01" onchange="showLat()" /><label id="LatValue">32.11</label>
-                    </p>
-                    <p>
-                        <label id="longSpan">
-                            long:</label>
-                        <input id="longRange" type="range" value="34.79" min="34.5" max="34.9" step="0.01"
-                            onchange="showLong()" /><label id="LongValue">34.79</label>
-                    </p>
-                    <p>
-                        <input id="test" type="text" value="גן חיים" />
-                    </p>
-                    <p>
-                        <label>
-                            Select list</label>&nbsp&nbsp<select id="getTown" onchange="showTown()">
-                                <option value=""></option>
-                                <option value="הרצליה">הרצליה</option>
-                                <option value="נתניה">נתניה</option>
-                                <option value="רמת השרון">רמת השרון</option>
-                                <option value="המרכז האקדמי רופין">המרכז האקדמי רופין</option>
-                            </select>
-                    </p>
-                    <p>
-                        <label>
-                            route from A to B</label>&nbsp&nbsp<input type="button" id="routeButton" value="chose two places"
-                                onclick="startRoute()" /></p>
-                </div>
-            </fieldset>
-        </section>--%>
-        <%--   <section id="buttons">
-            <h4>
-                FOR RIPPLE</h4>
-            
-           
-            <input type="button" id="watchPositionStop" value="STOP-Get Position while moving" />
-        </section>--%>
-        <div id="mapholder" style="height: 300px; width: 800px;">
+     
+        <div id="mapholder" style="border: 1px ridge #999999; height: 320px; width: 500px;">
         </div>
-        <!--can not be inside a section because it does not work then!!!  -->
     </body>
     <script>
 
@@ -167,15 +137,15 @@
         var routeStatus = 0;
         var routePointA;
         var routePointB;
-
+        var markers = [];
+        var FinalPositon;
+        var addressTXT;
         window.onload = start();
+        var flag = true;
 
         function start() {
             showMap();
-//            getLocation();
             document.getElementById("getPosition").addEventListener("click", showTown);
-            //           document.getElementById("watchPosition").addEventListener("click", watchPosition);
-            //           document.getElementById("watchPositionStop").addEventListener("click", watchPositionStop);
         }
 
         function watchPositionStop() {
@@ -204,7 +174,7 @@
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
-                
+
             }
             else { alert("Geolocation is not supported by this browser."); }
         }
@@ -285,7 +255,7 @@
             map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
 
             google.maps.event.addListener(map, 'click', function (e) {
-                placeMarker(e.latLng, map);
+                placeMarker(e.latLng, map, true);
             });
 
             geocoder = new google.maps.Geocoder();
@@ -295,6 +265,7 @@
 
         //dont use in the ripple
         function ShowPositionLatLong(lat, lon) {
+
             latlon = new google.maps.LatLng(lat, lon);
             map.setCenter(latlon);
             google.maps.event.addListener(marker, 'click', function () {
@@ -302,8 +273,12 @@
             });
         }
 
-        function placeMarker(position, map) {
-            var iconImage = "Israel.png";
+        function placeMarker(position, map, flag) {
+
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+
             if (routeStatus == 1) {
                 iconImage = "a.png";
                 routePointA = position;
@@ -318,6 +293,7 @@
                     destination: routePointB,
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 };
+
                 directionsService.route(request, function (response, status) {
                     if (status == google.maps.DirectionsStatus.OK) {
                         directionsDisplay.setDirections(response);
@@ -328,9 +304,10 @@
             var marker = new google.maps.Marker({
                 position: position,
                 map: map,
-                title: "You are here!",
-                icon: iconImage
             });
+
+            FinalPositon = position;
+            markers.push(marker);
             map.panTo(position);
 
             var address = "???";
@@ -338,19 +315,26 @@
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[0]) {
                         address = results[0].formatted_address;
+                        if (flag) {
+                            FinalPositon = address;             
+                        }
+
                     } else {
-                        //alert('No results found');
+
                         address = "No address found";
                     }
                     var contentStr =
                     '<div id="markerDiv" style="color:blue;font-family:Aharoni;font-weight:700">' +
-                        'shalom!' +
-                        '<div id="latlongMarkerDiv" style="color:red;font-family:david;font-weight:500;width:120px;">' + position + '</div>' +
-                        '<div id="addressMarkerDiv" style="color:darkgrey;font-family:david;font-weight:500;width:120px;">' + address + '</div>' +
+
+                    //  '<div id="latlongMarkerDiv" style="color:red;font-family:david;font-weight:500;width:120px;">' + position + '</div>' +
+                        '<div id="addressMarkerDiv" style="color:black;font-family:Arial;font-weight:800;width:120px;">' + address + '</div>' +
                     '</div>'
+                      var b = document.getElementById("MainContent_CityHIde");
+                      b.value = address;
                     var infowindow = new google.maps.InfoWindow({
                         content: contentStr
                     });
+
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.open(map, marker);
                     });
@@ -358,19 +342,21 @@
                     alert('Geocoder failed due to: ' + status);
                 }
             });
+            var a = document.getElementById("MainContent_LatLOngHIde");
+            a.value = FinalPositon;
         }
 
         function showTown() {
-
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
             var e = document.getElementById("locationTB");
-            var address = e.value;
-            geocoder.geocode({ 'address': address }, function (results, status) {
+            addressTXT = e.value;
+
+            geocoder.geocode({ 'address': addressTXT }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
+                    placeMarker(results[0].geometry.location, map, false);
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
@@ -381,8 +367,7 @@
             routeStatus++;
         }
 
-    
-    
+
     
     </script>
 </asp:Content>

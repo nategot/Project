@@ -18,13 +18,15 @@ public class EventOnAir
 
     private int catedory;
     private int numOfParti;
-    private string location;
+    private string address;
     private DateTime dateTime;
     private double minAge;
     private double maxAge;
     private int frequency;
     private bool IsPrivate;
     private int adminId;
+    private double lat;
+    private double lng;
     private string comments;
 
     //prop
@@ -38,10 +40,10 @@ public class EventOnAir
         get { return numOfParti; }
         set { numOfParti = value; }
     }
-    public string Location
+    public string Address
     {
-        get { return location; }
-        set { location = value; }
+        get { return address; }
+        set { address = value; }
     }
     public DateTime DateTime
     {
@@ -77,6 +79,16 @@ public class EventOnAir
     {
         get { return adminId; }
         set { adminId = value; }
+    }
+    public double Lat
+    {
+        get { return lat; }
+        set { lat = value; }
+    }
+    public double Lng
+    {
+        get { return lng; }
+        set { lng = value; }
     }
 
 

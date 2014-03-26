@@ -22,18 +22,21 @@ public partial class Login : System.Web.UI.Page
         u.UserPassword = Password.Text;
         u.Email = Email.Text;
         DataTable dt = u.CheckPass();
-
-        if (dt.Rows[0]["UserPassword"].ToString() == u.UserPassword)
+        if (dt.Rows.Count!=0)
+        {
+         if (dt.Rows[0]["UserPassword"].ToString() == u.UserPassword)
         {
             HttpContext.Current.Session["Fname"] = dt.Rows[0]["Fname"].ToString();
             HttpContext.Current.Session["UserDeatail"] = dt;
             Response.Redirect("Home.aspx");
-
+             
         }
-        else
-        {
-            MessageBox.Show("Worng Password or Email  ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+   
         }
+       
+            AnsLogInLBL.Text="Worng Password or Email";
+                
+      
 
     }
 }
