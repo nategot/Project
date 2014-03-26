@@ -10,6 +10,7 @@ using System.Text;
 using System.Collections.Specialized;
 
 
+
 public partial class Home : System.Web.UI.Page
 {
     DataTable dt;
@@ -30,7 +31,7 @@ public partial class Home : System.Web.UI.Page
             ageRange = dt.Rows[i]["Age Range"].ToString();
             ageRange += "-" + dt.Rows[i]["MaxAge"].ToString();
             GridView1.Rows[i].Cells[6].Text = ageRange;
-            
+
 
             // adding the join btn
             Button JoinBtn = new Button();
@@ -68,12 +69,19 @@ public partial class Home : System.Web.UI.Page
 
     protected void JoinBtn_Click(object sender, EventArgs e)
     {
-        Button btn = (Button)sender;
-        int Eventnum = int.Parse(btn.ID);
+        if (Session["Fname"] != null)
+        {
+            Button btn = (Button)sender;
+            int Eventnum = int.Parse(btn.ID);
 
-        HttpContext.Current.Session["gridTable"] = GridView1.DataSource;
-        HttpContext.Current.Session["EventNumber"] = Eventnum;
-        Response.Redirect("joinEvent.aspx");
+            HttpContext.Current.Session["gridTable"] = GridView1.DataSource;
+            HttpContext.Current.Session["EventNumber"] = Eventnum;
+            Response.Redirect("joinEvent.aspx");
+        }
+        else
+        {
+            Response.Redirect("MessagePae.aspx?ans=notLogin");
+        }
     }
 
     //changing from map view to table view

@@ -47,7 +47,7 @@ public partial class joinEvent : System.Web.UI.Page
         EventOnAir EV = new EventOnAir();
         DataTable dtUser = EV.ReadUserInEvent(eventNum);
 
-        DataColumn dc = new DataColumn("num");
+        DataColumn dc = new DataColumn("");
         dc.DataType = typeof(int);
         dtUser.Columns.Add(dc);
         dc.SetOrdinal(0);
