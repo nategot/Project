@@ -2,7 +2,7 @@
     CodeFile="MessagePae.aspx.cs" Inherits="MessagePae" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
-    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:Label ID="massageLBL" runat="server" CssClass="ErroerLBL" ></asp:Label>

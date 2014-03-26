@@ -8,14 +8,15 @@
         var routeStatus = 0;
         var routePointA;
         var routePointB;
-       
-       
+        var markers = [];
+        var FinalPositon;
+        var addressTXT;
+        window.onload = start();
+        var flag = true;
+
         function start() {
-            alert("asd");
-                        document.getElementById("getPosition").addEventListener("click", getLocation);
-                        document.getElementById("watchPosition").addEventListener("click", watchPosition);
-                        document.getElementById("watchPositionStop").addEventListener("click", watchPositionStop);
             showMap();
+            document.getElementById("getPosition").addEventListener("click", showTown);
         }
 
         function watchPositionStop() {
@@ -44,6 +45,7 @@
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
+
             }
             else { alert("Geolocation is not supported by this browser."); }
         }
@@ -124,15 +126,17 @@
             map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
 
             google.maps.event.addListener(map, 'click', function (e) {
-                placeMarker(e.latLng, map);
+                placeMarker(e.latLng, map, true);
             });
 
             geocoder = new google.maps.Geocoder();
             directionsDisplay.setMap(map);
+
         }
 
         //dont use in the ripple
         function ShowPositionLatLong(lat, lon) {
+
             latlon = new google.maps.LatLng(lat, lon);
             map.setCenter(latlon);
             google.maps.event.addListener(marker, 'click', function () {
@@ -140,8 +144,12 @@
             });
         }
 
-        function placeMarker(position, map) {
-            var iconImage = "Israel.png";
+        function placeMarker(position, map, flag) {
+
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+
             if (routeStatus == 1) {
                 iconImage = "a.png";
                 routePointA = position;
@@ -156,6 +164,7 @@
                     destination: routePointB,
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 };
+
                 directionsService.route(request, function (response, status) {
                     if (status == google.maps.DirectionsStatus.OK) {
                         directionsDisplay.setDirections(response);
@@ -166,9 +175,10 @@
             var marker = new google.maps.Marker({
                 position: position,
                 map: map,
-                title: "You are here!",
-                icon: iconImage
             });
+
+            FinalPositon = position;
+            markers.push(marker);
             map.panTo(position);
 
             var address = "???";
@@ -176,19 +186,26 @@
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[0]) {
                         address = results[0].formatted_address;
+                        if (flag) {
+                            FinalPositon = address;             
+                        }
+
                     } else {
-                        //alert('No results found');
+
                         address = "No address found";
                     }
                     var contentStr =
                     '<div id="markerDiv" style="color:blue;font-family:Aharoni;font-weight:700">' +
-                        'shalom!' +
-                        '<div id="latlongMarkerDiv" style="color:red;font-family:david;font-weight:500;width:120px;">' + position + '</div>' +
-                        '<div id="addressMarkerDiv" style="color:darkgrey;font-family:david;font-weight:500;width:120px;">' + address + '</div>' +
+
+                    //  '<div id="latlongMarkerDiv" style="color:red;font-family:david;font-weight:500;width:120px;">' + position + '</div>' +
+                        '<div id="addressMarkerDiv" style="color:black;font-family:Arial;font-weight:800;width:120px;">' + address + '</div>' +
                     '</div>'
+                      var b = document.getElementById("MainContent_CityHIde");
+                      b.value = address;
                     var infowindow = new google.maps.InfoWindow({
                         content: contentStr
                     });
+
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.open(map, marker);
                     });
@@ -196,20 +213,21 @@
                     alert('Geocoder failed due to: ' + status);
                 }
             });
+            var a = document.getElementById("MainContent_LatLOngHIde");
+            a.value = FinalPositon;
         }
 
         function showTown() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
             var e = document.getElementById("locationTB");
-            // var address = e.options[e.selectedIndex].value;
-            var address = e.text;
-            alert(address);
-            geocoder.geocode({ 'address': address }, function (results, status) {
+            addressTXT = e.value;
+
+            geocoder.geocode({ 'address': addressTXT }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
+                    placeMarker(results[0].geometry.location, map, false);
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
@@ -219,3 +237,4 @@
         function startRoute() {
             routeStatus++;
         }
+

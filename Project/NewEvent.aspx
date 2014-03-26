@@ -4,6 +4,10 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <script src="http://maps.google.com/maps/api/js?sensor=false&language=he"></script>
+    <script src="Scripts/MapScriptNewEvent.js" type="text/javascript"></script>
+    <script src="jquery.js"></script>
+                <script src="jquery.nouislider.js"></script>
+                <link href="jquery.nouislider.css" rel="stylesheet">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -60,7 +64,7 @@
                     PopupButtonID="calanderBTN" Format="dd/MM/yyyy">
                 </asp:CalendarExtender>
                 <asp:TextBox ID="dateTB" runat="server"></asp:TextBox>
-                <asp:ImageButton ID="calanderBTN" runat="server" ImageUrl="Images/Calendar.png" />
+                <asp:ImageButton ID="calanderBTN" runat="server" ImageUrl="Images/Calendar.png" Width="16px" />
             </td>
         </tr>
         <tr>
@@ -69,6 +73,8 @@
             </td>
             <td>
                 <asp:TextBox ID="AgeTxt" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="AgeValidator" runat="server" 
+                    ErrorMessage="Age Range is a Required Filed" ControlToValidate="AgeTxt"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -108,7 +114,6 @@
         <tr>
             <td>
                 <br />
-                <br />
                 <asp:Button ID="confirmBTN" CssClass="myButton" runat="server" Text="Confirm & Publish"
                     OnClick="confirmBTN_Click" />
             </td>
@@ -120,14 +125,12 @@
             </td>
         </tr>
     </table>
-    <%-- <body onload="start();">--%>
+    <%-- <body>--%>
     <body>
-     
-        <div id="mapholder" style="border: 1px ridge #999999; height: 320px; width: 500px;">
+        <div id="mapholder" style="border: 1px ridge #999999; height: 300px; width: 433px;">
         </div>
     </body>
-    <script>
-
+    <script> 
         var geocoder;
         var map;
         var marker;
@@ -358,7 +361,7 @@
                     map.setCenter(results[0].geometry.location);
                     placeMarker(results[0].geometry.location, map, false);
                 } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
+                    alert('insert an Address or click on the map ');
                 }
             });
         }
@@ -366,8 +369,5 @@
         function startRoute() {
             routeStatus++;
         }
-
-
-    
     </script>
 </asp:Content>
