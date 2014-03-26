@@ -3,7 +3,7 @@
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
-    <script src="Scripts/MapScript.js" type="text/javascript"></script>
+    <script src="Scripts/MapScriptJoinEvent.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
@@ -13,6 +13,7 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
+  
     <div>
         <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Font-Size="XX-Large"
             Font-Italic="True" Font-Bold="True"></asp:Label>
@@ -85,8 +86,11 @@
                     <asp:Label ID="ANS_commentLbl" runat="server"></asp:Label>
                 </td>
             </tr>
+            
             <tr>
                 <td>
+                <asp:HiddenField ID="latHF" runat="server" />
+                <asp:HiddenField ID="lngHF" runat="server" />
                     <br />
                 </td>
             </tr>
@@ -116,4 +120,5 @@
     <div style="margin: 400px 0px 0px 0px; text-align: center">
         <asp:Button ID="joinBTN" runat="server" Text="Join Now!" OnClick="joinBTN_Click" />
     </div>
+    
 </asp:Content>

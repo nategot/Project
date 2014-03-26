@@ -12,8 +12,8 @@ public partial class joinEvent : System.Web.UI.Page
 {
     string eventNum;
     protected void Page_Load(object sender, EventArgs e)
-    {   //loag the event detail 
-
+    {   //load the event detail 
+        
         if (Session["EventNumber"] == null) return;
         eventNum = (Session["EventNUmber"]).ToString();
 
@@ -24,9 +24,12 @@ public partial class joinEvent : System.Web.UI.Page
         {
             if (dt.Rows[i]["EventNumber"].ToString() == eventNum)
             {
+                latHF.Value = dt.Rows[i]["Lat"].ToString();
+                lngHF.Value = dt.Rows[i]["Lng"].ToString();
                 ANS_MaxPlayerLbl.Text = dt.Rows[i]["NumOfParticipants"].ToString();
                 iconImg.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
                 ANS_datatimelbl.Text = dt.Rows[i]["Time"].ToString();
+                ANS_locationLbl.Text = dt.Rows[i]["Address"].ToString();
                 ANS_commentLbl.Text = dt.Rows[i]["Comments"].ToString();
                 ANS_Frequency.Text = dt.Rows[i]["Frequncy"].ToString();
                 ANS_AgeLbl.Text = dt.Rows[i]["Age Range"].ToString() + "-" + dt.Rows[i]["MaxAge"].ToString();
@@ -47,7 +50,7 @@ public partial class joinEvent : System.Web.UI.Page
         EventOnAir EV = new EventOnAir();
         DataTable dtUser = EV.ReadUserInEvent(eventNum);
 
-        DataColumn dc = new DataColumn("");
+        DataColumn dc = new DataColumn("num");
         dc.DataType = typeof(int);
         dtUser.Columns.Add(dc);
         dc.SetOrdinal(0);
@@ -56,11 +59,11 @@ public partial class joinEvent : System.Web.UI.Page
          {
              DataRow NewRow = dtUser.NewRow();
              dtUser.Rows.Add(NewRow); 
-
         }
 
         playerTableGrv.DataSource = dtUser;
         playerTableGrv.DataBind();
+        playerTableGrv.HeaderRow.Cells[0].Text = "";
         for (int i = 0; i < playerTableGrv.Rows.Count; i++)
         {
             playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
