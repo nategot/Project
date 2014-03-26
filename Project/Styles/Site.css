@@ -297,3 +297,35 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+/* <a href="#" class="myButton" > green< a > */ 
+
+.myButton
+{
+    -moz-box-shadow: 5px 5px 10px 0px #276873;
+    -webkit-box-shadow: 5px 5px 10px 0px #276873;
+    box-shadow: 5px 5px 10px 0px #276873;
+    background-color: #336699;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Trebuchet MS;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 10px 30px;
+    text-decoration: none;
+    text-shadow: 3px 3px 0px #3d768a;
+}
+
+.myButton:hover {
+	background-color:#408c99;
+}
+
+.myButton:active {
+	position:relative;
+	top:1px;
+}
