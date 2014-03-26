@@ -4,7 +4,6 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <script src="http://maps.google.com/maps/api/js?sensor=false&language=he"></script>
-    <%--    <script src="Scripts/MapScriptNewEvent.js" type="text/javascript"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">

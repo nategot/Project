@@ -5,7 +5,6 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
-    <%--  <link href="Styles/MyEvents.css" rel="stylesheet" type="text/css" />--%>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
