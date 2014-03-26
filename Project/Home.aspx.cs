@@ -104,7 +104,7 @@ public partial class Home : System.Web.UI.Page
         }
     }
 
-    //filter fun
+    //sort by catgory 
     protected void catgoryDdl_SelectedIndexChanged(object sender, EventArgs e)
     {
         DropDownList CatagoryDdl = (DropDownList)sender;
@@ -121,7 +121,7 @@ public partial class Home : System.Web.UI.Page
 
     }
 
-
+    //sort by min age
     protected void kmTXT_TextChanged(object sender, EventArgs e)
     {
         int age = int.Parse(kmTXT.Text);
@@ -133,6 +133,16 @@ public partial class Home : System.Web.UI.Page
         }
 
     }
-  
 
+    //sort by city
+    protected void searchBtn_Click(object sender, EventArgs e)
+    {
+        string cityStr = freeSearch.Text;
+        
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (!(System.Text.RegularExpressions.Regex.IsMatch( dt.Rows[i]["Address"].ToString(),cityStr)))
+            { GridView1.Rows[i].Visible = false; }
+        }
+    }
 }

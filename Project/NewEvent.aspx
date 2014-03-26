@@ -4,10 +4,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
     <script src="http://maps.google.com/maps/api/js?sensor=false&language=he"></script>
-    <script src="Scripts/MapScriptNewEvent.js" type="text/javascript"></script>
-    <script src="jquery.js"></script>
-                <script src="jquery.nouislider.js"></script>
-                <link href="jquery.nouislider.css" rel="stylesheet">
+    <script src="Scripts/MapScriptNewEvent2.js" type="text/javascript"></script>
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -125,12 +123,13 @@
             </td>
         </tr>
     </table>
-    <%-- <body>--%>
-    <body>
+<%-- <body>--%>
+     <body onload="start()">
+   
         <div id="mapholder" style="border: 1px ridge #999999; height: 300px; width: 433px;">
         </div>
     </body>
-    <script> 
+    <%--<script> 
         var geocoder;
         var map;
         var marker;
@@ -143,8 +142,8 @@
         var markers = [];
         var FinalPositon;
         var addressTXT;
-        window.onload = start();
         var flag = true;
+        window.onload = start();
 
         function start() {
             showMap();
@@ -369,5 +368,5 @@
         function startRoute() {
             routeStatus++;
         }
-    </script>
+    </script>--%>
 </asp:Content>

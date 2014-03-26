@@ -9,12 +9,12 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-image: url('pic/MainBackground.jpg')">
+<body>
     <form runat="server">
-    <div class="page" style="border-style: ridge; border-width: medium; background-image: url('pic/6.png')">
+    <div class="page" >
         <div class="header">
             <div class="title">
-                <img alt="icon" src="pic/logo.png" style="width: 330px; height: 130px" />
+                <img alt="icon" id="imgLogo" src="pic/logo.png"  />
             </div>
             <div class="loginDisplay" style="float: right">
             <a href="Login.aspx" id="HeadLoginStatus" runat="server"> 

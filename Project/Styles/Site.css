@@ -5,7 +5,8 @@
 }
 body
 {
-    background: #b6b7bc;
+    /*background: #b6b7bc;*/
+    background-image: url('pic/MainBackground.jpg');
     font-size: .80em;
     font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
@@ -87,13 +88,20 @@ first child of the left and right table columns */
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
-
+#imgLogo
+{
+ width: 330px;
+ height: 130px;
+}
 .page
 {
     width: 960px;
     background-color: #fff;
     margin: 20px auto 0px auto;
     border: 1px solid #496077;
+    border-style: ridge;
+    border-width: medium; 
+    background-image: url('pic/6.png');
 }
 
 .header
