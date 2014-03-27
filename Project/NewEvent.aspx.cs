@@ -16,7 +16,7 @@ public partial class NewEvent : System.Web.UI.Page
     }
     protected void confirmBTN_Click(object sender, EventArgs e)
     {
-        string[] AgeStr = new string[2];
+        
         string[] latlagArr = new string[2];
         string timedate;
         EventOnAir ev = new EventOnAir();
@@ -41,10 +41,9 @@ public partial class NewEvent : System.Web.UI.Page
         ev.NumOfParti = int.Parse( NOP.Text);
         timedate = dateTB.Text + " " + timeTB.Text;
         ev.DateTime = DateTime.Parse(timedate);
-        
-        AgeStr=  AgeTxt.Text.Split('-');
-        ev.MinAge = double.Parse(AgeStr[0]);
-        ev.MaxAge = double.Parse(AgeStr[1]);
+
+        ev.MinAge = double.Parse(MinAgeTxt.Text);
+        ev.MaxAge = double.Parse(MaxAgeTxt.Text);
         ev.Frequency=int.Parse(FrequRBL.SelectedValue);
         ev.IsPrivate1 = bool.Parse(EventTypeRBL.SelectedValue);
         ev.Comments = commentsTB.Text;

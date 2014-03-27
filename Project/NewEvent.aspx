@@ -17,7 +17,7 @@
             <td>
                 Category:
             </td>
-            <td>
+            <td colspan="3">
                 <asp:DropDownList ID="categoryDDL" runat="server">
                     <asp:ListItem Value="1">Soccer</asp:ListItem>
                     <asp:ListItem Value="2">Basketball</asp:ListItem>
@@ -32,7 +32,7 @@
             <td>
                 Number of Participants:
             </td>
-            <td>
+            <td colspan="3">
                 <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="NOP"
                     Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                 </asp:NumericUpDownExtender>
@@ -45,7 +45,7 @@
             <td>
                 Location:
             </td>
-            <td>
+            <td colspan="3">
                 <input type="text" value="" id="locationTB" />
                 <input type="button" id="getPosition" class="myButton" value="Find" />
             </td>
@@ -54,7 +54,7 @@
             <td>
                 Date & Time:
             </td>
-            <td>
+            <td colspan="3">
                 <asp:TextBox ID="timeTB" runat="server" Width="40" Text="18:00"></asp:TextBox>
                 <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="dateTB"
                     PopupButtonID="calanderBTN" Format="dd/MM/yyyy">
@@ -67,15 +67,28 @@
             <td>
                 Age Range:
             </td>
+            <td><asp:TextBox ID="MinAgeTxt" runat="server" Width="30" Text="25" /></td>
+            <td style="width:163px; height:20px; vertical-align: top;">
+                <asp:TextBox ID="sliderTwo" runat="server" />
+                <asp:MultiHandleSliderExtender ID="multiHandleSliderExtenderTwo" runat="server" BehaviorID="multiHandleSliderExtenderTwo"
+                    TargetControlID="sliderTwo" Minimum="0" Maximum="100" TooltipText="{0}" Orientation="Horizontal"
+                    EnableHandleAnimation="true" EnableKeyboard="false" EnableMouseWheel="false"
+                    ShowHandleDragStyle="true" ShowHandleHoverStyle="true" Length="160">
+                    <MultiHandleSliderTargets>
+                        <asp:MultiHandleSliderTarget ControlID="MinAgeTxt" />
+                        <asp:MultiHandleSliderTarget ControlID="MaxAgeTxt" />
+                    </MultiHandleSliderTargets>
+                </asp:MultiHandleSliderExtender>
+            </td>
             <td>
-                <asp:TextBox ID="AgeTxt" runat="server"></asp:TextBox>
+                <asp:TextBox ID="MaxAgeTxt" runat="server" Width="30" Text="75" />
             </td>
         </tr>
         <tr>
             <td>
                 Event Type:
             </td>
-            <td>
+            <td colspan="3">
                 <asp:RadioButtonList ID="EventTypeRBL" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Value="false" Selected>Public</asp:ListItem>
                     <asp:ListItem Value="true">Private</asp:ListItem>
@@ -86,7 +99,7 @@
             <td>
                 Frequency:
             </td>
-            <td>
+            <td colspan="3">
                 <asp:RadioButtonList ID="FrequRBL" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Value="1" Selected>Once</asp:ListItem>
                     <asp:ListItem Value="2">Every Week</asp:ListItem>
@@ -98,7 +111,7 @@
             <td>
                 Comment:
             </td>
-            <td>
+            <td colspan="3">
                 <asp:TextBoxWatermarkExtender ID="TextBoxWatermarkExtender2" runat="server" TargetControlID="commentsTB"
                     WatermarkText="Add your comment here">
                 </asp:TextBoxWatermarkExtender>
@@ -108,11 +121,10 @@
         <tr>
             <td>
                 <br />
-                <br />
                 <asp:Button ID="confirmBTN" CssClass="myButton" runat="server" Text="Confirm & Publish"
                     OnClick="confirmBTN_Click" />
             </td>
-            <td>
+            <td colspan="3">
                 <br />
                 <asp:HiddenField ID="CityHIde" runat="server" />
                 <asp:HiddenField ID="LatLOngHIde" runat="server" />
@@ -122,7 +134,6 @@
     </table>
     <%-- <body onload="start();">--%>
     <body>
-     
         <div id="mapholder" style="border: 1px ridge #999999; height: 320px; width: 500px;">
         </div>
     </body>
