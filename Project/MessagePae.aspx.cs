@@ -25,4 +25,14 @@ public partial class MessagePae : System.Web.UI.Page
             
      
     }
+    protected void RegisterBTN_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+
+    }
+    protected void BackeBtn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Home.aspx");
+
+    }
 }

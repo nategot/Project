@@ -11,8 +11,12 @@ using System.Windows.Forms;
 public partial class NewEvent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    {
-        dateTB.Text = (DateTime.Today.Day +"/"+ DateTime.Today.Month+ "/"+ DateTime.Today.Year).ToString(); ;
+    {   // if the user is not login go to login
+        //if (Session["Fname"] == null)
+        //{
+        //    Response.Redirect("MessagePae.aspx?ans=notLogin");
+        //}
+        dateTB.Text = (DateTime.Today.Day + "/" + DateTime.Today.Month + "/" + DateTime.Today.Year).ToString(); ;
     }
     protected void confirmBTN_Click(object sender, EventArgs e)
     {
@@ -57,7 +61,7 @@ public partial class NewEvent : System.Web.UI.Page
         else
         {
             MessageBox.Show("the Event was added Successfully", "Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Response.Redirect("Project/Home.aspx");//לשנות לMYEVNTS
+            Response.Redirect("Home.aspx");//לשנות לMYEVNTS
         }
 
     }

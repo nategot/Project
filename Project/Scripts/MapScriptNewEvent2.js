@@ -1,5 +1,4 @@
-﻿       
-       
+﻿ 
         var geocoder;
         var map;
         var marker;
@@ -13,12 +12,19 @@
         var FinalPositon;
         var addressTXT;
         var flag = true;
-        
+        var CPOsition=9;
+  
+       
+
+//        window.onload = start();
+//        
 
 
         function start() {
-       
+           
             showMap();
+           
+           
             document.getElementById("getPosition").addEventListener("click", showTown);
         }
 
@@ -48,57 +54,15 @@
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
-
             }
             else { alert("Geolocation is not supported by this browser."); }
+                  
+
+                   
         }
 
-        //use in the ripple. need the var map definition inside the function!
-        function showPosition(position) {
-            lat = position.coords.latitude;
-            lon = position.coords.longitude;
-            latlon = new google.maps.LatLng(lat, lon)
-            var myOptions = {
-                center: latlon,
-                zoom: 14,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControl: false,
-                navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
-            };
-            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-            var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
-        }
+       
 
-        //only to set the center and marker not to create the map obejct again and again!
-        function changePostion(position) {
-            if (marker != null) {
-                marker.setMap(null);
-            }
-            var pos = new google.maps.LatLng(position.coords.latitude,
-                                                position.coords.longitude);
-            map.setCenter(pos);
-            marker = new google.maps.Marker({ position: pos, map: map, title: "You are here!" });
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-                default:
-                    alert("An unknown error occurred.(default)");
-                    break;
-            }
-        }
 
         function showLat() {
             var lat = document.getElementById("latRange").value;
@@ -114,27 +78,45 @@
             ShowPositionLatLong(lat, long);
         }
 
+         //use in the ripple. need the var map definition inside the function!
+        function showPosition(position) {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            latlon = new google.maps.LatLng(lat, lon);
+           
+            var myOptions = {
+                center: latlon,
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+            };
+            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+            var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
+          
+        }
         function showMap() {
             directionsDisplay = new google.maps.DirectionsRenderer({
                 suppressMarkers: true
             });
-
-            latlon = new google.maps.LatLng(32.10896916880329, 34.784860610961914);
+           
+            latlon = new google.maps.LatLng(32.343202656449272, 34.910878837108612);
             var myOptions = {
                 center: latlon, zoom: 14,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 mapTypeControl: false,
                 navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
             };
+         
             map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-
+            
             google.maps.event.addListener(map, 'click', function (e) {
                 placeMarker(e.latLng, map, true);
             });
-
+            
+             
             geocoder = new google.maps.Geocoder();
             directionsDisplay.setMap(map);
-
         }
 
         //dont use in the ripple
@@ -181,6 +163,7 @@
             });
 
             FinalPositon = position;
+           
             markers.push(marker);
             map.panTo(position);
 
@@ -218,6 +201,7 @@
             });
             var a = document.getElementById("MainContent_LatLOngHIde");
             a.value = FinalPositon;
+           
         }
 
         function showTown() {
@@ -239,4 +223,34 @@
 
         function startRoute() {
             routeStatus++;
+        }
+        //only to set the center and marker not to create the map obejct again and again!
+        function changePostion(position) {
+            if (marker != null) {
+                marker.setMap(null);
+            }
+            var pos = new google.maps.LatLng(position.coords.latitude,
+                                                position.coords.longitude);
+            map.setCenter(pos);
+            marker = new google.maps.Marker({ position: pos, map: map, title: "You are here!" });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+                default:
+                    alert("An unknown error occurred.(default)");
+                    break;
+            }
         }

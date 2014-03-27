@@ -25,6 +25,14 @@ public partial class Home : System.Web.UI.Page
         dt.Columns[6].ColumnName = "Age Range";
         GridView1.DataBind();
 
+        //load the user age
+        if (Session["UserDeatail"] != null)
+        {
+        DataTable dtUser = (DataTable)HttpContext.Current.Session["UserDeatail"];
+        kmTXT.Text = dtUser.Rows[0]["Age"].ToString();
+        }
+      
+
 
         for (int i = 0; i < dt.Rows.Count; i++)
         {   //edit the age range
@@ -104,35 +112,7 @@ public partial class Home : System.Web.UI.Page
         }
     }
 
-    //sort by catgory 
-    protected void catgoryDdl_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        DropDownList CatagoryDdl = (DropDownList)sender;
-        string catgory = CatagoryDdl.SelectedItem.ToString();
-        int num = 0;
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            if (catgory == "All")
-            { return; }
-            if (catgory != dt.Rows[i][1].ToString())
-            { GridView1.Rows[i].Visible = false; num++; }
-        }
-
-
-    }
-
-    //sort by min age
-    protected void kmTXT_TextChanged(object sender, EventArgs e)
-    {
-        int age = int.Parse(kmTXT.Text);
-
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            if (age > int.Parse(dt.Rows[i][7].ToString()))
-            { GridView1.Rows[i].Visible = false; }
-        }
-
-    }
+ 
 
     //sort by city
     protected void searchBtn_Click(object sender, EventArgs e)
@@ -143,6 +123,34 @@ public partial class Home : System.Web.UI.Page
         {
             if (!(System.Text.RegularExpressions.Regex.IsMatch( dt.Rows[i]["Address"].ToString(),cityStr)))
             { GridView1.Rows[i].Visible = false; }
+            else
+            {
+                GridView1.Rows[i].Visible = true;
+            }
+        }
+
+        //sort by catgory 
+        string catgory = catgoryDdl.SelectedItem.ToString();
+        int num = 0;
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            if (catgory == "All")
+            { return; }
+            if (catgory != dt.Rows[i][1].ToString())
+            { GridView1.Rows[i].Visible = false; num++; }
+        }
+
+        //sort by  age
+        if (kmTXT.Text !="0")
+        {
+            int age = int.Parse(kmTXT.Text);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (age < int.Parse(dt.Rows[i][6].ToString()) || age > int.Parse(dt.Rows[i][7].ToString()))
+                { GridView1.Rows[i].Visible = false; }
+
+            }
         }
     }
 }

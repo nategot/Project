@@ -12,6 +12,9 @@ public partial class SiteMaster : System.Web.UI.MasterPage
         if (Session["Fname"] != null)
         {
             LogInLbl.Text = "Hello  " + (Session["Fname"]).ToString();
-        } 
+        }
     }
+
+
+
 }

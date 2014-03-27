@@ -20,8 +20,7 @@
                     Category:
                 </td>
                 <td>
-                    <asp:DropDownList ID="catgoryDdl" runat="server" OnSelectedIndexChanged="catgoryDdl_SelectedIndexChanged"
-                        AutoPostBack="True">
+                    <asp:DropDownList ID="catgoryDdl" runat="server"> 
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Soccer</asp:ListItem>
                         <asp:ListItem>Basketball</asp:ListItem>
@@ -31,13 +30,13 @@
                     </asp:DropDownList>
                 </td>
                 <td>
-                    Radius:
+                    age:
                 </td>
                 <td>
                     <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="kmTXT"
                         Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                     </asp:NumericUpDownExtender>
-                    <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40" OnTextChanged="kmTXT_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="kmTXT"  runat="server" Width="40" ></asp:TextBox>
                     <asp:ImageButton ID="downArrow" runat="server" CssClass="Arrowimg" src="Images/down.gif" />
                     <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="Arrowimg" runat="server" />
                 </td>
