@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.Script.Serialization;
+using System.Web.Script.Services;
+using System.IO;
+
 
 /// <summary>
 /// Summary description for WebService
@@ -11,25 +15,39 @@ using System.Web.Services;
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 [System.Web.Script.Services.ScriptService]
-public class WebService : System.Web.Services.WebService {
 
-    public WebService () {
+
+public class WebService : System.Web.Services.WebService
+{
+
+    public WebService()
+    {
 
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
 
     [WebMethod]
-    public string HelloWorld() {
+    public string HelloWorld()
+    {
         return "Hello World";
     }
 
-    public string[] GetPosition(string position,string city)
+    [WebMethod]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+
+    public string getEvents()
     {
-        string[] latlag = new string[3];
-        latlag=  position.Split(',');
-        latlag[2] = city;
-        return latlag;
+        Point p1 = new Point();
+        p1.Lat = 35;
+        p1.Lng = 40;
+
+        // create a json serializer objetct
+        JavaScriptSerializer js = new JavaScriptSerializer();
+        // serialize to string
+        string jsonString = js.Serialize(p1);
+        return jsonString;
+
+
     }
-    
 }

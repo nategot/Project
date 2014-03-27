@@ -12,7 +12,7 @@
         var FinalPositon;
         var addressTXT;
         var flag = true;
-        var CPOsition=9;
+    
   
        
 

@@ -75,7 +75,7 @@ public partial class Home : System.Web.UI.Page
             GridView1.Rows[i].Cells[0].Controls.Add(imsel);
         }
     }
-
+ 
     protected void JoinBtn_Click(object sender, EventArgs e)
     {
         if (Session["Fname"] != null)
