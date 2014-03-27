@@ -5,7 +5,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScript.js" type="text/javascript"></script>
-
+    <link href="Styles/HomeCss.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent" ClientIDMode="Inherit">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -13,15 +13,14 @@
     <h1>
         &nbsp;</h1>
     <br />
-   <div id="searchDiv">
+    <div id="searchDiv">
         <table>
             <tr>
                 <td>
                     Category:
                 </td>
                 <td>
-                    <asp:DropDownList ID="catgoryDdl" runat="server" OnSelectedIndexChanged="catgoryDdl_SelectedIndexChanged"
-                        Style="height: 22px" Font-Bold="False" AutoPostBack="True">
+                    <asp:DropDownList ID="catgoryDdl" runat="server"> 
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Soccer</asp:ListItem>
                         <asp:ListItem>Basketball</asp:ListItem>
@@ -31,26 +30,27 @@
                     </asp:DropDownList>
                 </td>
                 <td>
-                    Radius:
+                    age:
                 </td>
                 <td>
                     <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="kmTXT"
                         Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                     </asp:NumericUpDownExtender>
-                    <asp:TextBox ID="kmTXT" Text="20" runat="server" Width="40" 
-                        ontextchanged="kmTXT_TextChanged"  ></asp:TextBox>
-                    <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px; width: 15px;" />
-                    <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px; width: 15px;" />
+                    <asp:TextBox ID="kmTXT"  runat="server" Width="40" ></asp:TextBox>
+                    <asp:ImageButton ID="downArrow" runat="server" CssClass="Arrowimg" src="Images/down.gif" />
+                    <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="Arrowimg" runat="server" />
                 </td>
                 <td>
-                    Name:
+                    City:
                 </td>
                 <td>
                     <asp:TextBox ID="freeSearch" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="MapviewBTN" runat="server" Text="Map View" OnClick="MapviewBTN_Click"/>
-                         
+                    <asp:Button ID="searchBtn" class="myButton" runat="server" Text="Search" OnClick="searchBtn_Click" />
+                </td>
+                <td>
+                    <asp:Button ID="MapviewBTN" runat="server" class="myButton" Text="Map View" OnClick="MapviewBTN_Click" />
                 </td>
             </tr>
         </table>
@@ -60,16 +60,15 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="catgoryDdl" />
+            <asp:AsyncPostBackTrigger ControlID="searchBtn" />
         </Triggers>
         <ContentTemplate>
-            <asp:GridView ID="GridView1" runat="server" HeaderStyle-BorderStyle="Solid" 
-                RowStyle-VerticalAlign="Middle" Font-Bold="True" Font-Size="Medium" 
-                BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" 
-                CellPadding="3" GridLines="Vertical">
+            <asp:GridView ID="GridView1" runat="server" HeaderStyle-BorderStyle="Solid" RowStyle-VerticalAlign="Middle"
+                Font-Bold="True" Font-Size="Medium" BackColor="White" BorderColor="#999999" BorderStyle="None"
+                BorderWidth="1px" CellPadding="3" GridLines="Vertical">
                 <AlternatingRowStyle BackColor="#DCDCDC" />
                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                <HeaderStyle BackColor="#000084" BorderStyle="Solid" Font-Bold="True" 
-                    ForeColor="White" />
+                <HeaderStyle BackColor="#000084" BorderStyle="Solid" Font-Bold="True" ForeColor="White" />
                 <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EEEEEE" ForeColor="Black" VerticalAlign="Middle" />
                 <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
@@ -81,7 +80,7 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <asp:PlaceHolder ID="MapPlaceHolder" runat="server">
-        <div id="map-canvas" style="border: 2px ridge #999999; height: 600px; width: 800px">
+        <div class="HomeMap" id="map-canvas">
         </div>
     </asp:PlaceHolder>
 </asp:Content>

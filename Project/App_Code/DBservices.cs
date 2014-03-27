@@ -311,7 +311,7 @@ public class DBservices
         {
             con = dbS.connect(conString); // open the connection to the database/
 
-            String selectStr = "SELECT  [UserName] FROM [View_UserInEvent] WHERE EventNumber =" + eventNm ; // create the select that will be used by the adapter to select data from the DB
+            String selectStr = "SELECT  [UserName] FROM [View_UserInEvent] WHERE EventNumber =" + eventNm; // create the select that will be used by the adapter to select data from the DB
 
             SqlDataAdapter da = new SqlDataAdapter(selectStr, con); // create the data adapter
 
@@ -341,5 +341,5 @@ public class DBservices
     }
 
 
-  
+
 }

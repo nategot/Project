@@ -1,13 +1,13 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
-.getPosition
-{ 
-}
-body   
+
+
+body
 {
-    background: #b6b7bc;
+    /*background: #b6b7bc;*/
+    background-image: url('pic/MainBackground.jpg');
     font-size: .80em;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
     color: #696969;
@@ -87,13 +87,20 @@ first child of the left and right table columns */
 
 /* PRIMARY LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
-
+#imgLogo
+{
+ width: 330px;
+ height: 130px;
+}
 .page
 {
     width: 960px;
     background-color: #fff;
     margin: 20px auto 0px auto;
     border: 1px solid #496077;
+    border-style: ridge;
+    border-width: medium; 
+    background-image: url('pic/6.png');
 }
 
 .header
@@ -105,7 +112,7 @@ first child of the left and right table columns */
     width: 100%;
 }
 
-.header h1  
+.header h1
 {
     font-weight: 700;
     margin: 0px;
@@ -143,7 +150,8 @@ first child of the left and right table columns */
 }
 
 Label
-{color:Black; 
+{
+    color: Black;
 }
 
 /* TAB MENU   
@@ -151,8 +159,8 @@ Label
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
-    width:100%;
+    background-color: #3a4f63;
+    width: 100%;
 }
 
 div.menu
@@ -204,7 +212,7 @@ fieldset
     border: 1px solid #ccc;
 }
 
-fieldset p 
+fieldset p
 {
     margin: 2px 12px 10px 10px;
 }
@@ -214,25 +222,25 @@ fieldset.login label, fieldset.register label, fieldset.changePassword label
     display: block;
 }
 
-fieldset label.inline 
+fieldset label.inline
 {
     display: inline;
 }
 
-legend 
+legend
 {
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
 }
 
-input.textEntry 
+input.textEntry
 {
     width: 320px;
     border: 1px solid #ccc;
 }
 
-input.passwordEntry 
+input.passwordEntry
 {
     width: 320px;
     border: 1px solid #ccc;
@@ -300,7 +308,7 @@ div.accountInfo
     padding-right: 10px;
 }
 
-/* <a href="#" class="myButton" > green< a > */ 
+/* <a href="#" class="myButton" > green< a > */
 
 .myButton
 {
@@ -321,15 +329,19 @@ div.accountInfo
     text-shadow: 3px 3px 0px #3d768a;
 }
 
-.myButton:hover {
-	background-color:#408c99;
+.myButton:hover
+{
+    background-color: #408c99;
 }
 
-.myButton:active {
-	position:relative;
-	top:1px;
+.myButton:active
+{
+    position: relative;
+    top: 1px;
 }
 
-.ErroerLBL{
-  color:Red;
-  font-size:x-large}
+.ErroerLBL
+{
+    color: Red;
+    font-size: x-large;
+}

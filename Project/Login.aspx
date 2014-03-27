@@ -34,7 +34,7 @@
                 <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Keep me logged in</asp:Label>
             </p>
             <p>
-                <asp:Label ID="AnsLogInLBL"  CssClass="ErroerLBL" runat="server"></asp:Label>
+                <asp:Label ID="AnsLogInLBL" CssClass="ErroerLBL" runat="server"></asp:Label>
             </p>
         </fieldset>
         <p class="submitButton">

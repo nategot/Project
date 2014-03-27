@@ -82,9 +82,13 @@
                 </asp:MultiHandleSliderExtender>
             </td>
             <td>
+<<<<<<< HEAD
                 <asp:TextBox ID="MaxAgeTxt" runat="server" Width="30" Text="75" />
+=======
+                <asp:TextBox ID="AgeTxt" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="AgeValidator" runat="server" ErrorMessage="Age Range is a Required Filed"
                     ControlToValidate="AgeTxt"></asp:RequiredFieldValidator>
+>>>>>>> 78c7aef57e713569892cf2b209a25ba619ee187c
             </td>
         </tr>
         <tr>
@@ -135,8 +139,15 @@
             </td>
         </tr>
     </table>
+<<<<<<< HEAD
+    <%-- <body onload="start();">--%>
+    <body>
+        <div id="mapholder" style="border: 1px ridge #999999; height: 320px; width: 500px;">
+=======
    <%-- <body>--%>
          <body onload="start()">
+        <div id="mapholder" style="border: 1px ridge #999999; height: 300px; width: 433px;">
+>>>>>>> 78c7aef57e713569892cf2b209a25ba619ee187c
         </div>
     </body>
    <%-- <script> 

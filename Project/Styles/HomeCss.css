@@ -1,0 +1,12 @@
+﻿.Arrowimg
+{
+    height: 15px;
+    width: 15px;
+}
+
+.HomeMap
+{
+    border: 2px ridge #999999;
+    height: 500px;
+    width: 800px;
+}

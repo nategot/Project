@@ -5,21 +5,19 @@
 <head runat="server">
     <title></title>
     <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
-    
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-image: url('pic/MainBackground.jpg')">
+<body>
     <form runat="server">
-    <div class="page" style="border-style: ridge; border-width: medium; background-image: url('pic/6.png')">
+    <div class="page">
         <div class="header">
             <div class="title">
-                <img alt="icon" src="pic/logo.png" style="width: 330px; height: 130px" />
+                <img alt="icon" id="imgLogo" src="pic/logo.png" />
             </div>
             <div class="loginDisplay" style="float: right">
-            <a href="Login.aspx" id="HeadLoginStatus" runat="server"> 
-                <asp:Label ID="LogInLbl" runat="server" Text="Log In"></asp:Label></a>
-             
+                <a href="Login.aspx" id="HeadLoginStatus" runat="server">
+                    <asp:Label ID="LogInLbl" runat="server" Text="Log In"></asp:Label></a>
             </div>
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
@@ -27,7 +25,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Home" />
                         <asp:MenuItem NavigateUrl="~/MyEvents.aspx" Text="My Events"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/NewEvent.aspx" Text="Create New Event"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/NewEvent.aspx" Text="Create New Event" Value="0"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" />
                     </Items>
                 </asp:Menu>
