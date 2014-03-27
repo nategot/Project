@@ -136,7 +136,7 @@
         </tr>
     </table>
    <%-- <body>--%>
-         <body onload="start()">
+         <body>
         </div>
     </body>
    <%-- <script> 
