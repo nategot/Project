@@ -8,13 +8,30 @@ using System.Web;
 /// </summary>
 public class Point
 {
+    private double lat;
+    private double lng;
+
+
     public Point()
     {
 
     }
-        
+    public Point(double lat, double lng)
+    {
+        this.lat = lat;
+        this.lng = lng;
 
-        public double Lat { get; set; }
-        public double Lng { get; set; }
-    
+    }
+
+    public double Lat
+    {
+        get { return lat; }
+        set { lat = value; }
+    }
+    public double Lng
+    {
+        get { return lng; }
+        set { lng = value; }
+    }
+        
 }

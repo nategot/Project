@@ -6,6 +6,8 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.IO;
+using System.Data.SqlClient;
+using System.Data;
 
 
 /// <summary>
@@ -35,19 +37,35 @@ public class WebService : System.Web.Services.WebService
 
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-
-    public string getEvents()
+    public string getEvents(string ss)
     {
-        Point p1 = new Point();
-        p1.Lat = 35;
-        p1.Lng = 40;
+        EventOnAir ev = new EventOnAir();
+        List<EventOnAir> eventsList = new List<EventOnAir>();
+        DataTable dt = ev.readTable();
 
-        // create a json serializer objetct
+        ev.Point = new Point(double.Parse(dt.Rows[2]["Lat"].ToString()), double.Parse(dt.Rows[2]["Lng"].ToString()));
+        ev.Address = dt.Rows[2]["Address"].ToString();
+        ev.MaxAge = int.Parse(dt.Rows[2]["MaxAge"].ToString());
+        eventsList.Add(ev);
+
+        ev.Point = new Point(double.Parse(dt.Rows[3]["Lat"].ToString()), double.Parse(dt.Rows[3]["Lng"].ToString()));
+        ev.Address = dt.Rows[3]["Address"].ToString();
+        ev.MaxAge = int.Parse(dt.Rows[3]["MaxAge"].ToString());
+        eventsList.Add(ev);
         JavaScriptSerializer js = new JavaScriptSerializer();
-        // serialize to string
-        string jsonString = js.Serialize(p1);
+        string jsonString = js.Serialize(eventsList);
         return jsonString;
 
-
     }
+
+    public struct POI
+    {
+
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+        public string Name { get; set; }
+        public Point P { get; set; }
+    }
+
+
 }

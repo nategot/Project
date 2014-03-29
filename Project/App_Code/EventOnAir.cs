@@ -25,11 +25,19 @@ public class EventOnAir
     private int frequency;
     private bool IsPrivate;
     private int adminId;
-    private double lat;
-    private double lng;
+    private Point point;
     private string comments;
+    //private double lat;
+    //private double lng;
 
-    //prop
+
+    
+    #region
+    public Point Point
+    {
+        get { return point; }
+        set { point = value; }
+    }
     public int Catedory
     {
         get { return catedory; }
@@ -79,17 +87,18 @@ public class EventOnAir
     {
         get { return adminId; }
         set { adminId = value; }
-    }
-    public double Lat
-    {
-        get { return lat; }
-        set { lat = value; }
-    }
-    public double Lng
-    {
-        get { return lng; }
-        set { lng = value; }
-    }
+    }           
+    //public double Lat
+    //{
+    //    get { return lat; }
+    //    set { lat = value; }
+    //}
+    //public double Lng
+    //{
+    //    get { return lng; }
+    //    set { lng = value; }
+    //}
+    #endregion //prop
 
 
 
@@ -122,8 +131,5 @@ public class EventOnAir
     }
 
 
-   
-
-  
 
 }

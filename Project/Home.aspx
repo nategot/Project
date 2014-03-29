@@ -4,13 +4,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <%--  <script src="Scripts/MapScript.js" type="text/javascript"></script>--%>
     <link href="Styles/HomeCss.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent" ClientIDMode="Inherit">
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
-   
     <h1>
         &nbsp;</h1>
     <br />
@@ -83,10 +83,9 @@
         <div class="HomeMap" id="mapholder">
         </div>
         <</asp:PlaceHolder>
-        
     <script type="text/javascript">
-     
-      
+
+
         function initialize() {
 
             // center the map in Ruppin
@@ -106,11 +105,11 @@
                 map: map,
                 title: 'Ruppin'
             });
-            var poi = new Object();
-            poi.lat = 32.343100;
-            poi.lng = 34.911900;
-                        showPOI(poi);
-//            getPOIList();
+//            var poi = new Object();
+//            poi.lat = 32.343100;
+//            poi.lng = 34.911900;
+//            showPOI(poi);
+                        getPOIList();
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
@@ -122,13 +121,14 @@
             pos = new google.maps.LatLng(pathList2[0].Lat, pathList2[0].Lng);
             map.setCenter(pos);
         }
-        
-       
-       
+
+
+
         //-----------------------------------------------------------------------
         // get the getPOIList 
         //-----------------------------------------------------------------------
         function getPOIList() {
+            var dataString = '{ss:"sssd"}'; ;
             $.ajax({ // ajax call starts
                 url: 'WebService.asmx/getEvents',   // server side method
                 data: dataString,    // parameters passed to the server
@@ -138,6 +138,7 @@
                 success: function (data) // Variable data contains the data we get from server side
                 {
                     poiList = $.parseJSON(data.d);
+                  
                     // run on all the POIs and display them
                     for (i = 0; i < poiList.length; i++) {
                         showPOI(poiList[i]);
@@ -153,7 +154,8 @@
         // show the POI on the map
         //--------------------------------------
         function showPOI(poiPoint) {
-            var poiLatlng = new google.maps.LatLng(poiPoint.lat, poiPoint.lng);
+            
+            var poiLatlng = new google.maps.LatLng(poiPoint.Point.Lat, poiPoint.Point.Lng);
             image = "pic/blue-dot.png";
             var marker = new google.maps.Marker({
                 position: poiLatlng,
@@ -162,9 +164,9 @@
                 icon: image
             });
             var contentString = '<div id="content">' +
-      '<h1>' + poiPoint.Name + '</h1>' +
+      '<h1>' + poiPoint.Address + '</h1>' +
       '<div id="bodyContent">' +
-      '<p>' + poiPoint.Description + '</p><img src ="http://proj.ruppin.ac.il/mobile/pg/picUploadServer/' + poiPoint.Name + '.jpg" style="width: 200px"/></div> </div>';
+      '<p>' + poiPoint.MaxAge + '</p><img src ="http://proj.ruppin.ac.il/mobile/pg/picUploadServer/' + poiPoint.Name + '.jpg" style="width: 200px"/></div> </div>';
 
 
 

@@ -33,8 +33,7 @@ public partial class NewEvent : System.Web.UI.Page
         string address = CityHIde.Value;
 
         //insert to the Event class
-        ev.Lat = double.Parse(latlagArr[0]);
-        ev.Lng = double.Parse(latlagArr[1]);
+        ev.Point = new Point(double.Parse(latlagArr[0]), double.Parse(latlagArr[1]));
         ev.Address = address;
 
 

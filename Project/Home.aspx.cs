@@ -16,27 +16,23 @@ public partial class Home : System.Web.UI.Page
     DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
     {
-        MapPlaceHolder.Visible = false;
         string ageRange;
         EventOnAir Ev = new EventOnAir();
+        MapPlaceHolder.Visible = false;
         dt = Ev.readTable();
         GridView1.DataSource = dt;
-
-        dt.Columns[6].ColumnName = "Age Range";
         GridView1.DataBind();
 
         //load the user age
         if (Session["UserDeatail"] != null)
         {
-        DataTable dtUser = (DataTable)HttpContext.Current.Session["UserDeatail"];
-        kmTXT.Text = dtUser.Rows[0]["Age"].ToString();
+            DataTable dtUser = (DataTable)HttpContext.Current.Session["UserDeatail"];
+            kmTXT.Text = dtUser.Rows[0]["Age"].ToString();
         }
-      
-
 
         for (int i = 0; i < dt.Rows.Count; i++)
         {   //edit the age range
-            ageRange = dt.Rows[i]["Age Range"].ToString();
+            ageRange = dt.Rows[i]["MinAge"].ToString();
             ageRange += "-" + dt.Rows[i]["MaxAge"].ToString();
             GridView1.Rows[i].Cells[6].Text = ageRange;
 
@@ -64,6 +60,7 @@ public partial class Home : System.Web.UI.Page
 
         GridView1.HeaderRow.Cells[0].Text = "";
         GridView1.HeaderRow.Cells[2].Text = "Max Partic.";
+        GridView1.HeaderRow.Cells[6].Text = "Age Range";
         GridView1.HeaderRow.Cells[7].Text = "";
 
 
@@ -75,7 +72,7 @@ public partial class Home : System.Web.UI.Page
             GridView1.Rows[i].Cells[0].Controls.Add(imsel);
         }
     }
- 
+
     protected void JoinBtn_Click(object sender, EventArgs e)
     {
         if (Session["Fname"] != null)
@@ -112,16 +109,16 @@ public partial class Home : System.Web.UI.Page
         }
     }
 
- 
+
 
     //sort by city
     protected void searchBtn_Click(object sender, EventArgs e)
     {
         string cityStr = freeSearch.Text;
-        
+
         for (int i = 0; i < dt.Rows.Count; i++)
         {
-            if (!(System.Text.RegularExpressions.Regex.IsMatch( dt.Rows[i]["Address"].ToString(),cityStr)))
+            if (!(System.Text.RegularExpressions.Regex.IsMatch(dt.Rows[i]["Address"].ToString(), cityStr)))
             { GridView1.Rows[i].Visible = false; }
             else
             {
@@ -141,13 +138,13 @@ public partial class Home : System.Web.UI.Page
         }
 
         //sort by  age
-        if (kmTXT.Text !="0")
+        if (kmTXT.Text != "0")
         {
             int age = int.Parse(kmTXT.Text);
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                if (age < int.Parse(dt.Rows[i][6].ToString()) || age > int.Parse(dt.Rows[i][7].ToString()))
+                if (age < int.Parse(dt.Rows[i]["MinAge"].ToString()) || age > int.Parse(dt.Rows[i]["MaxAge"].ToString()))
                 { GridView1.Rows[i].Visible = false; }
 
             }
