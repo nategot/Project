@@ -84,7 +84,7 @@
                 </asp:MultiHandleSliderExtender>
             </td>
             <td>
-                <asp:TextBox ID="MaxAgeTxt" runat="server" Width="30" Text="75" />
+                <asp:TextBox ID="MaxAgeTxt" runat="server" Width="30" Text="30" />
             </td>
         </tr>
         <tr>

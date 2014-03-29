@@ -83,9 +83,8 @@
         <div class="HomeMap" id="mapholder">
         </div>
         <</asp:PlaceHolder>
+  
     <script type="text/javascript">
-
-
         function initialize() {
 
             // center the map in Ruppin
@@ -94,7 +93,7 @@
             ruppinPos.long = 34.911908;
             var myLatlng = new google.maps.LatLng(ruppinPos.lat, ruppinPos.long);
             var mapOptions = {
-                zoom: 17,
+                zoom: 6,
                 center: myLatlng,
                 mapTypeId: google.maps.MapTypeId.Map
             }
@@ -105,24 +104,10 @@
                 map: map,
                 title: 'Ruppin'
             });
-//            var poi = new Object();
-//            poi.lat = 32.343100;
-//            poi.lng = 34.911900;
-//            showPOI(poi);
-                        getPOIList();
+            getPOIList();
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
-        function findme(pathList2) {
-            pos = new google.maps.LatLng(pathList2[0].Lat, pathList2[0].Lng);
-            map.setCenter(pos);
-        }
-
-
 
         //-----------------------------------------------------------------------
         // get the getPOIList 
@@ -131,14 +116,14 @@
             var dataString = '{ss:"sssd"}'; ;
             $.ajax({ // ajax call starts
                 url: 'WebService.asmx/getEvents',   // server side method
-                data: dataString,    // parameters passed to the server
+                // parameters passed to the server
                 type: 'POST',
                 dataType: 'json', // Choosing a JSON datatype
                 contentType: 'application/json; charset = utf-8',
                 success: function (data) // Variable data contains the data we get from server side
                 {
                     poiList = $.parseJSON(data.d);
-                  
+
                     // run on all the POIs and display them
                     for (i = 0; i < poiList.length; i++) {
                         showPOI(poiList[i]);
@@ -154,20 +139,19 @@
         // show the POI on the map
         //--------------------------------------
         function showPOI(poiPoint) {
-            
+
             var poiLatlng = new google.maps.LatLng(poiPoint.Point.Lat, poiPoint.Point.Lng);
-            image = "pic/blue-dot.png";
+            image = poiPoint.ImageUrl;
             var marker = new google.maps.Marker({
                 position: poiLatlng,
                 map: map,
                 title: poiPoint.Name,
                 icon: image
-            });
-            var contentString = '<div id="content">' +
-      '<h1>' + poiPoint.Address + '</h1>' +
-      '<div id="bodyContent">' +
-      '<p>' + poiPoint.MaxAge + '</p><img src ="http://proj.ruppin.ac.il/mobile/pg/picUploadServer/' + poiPoint.Name + '.jpg" style="width: 200px"/></div> </div>';
 
+            });
+
+            var contentString = '<div id="content"><h1>' + poiPoint.Description + '<div id="bodyContent">'
+              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Time&Date:' + poiPoint.Time + '</p>  </div></div>';
 
 
             var infowindow = new google.maps.InfoWindow({
@@ -180,8 +164,6 @@
 
         }
        
-      
-
-      
+ 
     </script>
 </asp:Content>

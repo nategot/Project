@@ -10,12 +10,18 @@ using System.Windows.Forms;
 
 public partial class NewEvent : System.Web.UI.Page
 {
+    DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
     {   // if the user is not login go to login
-        //if (Session["Fname"] == null)
-        //{
-        //    Response.Redirect("MessagePae.aspx?ans=notLogin");
-        //}
+        if (Session["Fname"] == null)
+        {
+            Response.Redirect("MessagePae.aspx?ans=notLogin");
+        }
+        //load the age range according to the user age
+         dt = (DataTable)HttpContext.Current.Session["UserDeatail"];
+         MaxAgeTxt.Text = (int.Parse(dt.Rows[0]["Age"].ToString()) + 5).ToString();
+         MinAgeTxt.Text = (int.Parse(dt.Rows[0]["Age"].ToString()) - 5).ToString();
+
         dateTB.Text = (DateTime.Today.Day + "/" + DateTime.Today.Month + "/" + DateTime.Today.Year).ToString(); ;
     }
     protected void confirmBTN_Click(object sender, EventArgs e)

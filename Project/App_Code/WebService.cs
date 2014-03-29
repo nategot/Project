@@ -37,35 +37,44 @@ public class WebService : System.Web.Services.WebService
 
     [WebMethod]
     [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-    public string getEvents(string ss)
+    public string getEvents()
     {
         EventOnAir ev = new EventOnAir();
         List<EventOnAir> eventsList = new List<EventOnAir>();
         DataTable dt = ev.readTable();
+        
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            EventOnAir evTemp = new EventOnAir();
+            evTemp.Point = new Point(double.Parse(dt.Rows[i]["Lat"].ToString()), double.Parse(dt.Rows[i]["Lng"].ToString()));
+            evTemp.Address = dt.Rows[i]["Address"].ToString();
+            evTemp.MaxAge = int.Parse(dt.Rows[i]["MaxAge"].ToString());
+            evTemp.MinAge = int.Parse(dt.Rows[i]["MinAge"].ToString());
+            evTemp.NumOfParti = int.Parse(dt.Rows[i]["NumOfParticipants"].ToString());
+            evTemp.ImageUrl= dt.Rows[i]["ImageUrl"].ToString();
+            evTemp.AdminID = int.Parse(dt.Rows[0]["AdminId"].ToString());
+            evTemp.IsPrivate1 = bool.Parse(dt.Rows[0]["Private"].ToString());
+            evTemp.DateTime = DateTime.Parse(dt.Rows[i]["Time"].ToString());
+            evTemp.Description = dt.Rows[i]["Description"].ToString();
+            evTemp.Comments = dt.Rows[i]["Comments"].ToString();
 
-        ev.Point = new Point(double.Parse(dt.Rows[2]["Lat"].ToString()), double.Parse(dt.Rows[2]["Lng"].ToString()));
-        ev.Address = dt.Rows[2]["Address"].ToString();
-        ev.MaxAge = int.Parse(dt.Rows[2]["MaxAge"].ToString());
-        eventsList.Add(ev);
-
-        ev.Point = new Point(double.Parse(dt.Rows[3]["Lat"].ToString()), double.Parse(dt.Rows[3]["Lng"].ToString()));
-        ev.Address = dt.Rows[3]["Address"].ToString();
-        ev.MaxAge = int.Parse(dt.Rows[3]["MaxAge"].ToString());
-        eventsList.Add(ev);
+            //add the  event to the list
+            eventsList.Add(evTemp);
+        }
+        
         JavaScriptSerializer js = new JavaScriptSerializer();
         string jsonString = js.Serialize(eventsList);
         return jsonString;
-
     }
 
-    public struct POI
-    {
+    //public struct POI
+    //{
 
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
-        public string Name { get; set; }
-        public Point P { get; set; }
-    }
+    //    public string Description { get; set; }
+    //    public string ImageUrl { get; set; }
+    //    public string Name { get; set; }
+    //    public Point P { get; set; }
+    //}
 
 
 }

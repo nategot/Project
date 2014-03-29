@@ -13,7 +13,7 @@ public class EventOnAir
 {
     public EventOnAir()
     {
-
+        point = new Point();
     }
 
     private int catedory;
@@ -27,12 +27,28 @@ public class EventOnAir
     private int adminId;
     private Point point;
     private string comments;
+    private string imageUrl;
+    private string description;
+
+
     //private double lat;
     //private double lng;
 
 
-    
+    //prop
     #region
+    public string Description
+    {
+        get { return description; }
+        set { description = value; }
+    }
+
+    public string ImageUrl
+    {
+        get { return imageUrl; }
+        set { imageUrl = value; }
+
+    }
     public Point Point
     {
         get { return point; }
@@ -87,7 +103,7 @@ public class EventOnAir
     {
         get { return adminId; }
         set { adminId = value; }
-    }           
+    }
     //public double Lat
     //{
     //    get { return lat; }
@@ -101,6 +117,15 @@ public class EventOnAir
     #endregion //prop
 
 
+    public EventOnAir ReadFordt(DataTable dtEvent, int i)
+    {
+
+        this.Point = new Point(double.Parse(dtEvent.Rows[i]["Lat"].ToString()), double.Parse(dtEvent.Rows[i]["Lng"].ToString()));
+        this.Address = dtEvent.Rows[i]["Address"].ToString();
+        this.MaxAge = int.Parse(dtEvent.Rows[i]["MaxAge"].ToString());
+
+        return this;
+    }
 
     //insert envent
     public int insert()

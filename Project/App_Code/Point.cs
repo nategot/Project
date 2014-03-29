@@ -16,10 +16,11 @@ public class Point
     {
 
     }
+
     public Point(double lat, double lng)
     {
-        this.lat = lat;
-        this.lng = lng;
+        this.Lat = lat;
+        this.Lng = lng;
 
     }
 

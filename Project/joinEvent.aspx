@@ -13,7 +13,6 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-  
     <div>
         <asp:Label ID="EventNameLbl" CssClass="EventNameLbl" runat="server" Font-Size="XX-Large"
             Font-Italic="True" Font-Bold="True"></asp:Label>
@@ -86,11 +85,10 @@
                     <asp:Label ID="ANS_commentLbl" runat="server"></asp:Label>
                 </td>
             </tr>
-            
             <tr>
                 <td>
-                <asp:HiddenField ID="latHF" runat="server" />
-                <asp:HiddenField ID="lngHF" runat="server" />
+                    <asp:HiddenField ID="latHF" runat="server" />
+                    <asp:HiddenField ID="lngHF" runat="server" />
                     <br />
                 </td>
             </tr>
@@ -103,9 +101,8 @@
     </div>
     <div id="rightdiv" style="float: right; padding-right: 80px;">
         <br />
-        <asp:GridView ID="playerTableGrv" runat="server" BackColor="White" 
-            BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" 
-            CellSpacing="1" GridLines="None">
+        <asp:GridView ID="playerTableGrv" runat="server" BackColor="White" BorderColor="White"
+            BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="None">
             <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
             <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
@@ -120,5 +117,4 @@
     <div style="margin: 400px 0px 0px 0px; text-align: center">
         <asp:Button ID="joinBTN" runat="server" Text="Join Now!" OnClick="joinBTN_Click" />
     </div>
-    
 </asp:Content>
