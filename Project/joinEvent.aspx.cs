@@ -32,7 +32,7 @@ public partial class joinEvent : System.Web.UI.Page
                 ANS_locationLbl.Text = dt.Rows[i]["Address"].ToString();
                 ANS_commentLbl.Text = dt.Rows[i]["Comments"].ToString();
                 ANS_Frequency.Text = dt.Rows[i]["Frequncy"].ToString();
-                ANS_AgeLbl.Text = dt.Rows[i]["Age Range"].ToString() + "-" + dt.Rows[i]["MaxAge"].ToString();
+                ANS_AgeLbl.Text = dt.Rows[i]["MinAge"].ToString() + "-" + dt.Rows[i]["MaxAge"].ToString();
                 EventNameLbl.Text = dt.Rows[i]["Description"].ToString();
                 User u = new User();
                 u.UserId = int.Parse(dt.Rows[i]["AdminId"].ToString());

@@ -38,8 +38,8 @@
                         Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                     </asp:NumericUpDownExtender>
                     <asp:TextBox ID="kmTXT" runat="server" Width="40"></asp:TextBox>
-                    <asp:ImageButton ID="downArrow" runat="server" CssClass="Arrowimg" src="Images/down.gif" />
-                    <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="Arrowimg" runat="server" />
+                    <asp:ImageButton ID="downArrow" runat="server" CssClass="btnCh" src="Images/down.gif" />
+                    <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="btnCh" runat="server" />
                 </td>
                 <td>
                     City:

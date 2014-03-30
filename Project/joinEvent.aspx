@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="Join Event" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="JoinEvent.aspx.cs" Inherits="joinEvent" %>
 
+
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="Scripts/MapScriptJoinEvent.js" type="text/javascript"></script>
+    <link href="Styles/JoinEventStyle.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bgroup14_test1ConnectionString %>"
@@ -93,8 +96,7 @@
                 </td>
             </tr>
             <tr>
-                <td id="map-canvas" style="border: 2px ridge #999999; height: 180px; width: 300px;"
-                    colspan="2">
+                <td id="map-canvas">
                 </td>
             </tr>
         </table>
@@ -114,7 +116,7 @@
             <SortedDescendingHeaderStyle BackColor="#33276A" />
         </asp:GridView>
     </div>
-    <div style="margin: 400px 0px 0px 0px; text-align: center">
+    <div class="divvv">
         <asp:Button ID="joinBTN" runat="server" Text="Join Now!" OnClick="joinBTN_Click" />
     </div>
 </asp:Content>
