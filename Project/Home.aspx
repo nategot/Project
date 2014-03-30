@@ -151,7 +151,7 @@
             });
 
             var contentString = '<div id="content"><h1>' + poiPoint.Description + '<div id="bodyContent">'
-              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Time&Date:' + poiPoint.DateTimeStr + '</p>  </div><p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p></div>';
+              + '<p>Age Range: ' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Address: ' + poiPoint.Address + '</p>' + '<p>Date & Time: ' + poiPoint.DateTimeStr + '</p>  </div><p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p></div>';
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
