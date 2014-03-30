@@ -141,7 +141,7 @@
         function showPOI(poiPoint) {
 
             var poiLatlng = new google.maps.LatLng(poiPoint.Point.Lat, poiPoint.Point.Lng);
-            image = "pic/sdfsdf.jpg" 
+            image = poiPoint.imagUrl; 
             var marker = new google.maps.Marker({
                 position: poiLatlng,
                 map: map,
@@ -151,7 +151,7 @@
             });
 
             var contentString = '<div id="content"><h1>' + poiPoint.Description + '<div id="bodyContent">'
-              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Time&Date:' + poiPoint.Time + '</p>  </div><p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p></div>';
+              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Time&Date:' + poiPoint.DateTimeStr + '</p>  </div><p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p></div>';
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
