@@ -13,7 +13,7 @@
     </asp:ToolkitScriptManager>
     <h1>
         &nbsp;</h1>
-    <br />
+    <br/>
     <div id="searchDiv">
         <table>
             <tr>
