@@ -5,7 +5,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <%--  <script src="Scripts/MapScript.js" type="text/javascript"></script>--%>
+    <%--<script src="Scripts/MapScriptHome.js" type="text/javascript"></script>--%>
     <link href="Styles/HomeCss.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent" ClientIDMode="Inherit">
@@ -38,8 +38,8 @@
                         Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                     </asp:NumericUpDownExtender>
                     <asp:TextBox ID="ageTXT" runat="server" Width="40"></asp:TextBox>
-                    <asp:ImageButton ID="downArrow" runat="server" CssClass="Arrowimg" src="Images/down.gif" />
-                    <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="Arrowimg" runat="server" />
+                    <asp:ImageButton ID="downArrow" runat="server" CssClass="btnCh" src="Images/down.gif" />
+                    <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="btnCh" runat="server" />
                 </td>
                 <td>
                     City:
@@ -108,7 +108,7 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
-
+      
         //-----------------------------------------------------------------------
         // get the getPOIList 
         //-----------------------------------------------------------------------
@@ -151,8 +151,7 @@
             });
 
             var contentString = '<div id="content"><h1>' + poiPoint.Description + '<div id="bodyContent">'
-              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Date & Time:' + poiPoint.DateTimeStr + '</p>  </div></div>';
-
+              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Time&Date:' + poiPoint.Time + '</p>  </div><p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p></div>';
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
@@ -161,9 +160,13 @@
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.open(map, marker);
             });
-
+           
         }
-       
+
+        function JoinEvent() {
+         alert("'+poiPoint.EventNum+'");
+            
+        }
  
     </script>
 </asp:Content>

@@ -73,6 +73,7 @@ public partial class Home : System.Web.UI.Page
         }
     }
 
+    //go to join event page and sends the event num
     protected void JoinBtn_Click(object sender, EventArgs e)
     {
         if (Session["Fname"] != null)
@@ -109,11 +110,9 @@ public partial class Home : System.Web.UI.Page
         }
     }
 
-
-
-    //sort by city
+    //sort func
     protected void searchBtn_Click(object sender, EventArgs e)
-    {
+    {   //sort by city
         string cityStr = freeSearch.Text;
 
         for (int i = 0; i < dt.Rows.Count; i++)

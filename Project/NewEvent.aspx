@@ -38,8 +38,8 @@
                     Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                 </asp:NumericUpDownExtender>
                 <asp:TextBox ID="NOP" Text="8" runat="server" Width="40"></asp:TextBox>
-                <input type="image" id="downArrow" src="Images/down.gif" style="height: 15px; width: 15px;" />
-                <input type="image" id="upArrow" src="Images/up.gif" style="height: 15px; width: 15px;" />
+                <input type="image" class="btnCh" id="downArrow" src="Images/down.gif"  />
+                <input type="image" class="btnCh" id="upArrow" src="Images/up.gif"  />
             </td>
         </tr>
         <tr>
@@ -48,7 +48,7 @@
             </td>
             <td colspan="3">
                 <input type="text" value="" id="locationTB" />
-                <input type="button" id="getPosition" class="myButton" value="Find" />
+                <input type="button"  id="getPosition" class="myButton" value="Find" />
             </td>
         </tr>
         <tr>
