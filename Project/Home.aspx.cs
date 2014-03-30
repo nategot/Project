@@ -27,7 +27,7 @@ public partial class Home : System.Web.UI.Page
         if (Session["UserDeatail"] != null)
         {
             DataTable dtUser = (DataTable)HttpContext.Current.Session["UserDeatail"];
-            kmTXT.Text = dtUser.Rows[0]["Age"].ToString();
+            ageTXT.Text = dtUser.Rows[0]["Age"].ToString();
         }
 
         for (int i = 0; i < dt.Rows.Count; i++)
@@ -86,7 +86,7 @@ public partial class Home : System.Web.UI.Page
         }
         else
         {
-            Response.Redirect("MessagePae.aspx?ans=notLogin");
+            Response.Redirect("MessagePage.aspx?ans=notLogin");
         }
     }
 
@@ -138,9 +138,9 @@ public partial class Home : System.Web.UI.Page
         }
 
         //sort by  age
-        if (kmTXT.Text != "0")
+        if (ageTXT.Text != "0")
         {
-            int age = int.Parse(kmTXT.Text);
+            int age = int.Parse(ageTXT.Text);
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Specialized;
 
-public partial class MessagePae : System.Web.UI.Page
+public partial class MessagePage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -19,11 +19,8 @@ public partial class MessagePae : System.Web.UI.Page
                 RegisterBTN.Visible = true;
                 BackeBtn.Visible = true;
               break;
-           
-              
         }          
             
-     
     }
     protected void RegisterBTN_Click(object sender, EventArgs e)
     {

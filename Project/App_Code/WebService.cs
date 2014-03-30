@@ -55,6 +55,7 @@ public class WebService : System.Web.Services.WebService
             evTemp.AdminID = int.Parse(dt.Rows[0]["AdminId"].ToString());
             evTemp.IsPrivate1 = bool.Parse(dt.Rows[0]["Private"].ToString());
             evTemp.DateTime = DateTime.Parse(dt.Rows[i]["Time"].ToString());
+            evTemp.DateTimeStr = (dt.Rows[i]["Time"].ToString());
             evTemp.Description = dt.Rows[i]["Description"].ToString();
             evTemp.Comments = dt.Rows[i]["Comments"].ToString();
 

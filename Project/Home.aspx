@@ -31,13 +31,13 @@
                     </asp:DropDownList>
                 </td>
                 <td>
-                    age:
+                    Age:
                 </td>
                 <td>
-                    <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="kmTXT"
+                    <asp:NumericUpDownExtender ID="NumericUpDownExtender1" runat="server" TargetControlID="ageTXT"
                         Minimum="0" Maximum="100" TargetButtonDownID="downArrow" TargetButtonUpID="upArrow">
                     </asp:NumericUpDownExtender>
-                    <asp:TextBox ID="kmTXT" runat="server" Width="40"></asp:TextBox>
+                    <asp:TextBox ID="ageTXT" runat="server" Width="40"></asp:TextBox>
                     <asp:ImageButton ID="downArrow" runat="server" CssClass="Arrowimg" src="Images/down.gif" />
                     <asp:ImageButton ID="upArrow" src="Images/up.gif" CssClass="Arrowimg" runat="server" />
                 </td>
@@ -141,17 +141,17 @@
         function showPOI(poiPoint) {
 
             var poiLatlng = new google.maps.LatLng(poiPoint.Point.Lat, poiPoint.Point.Lng);
-            image = poiPoint.ImageUrl;
+            image = "pic/sdfsdf.jpg" 
             var marker = new google.maps.Marker({
                 position: poiLatlng,
                 map: map,
                 title: poiPoint.Name,
-                icon: image
-
+                icon: image,
+   
             });
 
             var contentString = '<div id="content"><h1>' + poiPoint.Description + '<div id="bodyContent">'
-              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Time&Date:' + poiPoint.Time + '</p>  </div></div>';
+              + '<p>Age Range:' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Adress:' + poiPoint.Address + '</p>' + '<p>Date & Time:' + poiPoint.DateTimeStr + '</p>  </div></div>';
 
 
             var infowindow = new google.maps.InfoWindow({

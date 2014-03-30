@@ -50,7 +50,6 @@ public partial class NewEvent : System.Web.UI.Page
         ev.NumOfParti = int.Parse(NOP.Text);
         timedate = dateTB.Text + " " + timeTB.Text;
         ev.DateTime = DateTime.Parse(timedate);
-
         ev.MinAge = double.Parse(MinAgeTxt.Text);
         ev.MaxAge = double.Parse(MaxAgeTxt.Text);
         ev.Frequency = int.Parse(FrequRBL.SelectedValue);

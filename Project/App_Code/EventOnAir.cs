@@ -20,6 +20,7 @@ public class EventOnAir
     private int numOfParti;
     private string address;
     private DateTime dateTime;
+    private string dateTimeStr;
     private double minAge;
     private double maxAge;
     private int frequency;
@@ -73,6 +74,11 @@ public class EventOnAir
     {
         get { return dateTime; }
         set { dateTime = value; }
+    }
+    public string DateTimeStr
+    {
+        get { return dateTimeStr; }
+        set { dateTimeStr = value; }
     }
     public double MinAge
     {
