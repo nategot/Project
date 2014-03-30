@@ -13,13 +13,15 @@ public partial class joinEvent : System.Web.UI.Page
     string eventNum;
     protected void Page_Load(object sender, EventArgs e)
     {   //load the event detail 
-        
         if (Session["EventNumber"] == null) return;
         eventNum = (Session["EventNUmber"]).ToString();
 
         if (Session["gridTable"] == null) return;
         DataTable dt = (DataTable)HttpContext.Current.Session["gridTable"];
 
+
+        // load the event detail to show
+        #region   
         for (int i = 0; i < dt.Rows.Count; i++)
         {
             if (dt.Rows[i]["EventNumber"].ToString() == eventNum)
@@ -45,11 +47,15 @@ public partial class joinEvent : System.Web.UI.Page
                 ANS_EventTypelbl.Text = temp;
             }
         }
+        #endregion 
 
-        //loag the user that register to this event
+        //loag the users that register to this event
+        #region
+      
         EventOnAir EV = new EventOnAir();
         DataTable dtUser = EV.ReadUserInEvent(eventNum);
 
+        //adding the num coulm
         DataColumn dc = new DataColumn("num");
         dc.DataType = typeof(int);
         dtUser.Columns.Add(dc);
@@ -64,15 +70,20 @@ public partial class joinEvent : System.Web.UI.Page
         playerTableGrv.DataSource = dtUser;
         playerTableGrv.DataBind();
         playerTableGrv.HeaderRow.Cells[0].Text = "";
+       
+        //add the num of row like the num of players
         for (int i = 0; i < playerTableGrv.Rows.Count; i++)
         {
             playerTableGrv.Rows[i].Cells[0].Text = (i + 1).ToString();
         }
   
     }
+    #endregion
 
+
+     // adding the user to the event
     protected void joinBTN_Click(object sender, EventArgs e)
-    { // מוסיף את השחקן לאירוע ושולח אותו חזרה לדף האירועים שלי 
+    { 
         if (Session["UserDeatail"] == null) return;
         DataTable dt = (DataTable)HttpContext.Current.Session["UserDeatail"];
         User Newuser = new User();

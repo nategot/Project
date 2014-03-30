@@ -48,7 +48,7 @@
             </td>
             <td colspan="3">
                 <input type="text" value="" id="locationTB" />
-                <input type="button" id="getPosition" class="myButton" value="Find" />
+                <input type="button"  id="getPosition" class="myButton" value="Find" />
             </td>
         </tr>
         <tr>

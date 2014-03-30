@@ -29,6 +29,13 @@ public class EventOnAir
     private string comments;
     private string imageUrl;
     private string description;
+    private string eventNum;
+
+    public string EventNum
+    {
+        get { return eventNum; }
+        set { eventNum = value; }
+    }
 
 
     //private double lat;
