@@ -6,18 +6,15 @@
 
 
 	<StartupServices>
+		
+		
+		
+		
+		
 <<<<<<< HEAD
 =======
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
->>>>>>> cc1d4fa35987bdc5661e06f8a9a26cf44f69baca
+>>>>>>> 78c7aef57e713569892cf2b209a25ba619ee187c
 		<Service ID="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}"/></StartupServices></VisualWebDeveloper>
