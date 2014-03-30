@@ -13,7 +13,7 @@
     </asp:ToolkitScriptManager>
     <h1>
         &nbsp;</h1>
-    <br/>
+    <br />
     <div id="searchDiv">
         <table>
             <tr>
@@ -141,17 +141,21 @@
         function showPOI(poiPoint) {
 
             var poiLatlng = new google.maps.LatLng(poiPoint.Point.Lat, poiPoint.Point.Lng);
-            image = poiPoint.imagUrl; 
+            image = poiPoint.imageUrl; 
             var marker = new google.maps.Marker({
                 position: poiLatlng,
                 map: map,
                 title: poiPoint.Name,
-                icon: image,
+                icon: image
    
             });
+//            var contentString = '<div id="content">' +
+//      '<h1>' + poiPoint.Name + '</h1>' +
+//      '<div id="bodyContent">' +
+//      '<p>' + poiPoint.Description + '</p><img src ="pic/soccer_icon.png" style="width: 200px"/></div> </div>';
 
-            var contentString = '<div id="content"><h1>' + poiPoint.Description + '<div id="bodyContent">'
-              + '<p>Age Range: ' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p> <p>Address: ' + poiPoint.Address + '</p>' + '<p>Date & Time: ' + poiPoint.DateTimeStr + '</p>  </div><p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p></div>';
+            var contentString = '<div id="content" class="infoWindow">' + '<h1 style="color:Blue; font-weight: bold; font-family: Arial Rounded MT Bold; text-decoration: underline;">' + '</h1>' + '<img src ="' + poiPoint.imageUrl + '" style="width: 80px"/></br></br>' + poiPoint.Description + '<div id="bodyContent" style="color:Black">'
+              + '<p>Age Range: ' + poiPoint.MaxAge + '-' + poiPoint.MinAge + '</p>' + '<p>Address: ' + poiPoint.Address + '</p>' + '<p>Date & Time: ' + poiPoint.DateTimeStr + '</p>' +  '</div>' + '<p><input type="button" onclick="JoinEvent()" id="BtnJoin" value="Join"/><p>' + '</div>';
 
             var infowindow = new google.maps.InfoWindow({
                 content: contentString
