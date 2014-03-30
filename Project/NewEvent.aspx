@@ -124,14 +124,14 @@
         <tr>
             <td>
                 <br />
-                <asp:Button ID="confirmBTN" CssClass="myButton" runat="server" Text="Confirm & Publish"
+                <asp:Button ID="confirmBTN" CssClass="myButton"  runat="server" Text="Confirm & Publish"
                     OnClick="confirmBTN_Click" />
             </td>
             <td colspan="3">
                 <br />
                 <asp:HiddenField ID="CityHIde" runat="server" />
                 <asp:HiddenField ID="LatLOngHIde" runat="server" />
-                <asp:Button ID="inviteBTN" CssClass="myButton" runat="server" Text="Invite from list" />
+                <asp:Button ID="inviteBTN" CssClass="myButton" runat="server" Text="Invite from list" Visible="false" />
             </td>
         </tr>
     </table>

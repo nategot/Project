@@ -23,6 +23,8 @@ public partial class NewEvent : System.Web.UI.Page
          MinAgeTxt.Text = (int.Parse(dt.Rows[0]["Age"].ToString()) - 5).ToString();
 
         dateTB.Text = (DateTime.Today.Day + "/" + DateTime.Today.Month + "/" + DateTime.Today.Year).ToString(); ;
+
+        
     }
     protected void confirmBTN_Click(object sender, EventArgs e)
     {

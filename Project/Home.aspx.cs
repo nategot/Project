@@ -23,6 +23,8 @@ public partial class Home : System.Web.UI.Page
         GridView1.DataSource = dt;
         GridView1.DataBind();
 
+
+
         //load the user age
         if (Session["UserDeatail"] != null)
         {
