@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Data;
 
 
+
 /// <summary>
 /// Summary description for WebService
 /// </summary>
@@ -57,6 +58,8 @@ public class WebService : System.Web.Services.WebService
             evTemp.DateTime = DateTime.Parse(dt.Rows[i]["Time"].ToString());
             evTemp.Description = dt.Rows[i]["Description"].ToString();
             evTemp.Comments = dt.Rows[i]["Comments"].ToString();
+            evTemp.EventNum = dt.Rows[i]["EventNumber"].ToString();
+          
 
             //add the  event to the list
             eventsList.Add(evTemp);
@@ -67,14 +70,13 @@ public class WebService : System.Web.Services.WebService
         return jsonString;
     }
 
-    //public struct POI
-    //{
+    [WebMethod]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
 
-    //    public string Description { get; set; }
-    //    public string ImageUrl { get; set; }
-    //    public string Name { get; set; }
-    //    public Point P { get; set; }
-    //}
+    public  void SendEvntNum(string eventjoin)
+    {
 
+        
+    }
 
 }
